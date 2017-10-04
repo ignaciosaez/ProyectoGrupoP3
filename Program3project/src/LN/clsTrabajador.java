@@ -2,36 +2,36 @@ package LN;
 
 public class clsTrabajador extends clsPersona  
 {
-	private String usuario;
-	private String cargo;
+	private String usuario_trabajador;
+	private String cargo_trabajador;
 	
 	
-	public clsTrabajador(String usuario)
+	public clsTrabajador(String usuario_trabajador, String cargo_trabajador)
 	{
 		super();
-		this.usuario= usuario;
-		this.cargo= cargo;
+		this.usuario_trabajador= usuario_trabajador;
+		this.cargo_trabajador= cargo_trabajador;
 		
 	}
 
 
 	public String getUsuario() {
-		return usuario;
+		return usuario_trabajador;
 	}
 
 
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
+	public void setUsuario(String usuario_trabajador) {
+		this.usuario_trabajador = usuario_trabajador;
 	}
 
 
 	public String getCargo() {
-		return cargo;
+		return cargo_trabajador;
 	}
 
 
-	public void setCargo(String cargo) {
-		this.cargo = cargo;
+	public void setCargo(String cargo_trabajador) {
+		this.cargo_trabajador = cargo_trabajador;
 	}
 	
 	public String toString()

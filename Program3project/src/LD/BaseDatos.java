@@ -143,6 +143,7 @@ public class BaseDatos
 	 * Crea una tabla de ciudades de origen en una base de datos, si no existía ya.
 	 * Debe haberse inicializado la conexión correctamente.
 	 */
+	/*
 	public static void crearTablaOrigenBD()
 	{
 		if (statement==null) return; 
@@ -159,6 +160,7 @@ public class BaseDatos
 	 * Crea una tabla de ciudades destino en una base de datos, si no existía ya.
 	 * Debe haberse inicializado la conexión correctamente.
 	 */
+	/*
 	public static void crearTablaDestinoBD()
 	{
 		if (statement==null) return; 
@@ -175,12 +177,12 @@ public class BaseDatos
 	 * Crea una tabla de tareas que tendran los trabajadores en una base de datos, si no existía ya.
 	 * Debe haberse inicializado la conexión correctamente.
 	 */
-	public static void crearTablaTareaBD()
+	public static void crearTablaTrabajadorTareaBD()
 	{
 		if (statement==null) return; 
 		try 
 		{
-			statement.executeUpdate("create table if not exists TAREA ( cod_vuelo string, dni_tra string )");
+			statement.executeUpdate("create table if not exists INSERCION_PRODUCTOS ( cod_producto string, usuario_trabajador string )");
 		} catch (SQLException e) 
 		{
 			JOptionPane.showMessageDialog(null, "La creación de tabla TAREA ha fallado");   
@@ -191,6 +193,7 @@ public class BaseDatos
 	 * Crea filas para la tabla de trabajadores, insertando trabajadores.
 	 * Debe haberse inicializada la conexión correctamente.
 	 */
+	/*
 	public static void InsertarTrabajadores(Statement statement)
 	{
 		if(statement==null)
@@ -216,7 +219,7 @@ public class BaseDatos
 		}		
 	}
 	
-	
+	*/
 	
 	
 	

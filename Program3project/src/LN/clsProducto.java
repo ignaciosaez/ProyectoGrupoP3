@@ -1,6 +1,8 @@
 package LN;
 
-public class clsProducto 
+import java.io.Serializable;
+
+public class clsProducto implements Serializable
 {
 	 private String cod_producto;
 	 private  String nom_producto;
