@@ -4,6 +4,8 @@ import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 
 import LD.BaseDatos;
+import LP.PaginaPrincipal;
+
 
 public class clsMain {
 
@@ -25,7 +27,8 @@ public class clsMain {
 		{
 		    // If Nimbus is not available, you can set the GUI to another look and feel.
 		}	
-
+		PaginaPrincipal obj = new PaginaPrincipal();
+		obj.setVisible(true);
 	}
 
 }
