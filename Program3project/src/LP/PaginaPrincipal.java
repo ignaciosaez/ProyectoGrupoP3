@@ -22,6 +22,8 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+
+import static COMUN.constantesActionCommand.*;
 public class PaginaPrincipal extends JFrame  implements ActionListener
 {
 	private static final long serialVersionUID = 1L;
@@ -66,17 +68,18 @@ public class PaginaPrincipal extends JFrame  implements ActionListener
 		MenuEntrar.setFont(new Font("Segoe UI", Font.PLAIN, 28));
 		menu.add(MenuEntrar);
 		
-		MenuEntrar.setForeground(Color.MAGENTA);
+		MenuEntrar.setForeground(Color.BLACK);
 		
 		itemEntrarCliente = new JMenuItem("Entrar como cliente");
 		itemEntrarCliente.setFont(new Font("Segoe UI", Font.PLAIN, 21));
-		//itemEntrarCliente.setActionCommand(CMD_COMPRABILLETE);
+		itemEntrarCliente.setActionCommand(ENTRAR_CLIENTE);
+		
 		itemEntrarCliente.addActionListener(this);
 		MenuEntrar.add(itemEntrarCliente);
-	
+		
 		itemEntrarTrabajador = new JMenuItem("Entrar como trabajador");	
 		itemEntrarTrabajador.setFont(new Font("Segoe UI", Font.PLAIN, 21));
-		//itemEntrarCliente.setActionCommand(CMD_COMPRABILLETE);
+		itemEntrarCliente.setActionCommand(ENTRAR_TRABAJADOR);
 		itemEntrarTrabajador.addActionListener(this);
 		MenuEntrar.add(itemEntrarTrabajador);
 		
@@ -98,7 +101,7 @@ public class PaginaPrincipal extends JFrame  implements ActionListener
 		JTextArea txtrBienevnidoAAmazon = new JTextArea();
 		txtrBienevnidoAAmazon.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 27));
 		txtrBienevnidoAAmazon.setText("Bienvenido a AMAZON DEUSTO SHOP!!");
-		txtrBienevnidoAAmazon.setBackground(Color.CYAN);
+		txtrBienevnidoAAmazon.setBackground(Color.gray);
 		txtrBienevnidoAAmazon.setBounds(706, 56, 609, 58);
 		contentPane.add(txtrBienevnidoAAmazon);
 		
@@ -109,10 +112,25 @@ public class PaginaPrincipal extends JFrame  implements ActionListener
 	public void actionPerformed(ActionEvent arg0) 
 	{
 		// TODO Auto-generated method stub
+		switch(arg0.getActionCommand())
+		{
+			case ENTRAR_CLIENTE:
+				this.enrtarcliente();
+				break;
 		
+			case ENTRAR_TRABAJADOR:
+			
+				break;
+		} 
 	}
 	
-	
+	private void enrtarcliente()
+	{
+		
+		FrameEntrarCliente obj= new FrameEntrarCliente();
+		obj.setVisible(true);
+		this.dispose();
+	}
 	
 	
 }
