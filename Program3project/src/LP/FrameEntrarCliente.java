@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -20,9 +21,11 @@ public class FrameEntrarCliente extends JFrame implements ActionListener
 {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-
-	private JLabel fondopantalla;
-	
+	private JLabel lblNewLabelU;
+	private JLabel IMAGEN;
+	private JTextField textFieldUsuario;
+	private JTextField textFieldContrasena;
+	private JButton btnNewButtonEntrar;
 	public FrameEntrarCliente() 
 	{
 		AtributosVentana();
@@ -46,31 +49,52 @@ public class FrameEntrarCliente extends JFrame implements ActionListener
 		contentPane.setLayout(null);
 		
 		
-		 JTextField textField = new JTextField();
-		textField.setBounds(26, 246, 206, 26);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		textFieldUsuario = new JTextField();
+		textFieldUsuario.setBounds(150, 246, 500, 60);
+		contentPane.add(textFieldUsuario);
+		textFieldUsuario.setColumns(10);
 		
-		JLabel lblNewLabel = new JLabel("Usuario:");
-		lblNewLabel.setBounds(36, 210, 112, 20);
+		lblNewLabelU = new JLabel("Usuario");
+		lblNewLabelU.setBounds(150, 160, 400, 60);
+		lblNewLabelU.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 30));
+		contentPane.add(lblNewLabelU);
+		
+		textFieldContrasena = new JTextField();
+		textFieldContrasena.setBounds(150, 400, 500, 60);
+		contentPane.add(textFieldContrasena);
+		textFieldContrasena.setColumns(10);
+		
+		JLabel lblNewLabel = new JLabel("Contraseña");
+		lblNewLabel.setBounds(150, 320, 400, 60);
+		lblNewLabel.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 30));
 		contentPane.add(lblNewLabel);
 		
-		
-		/*
-		fondopantalla = new JLabel("");
-		fondopantalla.setIcon(new ImageIcon(PaginaPrincipal.class.getResource("/imagenes/70030553-shop-wallpapers.jpg")));
-		fondopantalla.setBounds(0,0,3200,1000 );
-		fondopantalla.setOpaque(false);
-		getContentPane().add(fondopantalla);
-		*/
 		JTextArea txtrBienevnidoAAmazon = new JTextArea();
 		txtrBienevnidoAAmazon.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 27));
 		txtrBienevnidoAAmazon.setText("REGISTRESE AQUI!");
-		txtrBienevnidoAAmazon.setBackground(Color.gray);
-		txtrBienevnidoAAmazon.setBounds(706, 56, 609, 58);
+		txtrBienevnidoAAmazon.setBackground(Color.CYAN);
+		txtrBienevnidoAAmazon.setBounds(150, 56, 300, 58);
 		contentPane.add(txtrBienevnidoAAmazon);
 		
+		btnNewButtonEntrar = new JButton("ENTRAR");
+		btnNewButtonEntrar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnNewButtonEntrar.setBounds(150, 500, 198, 48);
+		contentPane.add(btnNewButtonEntrar);
+		
+		btnNewButtonEntrar = new JButton("CANCELAR");
+		btnNewButtonEntrar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnNewButtonEntrar.setBounds(450, 500, 198, 48);
+		contentPane.add(btnNewButtonEntrar);
+		
+		IMAGEN = new JLabel("");
+		IMAGEN.setIcon(new ImageIcon(PaginaPrincipal.class.getResource("/imagenes/SIGNIN.jpg")));
+		IMAGEN.setBounds(940,60,900,650 );
+		
+		IMAGEN.setOpaque(false);
+		getContentPane().add(IMAGEN);
 		this.setVisible(true);
+		
+		
 	
 	
 	}

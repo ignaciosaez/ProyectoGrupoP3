@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
 
+import javax.swing.Action;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -24,7 +25,7 @@ import javax.swing.border.EmptyBorder;
 
 
 import static COMUN.constantesActionCommand.*;
-public class PaginaPrincipal extends JFrame  implements ActionListener
+public class PaginaPrincipal extends JFrame 
 {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -73,14 +74,20 @@ public class PaginaPrincipal extends JFrame  implements ActionListener
 		itemEntrarCliente = new JMenuItem("Entrar como cliente");
 		itemEntrarCliente.setFont(new Font("Segoe UI", Font.PLAIN, 21));
 		itemEntrarCliente.setActionCommand(ENTRAR_CLIENTE);
+		itemEntrarCliente.addActionListener(new ActionListener() {
+		        public void actionPerformed(ActionEvent ev) 
+		        
+		        {
+		        	FrameEntrarCliente obj= new FrameEntrarCliente();
+		    		obj.setVisible(true); 
+		        }
+		    });
 		
-		itemEntrarCliente.addActionListener(this);
 		MenuEntrar.add(itemEntrarCliente);
 		
-		itemEntrarTrabajador = new JMenuItem("Entrar como trabajador");	
+		itemEntrarTrabajador = new JMenuItem("Entrar como trabajador");		
 		itemEntrarTrabajador.setFont(new Font("Segoe UI", Font.PLAIN, 21));
 		itemEntrarCliente.setActionCommand(ENTRAR_TRABAJADOR);
-		itemEntrarTrabajador.addActionListener(this);
 		MenuEntrar.add(itemEntrarTrabajador);
 		
 		MenuRegistrarse = new JMenu("REGISTRASE");
@@ -108,29 +115,12 @@ public class PaginaPrincipal extends JFrame  implements ActionListener
 		this.setVisible(true);
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent arg0) 
-	{
-		// TODO Auto-generated method stub
-		switch(arg0.getActionCommand())
-		{
-			case ENTRAR_CLIENTE:
-				this.enrtarcliente();
-				break;
-		
-			case ENTRAR_TRABAJADOR:
-			
-				break;
-		} 
-	}
-	
-	private void enrtarcliente()
-	{
-		
-		FrameEntrarCliente obj= new FrameEntrarCliente();
-		obj.setVisible(true);
-		this.dispose();
-	}
-	
-	
 }
+
+	
+	
+	
+	
+	
+	
+
