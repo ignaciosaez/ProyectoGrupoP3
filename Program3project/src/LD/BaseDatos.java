@@ -84,7 +84,7 @@ public class BaseDatos
 		if (statement==null) return; 
 		try 
 		{
-			statement.executeUpdate("create table if not exists CLIENTE ( nombre string, apellido string, DNI string,contrasenya string, usuario_cliente string,ciudad_cliente string,direc_cliente string )");
+			statement.executeUpdate("create table if not exists CLIENTE ( nombre string, apellido string, usuario_cliente string,contrasenya string,ciudad_cliente string,direc_cliente string )");
 	} catch (SQLException e) 
 		{
 			JOptionPane.showMessageDialog(null, "La creación de tabla CLIENTE ha fallado");  
@@ -116,7 +116,7 @@ public class BaseDatos
 		if (statement==null) return; 
 		try 
 		{
-			statement.executeUpdate("create table if not exists VUELO ( cod_producto string, nom_producto string, categoria_producto string, precio_producto double  )");
+			statement.executeUpdate("create table if not exists VUELO ( cod_producto string, descripcion_producto string, categoria_producto string, precio_producto double  )");
 		} catch (SQLException e) 
 		{
 			JOptionPane.showMessageDialog(null, "La creación de tabla VUELO ha fallado"); 
@@ -177,7 +177,7 @@ public class BaseDatos
 	 * Crea una tabla de tareas que tendran los trabajadores en una base de datos, si no existía ya.
 	 * Debe haberse inicializado la conexión correctamente.
 	 */
-	public static void crearTablaTrabajadorTareaBD()
+	/*public static void crearTablaTrabajadorTareaBD()
 	{
 		if (statement==null) return; 
 		try 
@@ -188,7 +188,7 @@ public class BaseDatos
 			JOptionPane.showMessageDialog(null, "La creación de tabla TAREA ha fallado");   
 		}
 	}
-	
+	*/
 	/**
 	 * Crea filas para la tabla de trabajadores, insertando trabajadores.
 	 * Debe haberse inicializada la conexión correctamente.

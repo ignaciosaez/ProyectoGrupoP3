@@ -23,8 +23,6 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-
-import static COMUN.constantesActionCommand.*;
 public class PaginaPrincipal extends JFrame 
 {
 	private static final long serialVersionUID = 1L;
@@ -73,7 +71,6 @@ public class PaginaPrincipal extends JFrame
 		
 		itemEntrarCliente = new JMenuItem("Entrar como cliente");
 		itemEntrarCliente.setFont(new Font("Segoe UI", Font.PLAIN, 21));
-		itemEntrarCliente.setActionCommand(ENTRAR_CLIENTE);
 		itemEntrarCliente.addActionListener(new ActionListener() {
 		        public void actionPerformed(ActionEvent ev) 
 		        
@@ -87,7 +84,6 @@ public class PaginaPrincipal extends JFrame
 		
 		itemEntrarTrabajador = new JMenuItem("Entrar como trabajador");		
 		itemEntrarTrabajador.setFont(new Font("Segoe UI", Font.PLAIN, 21));
-		itemEntrarCliente.setActionCommand(ENTRAR_TRABAJADOR);
 		MenuEntrar.add(itemEntrarTrabajador);
 		
 		MenuRegistrarse = new JMenu("REGISTRASE");

@@ -8,8 +8,8 @@ public class constantesActionCommand
 	private static final long serialVersionUID = 1L;
 	
 	
-	public final static String ENTRAR_CLIENTE = "ENTRAR_CLIENTE";
-	public final static String ENTRAR_TRABAJADOR = "ENTRAR_TRABAJADOR";
+	public final static String BUTTON_ENTRAR = "BUTTON_ENTRAR";
+	public final static String BUTTON_CANCELAR = "BUTTON_CANCELAR";
 	
 
 }
