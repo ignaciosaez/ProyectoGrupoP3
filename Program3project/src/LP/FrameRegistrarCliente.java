@@ -102,8 +102,18 @@ public class FrameRegistrarCliente extends JFrame implements ActionListener
 
 		}
 	@Override
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(ActionEvent e) 
+	{
 		// TODO Auto-generated method stub
+		switch(e.getActionCommand())
+		{
+			case BUTTON_ENTRAR:
+				
+				break;
 		
+			case BUTTON_CANCELAR:
+				
+				break;
+		} 
 	}
 }
