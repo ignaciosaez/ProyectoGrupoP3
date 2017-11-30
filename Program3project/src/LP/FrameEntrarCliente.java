@@ -82,12 +82,12 @@ public class FrameEntrarCliente extends JFrame implements ActionListener
 		
 		JTextArea txtrBienevnidoAAmazon = new JTextArea();
 		txtrBienevnidoAAmazon.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 27));
-		txtrBienevnidoAAmazon.setText("REGISTRESE AQUI!");
+		txtrBienevnidoAAmazon.setText("RELLENE LOS CAMPOS !");
 		txtrBienevnidoAAmazon.setBackground(Color.CYAN);
 		txtrBienevnidoAAmazon.setBounds(150, 56, 300, 58);
 		contentPane.add(txtrBienevnidoAAmazon);
 		
-		btnNewButtonEntrar = new JButton("REGISTRASE");
+		btnNewButtonEntrar = new JButton("LOGIN");
 		btnNewButtonEntrar.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnNewButtonEntrar.setBounds(150, 500, 198, 48);
 		btnNewButtonEntrar.setActionCommand(BUTTON_ENTRAR);
@@ -121,12 +121,12 @@ public class FrameEntrarCliente extends JFrame implements ActionListener
 		// TODO Auto-generated method stub
 		switch(e.getActionCommand())
 		{
-			case BUTTON_ENTRAR:
+			case BUTTON_ENTRAR:this.entrarCliente();
 				
 				break;
 		
 			case BUTTON_CANCELAR:
-				
+				this.dispose();
 				break;
 		} 
 		
