@@ -14,11 +14,14 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
+import com.sun.jndi.ldap.Connection;
 
 import LD.BaseDatos;
 import LN.gestorClientes;
@@ -183,8 +186,9 @@ public class FrameRegistrarCliente extends JFrame implements ActionListener
 	private void registrarclientes()
 	{
 		
+		 BaseDatos.getConnection();
 		 BaseDatos.crearTablaClienteBD();
-		 Statement state = BaseDatos.getStatement();
+	
 		 String nombre;
 		 String apellidos;
 		 String direccion;
@@ -201,10 +205,27 @@ public class FrameRegistrarCliente extends JFrame implements ActionListener
 		 contrasena = String.valueOf(passWord);
 		
 		
-		 boolean prueba=false;
+		 
 		 gestorClientes obj= new gestorClientes();
 		
-		 prueba= obj.añadirClienteNuevo(state, nombre, apellidos, ciudad, direccion, usuario, contrasena);
-		 
+		 boolean existe;
+		 Statement state = BaseDatos.getStatement();
+			existe=obj.ExisteCliente(state,usuario);
+			if(existe==true)
+			{
+				JOptionPane.showMessageDialog(null, "El usuario introducido ya existe, ponga otro!", "ERROR", JOptionPane.ERROR_MESSAGE);
+				
+			}
+			else
+			{
+				existe=obj.añadirNuevoCliente(state, nombre, apellidos, ciudad, direccion, usuario, contrasena);
+				if(existe==true)
+				{
+					
+					JOptionPane.showMessageDialog(this, "Cliente registrado correctamente");
+				}
+				
+				
+			}
 	}
 }

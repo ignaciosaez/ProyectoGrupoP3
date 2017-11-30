@@ -10,14 +10,16 @@ public class gestorClientes
 {
 	
 	 
-	public boolean añadirClienteNuevo(Statement state, String nombre, String apellidos, String ciudad, String direccion, String usuario, String contrasena) 
+
+	
+	public boolean añadirNuevoCliente(Statement state, String nombre, String apellidos, String ciudad, String direccion, String usuario, String contrasena)
 	{
 		try 
 		{
-			String SelectBD = "insert into CLIENTE values(" + "'" +nombre + "', " + "'" + apellidos + "', "+ "'" + ciudad + ", " + "'" + direccion + "', " + "'" + usuario + "', " + "'" + contrasena + "')";
+			String SelectBD = "insert into CLIENTE values(" + "'" + nombre + "', " + "'" + apellidos + "', "+ "'" + ciudad +  "', "+ "'" + direccion + "', "+ "'" + usuario  + "'," +  "'" + contrasena  + "')";
 			int val;
 			val = state.executeUpdate( SelectBD );
-			//ExecuteUpdate devuelve el numero de filas que se ven afectadas que en nuestro caso debe ser 1 sino señal de que no esta bien
+			
 			if (val!= 1)
 			{
 				return false;  
@@ -27,37 +29,13 @@ public class gestorClientes
 			}
 		}catch (SQLException e)
 		{
-			JOptionPane.showMessageDialog(null, this, "El correo introducido ya está registrado", 0);
 			e.printStackTrace();
 			return false;
 		}
 	}
-	
-	/*public boolean ClienteNuevo(Statement state, String correo, String nombre, String contrasenya) 
+	public boolean ExisteCliente(Statement state, String usuario)
 	{
-		try 
-		{
-			String SelectBD = "insert into CLIENTE values(" + "'" + correo + "', " + "'" + nombre + "', "+ "'" + contrasenya + "')";
-			int val;
-			val = state.executeUpdate( SelectBD );
-			//ExecuteUpdate devuelve el numero de filas que se ven afectadas que en nuestro caso debe ser 1 sino señal de que no esta bien
-			if (val!= 1)
-			{
-				return false;  
-			}else
-			{
-				return true;
-			}
-		}catch (SQLException e)
-		{
-			JOptionPane.showMessageDialog(null, this, "El correo introducido ya está registrado", 0);
-			e.printStackTrace();
-			return false;
-		}
-	}*/
-	public boolean ExisteCliente(Statement state, String correo)
-	{
-		String SelectBD = "select * from CLIENTE where (correo = '" + correo + "')";
+		String SelectBD = "select * from CLIENTE where (usuario_cliente = '" + usuario + "')";
 		try 
 		{
 			ResultSet rs = state.executeQuery( SelectBD );
