@@ -98,7 +98,7 @@ public class gestorTrabajadores {
 	}
 	
 	/**
-	 * Metodo que elimina el producto que se elija
+	 * Metodo que elimina el producto que se elija.
 	 * @param state: Objeto necesario para ejecutar una sentencia de SQL sobre la Base de Datos que debe estar abierta anteriormente mediante connection
 	 * @param cod_producto: Variable identificativa de cada vuelo y con la que se elegira que vuelo se desea eliminar
 	 * @return true en caso de que se haya logrado eliminar el producto seleccionado.
