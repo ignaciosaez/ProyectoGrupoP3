@@ -8,15 +8,21 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Statement;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
+import LD.BaseDatos;
+import LN.gestorClientes;
+
 import static COMUN.constantesActionCommand.*;
 
 public class FrameRegistrarCliente extends JFrame implements ActionListener
@@ -35,9 +41,8 @@ public class FrameRegistrarCliente extends JFrame implements ActionListener
 	private JTextField textField2;
 	private JTextField textField3;
 	private JTextField textField4;
-	private JTextField textField5;
 	private JButton btnNewButtonEntrar;
-
+	private JPasswordField contrasenaPasswordField;
 	public FrameRegistrarCliente() 
 	{
 		AtributosVentana();
@@ -129,25 +134,25 @@ public class FrameRegistrarCliente extends JFrame implements ActionListener
 		lblNewLabel5.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 30));
 		contentPane.add(lblNewLabel5);
 		
-		textField5 = new JTextField();
-		textField5.setBounds(800, 370, 500, 60);
-		contentPane.add(textField5);
-		textField5.setColumns(10);
+		contrasenaPasswordField = new JPasswordField();
+		contrasenaPasswordField.setBounds(800, 370, 500, 60);
+		getContentPane().add(contrasenaPasswordField);
 		
 		
 		
-		btnNewButtonEntrar = new JButton("ENTRAR");
+		
+		btnNewButtonEntrar = new JButton("FINALIZAR REGISTRO");
 		btnNewButtonEntrar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnNewButtonEntrar.setBounds(800, 580, 198, 48);
-		btnNewButtonEntrar.setActionCommand(BUTTON_ENTRAR);
+		btnNewButtonEntrar.setBounds(800, 580, 300, 48);
+		btnNewButtonEntrar.setActionCommand(BUTTON_REGISTARSE);
 		btnNewButtonEntrar.addActionListener(this);
 		contentPane.add(btnNewButtonEntrar);
 		
 		btnNewButtonEntrar = new JButton("CANCELAR");
 		btnNewButtonEntrar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnNewButtonEntrar.setBounds(1080, 580, 198, 48);
+		btnNewButtonEntrar.setBounds(1180, 580, 198, 48);
 		contentPane.add(btnNewButtonEntrar);
-		btnNewButtonEntrar.setActionCommand(BUTTON_CANCELAR);
+		btnNewButtonEntrar.setActionCommand(BUTTON_CANCELARREGISTRO);
 		btnNewButtonEntrar.addActionListener(this);
 		
 		
@@ -164,13 +169,38 @@ public class FrameRegistrarCliente extends JFrame implements ActionListener
 		// TODO Auto-generated method stub
 		switch(e.getActionCommand())
 		{
-			case BUTTON_ENTRAR:
+			case BUTTON_REGISTARSE:
 				
 				break;
 		
-			case BUTTON_CANCELAR:
+			case BUTTON_CANCELARREGISTRO: this.dispose();
 				
 				break;
 		} 
+	}
+	
+	private void registrarclientes()
+	{
+		BaseDatos.crearTablaClienteBD();
+		 String nombre;
+		 String apellidos;
+		 String direccion;
+		 String ciudad;
+		 String usuario;
+		 String contra;
+		 
+		nombre= textField.getText();
+		apellidos= textField1.getText();
+		ciudad= textField2.getText();
+		direccion= textField3.getText();
+		usuario= textField4.getText();
+		char[] passWord = contrasenaPasswordField.getPassword();
+		 contra = String.valueOf(passWord);
+		
+		 Statement state = BaseDatos.getStatement();
+		 boolean prueba=true;
+		 gestorClientes obj= new gestorClientes();
+		 prueba= obj.añadirClienteNuevo(state, nombre, apellidos, ciudad, direccion, usuario, contra);
+		 
 	}
 }

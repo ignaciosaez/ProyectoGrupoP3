@@ -5,8 +5,8 @@ import java.io.Serializable;
 public class clsPersona implements Serializable 
 {
 	private String nombre;
-	private String apellido;
-	private String DNI;
+	private String apellidos;
+	private String usuario;
 	private String contrasenya;
 	
 	public clsPersona()
@@ -18,8 +18,8 @@ public class clsPersona implements Serializable
 	{
 		
 		this.nombre = nombre;
-		this.apellido= apellido;
-		
+		this.apellidos= apellidos;
+		this.usuario=usuario;
 		this.contrasenya = contrasenya;
 	}
 	
@@ -30,18 +30,13 @@ public class clsPersona implements Serializable
 		this.nombre = nombre;
 	}
 	public String getApellido() {
-		return apellido;
+		return apellidos;
 	}
 	public void setApellido(String apellido) {
-		this.apellido = apellido;
+		this.apellidos = apellido;
 	}
-	public String getDNI() {
-		return DNI;
-	}
+	
 
-	public void setDNI(String dNI) {
-		DNI = dNI;
-	}
 	public String getContrasenya() {
 		return contrasenya;
 	}
@@ -57,8 +52,6 @@ public class clsPersona implements Serializable
 		salida.append(this.getNombre());
 		salida.append("Apellido");
 		salida.append(this.getApellido());
-		salida.append("D.N.I: ");
-		salida.append(this.getDNI());
 		salida.append("Contraseña:");
 		salida.append(this.getContrasenya());
 		
