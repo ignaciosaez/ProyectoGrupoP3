@@ -169,7 +169,8 @@ public class FrameRegistrarCliente extends JFrame implements ActionListener
 		// TODO Auto-generated method stub
 		switch(e.getActionCommand())
 		{
-			case BUTTON_REGISTARSE: this.registrarclientes();
+			case BUTTON_REGISTARSE: 
+				this.registrarclientes();
 				
 				break;
 		
@@ -181,13 +182,15 @@ public class FrameRegistrarCliente extends JFrame implements ActionListener
 	
 	private void registrarclientes()
 	{
-		BaseDatos.crearTablaClienteBD();
+		
+		 BaseDatos.crearTablaClienteBD();
+		 Statement state = BaseDatos.getStatement();
 		 String nombre;
 		 String apellidos;
 		 String direccion;
 		 String ciudad;
 		 String usuario;
-		 String contra;
+		 String contrasena;
 		 
 		nombre= textField.getText();
 		apellidos= textField1.getText();
@@ -195,12 +198,13 @@ public class FrameRegistrarCliente extends JFrame implements ActionListener
 		direccion= textField3.getText();
 		usuario= textField4.getText();
 		char[] passWord = contrasenaPasswordField.getPassword();
-		 contra = String.valueOf(passWord);
+		 contrasena = String.valueOf(passWord);
 		
-		 Statement state = BaseDatos.getStatement();
-		 boolean prueba=true;
+		
+		 boolean prueba=false;
 		 gestorClientes obj= new gestorClientes();
-		 prueba= obj.añadirClienteNuevo(state, nombre, apellidos, ciudad, direccion, usuario, contra);
+		
+		 prueba= obj.añadirClienteNuevo(state, nombre, apellidos, ciudad, direccion, usuario, contrasena);
 		 
 	}
 }

@@ -14,7 +14,7 @@ public class gestorClientes
 	{
 		try 
 		{
-			String SelectBD = "insert into CLIENTE values(" + "'" +nombre + "', " + "'" + apellidos + "', "+ "'" + ciudad + ", " + "'" + direccion + "', " + "'" + usuario + "', " + "'" + contrasena + "'')";
+			String SelectBD = "insert into CLIENTE values(" + "'" +nombre + "', " + "'" + apellidos + "', "+ "'" + ciudad + ", " + "'" + direccion + "', " + "'" + usuario + "', " + "'" + contrasena + "')";
 			int val;
 			val = state.executeUpdate( SelectBD );
 			//ExecuteUpdate devuelve el numero de filas que se ven afectadas que en nuestro caso debe ser 1 sino señal de que no esta bien
@@ -33,7 +33,28 @@ public class gestorClientes
 		}
 	}
 	
-	
+	/*public boolean ClienteNuevo(Statement state, String correo, String nombre, String contrasenya) 
+	{
+		try 
+		{
+			String SelectBD = "insert into CLIENTE values(" + "'" + correo + "', " + "'" + nombre + "', "+ "'" + contrasenya + "')";
+			int val;
+			val = state.executeUpdate( SelectBD );
+			//ExecuteUpdate devuelve el numero de filas que se ven afectadas que en nuestro caso debe ser 1 sino señal de que no esta bien
+			if (val!= 1)
+			{
+				return false;  
+			}else
+			{
+				return true;
+			}
+		}catch (SQLException e)
+		{
+			JOptionPane.showMessageDialog(null, this, "El correo introducido ya está registrado", 0);
+			e.printStackTrace();
+			return false;
+		}
+	}*/
 	public boolean ExisteCliente(Statement state, String correo)
 	{
 		String SelectBD = "select * from CLIENTE where (correo = '" + correo + "')";
