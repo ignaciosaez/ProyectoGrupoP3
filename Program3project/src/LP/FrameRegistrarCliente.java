@@ -169,7 +169,7 @@ public class FrameRegistrarCliente extends JFrame implements ActionListener
 		// TODO Auto-generated method stub
 		switch(e.getActionCommand())
 		{
-			case BUTTON_REGISTARSE:
+			case BUTTON_REGISTARSE: this.registrarclientes();
 				
 				break;
 		
