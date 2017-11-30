@@ -8,15 +8,22 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Statement;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
+import LD.BaseDatos;
+import LN.gestorClientes;
+
 import static COMUN.constantesActionCommand.*;
 public class FrameEntrarCliente extends JFrame implements ActionListener
 
@@ -28,6 +35,7 @@ public class FrameEntrarCliente extends JFrame implements ActionListener
 	private JTextField textFieldUsuario;
 	private JTextField textFieldContrasena;
 	private JButton btnNewButtonEntrar;
+	private JPasswordField contrasenaPasswordField;
 	public FrameEntrarCliente() 
 	{
 		AtributosVentana();
@@ -61,10 +69,11 @@ public class FrameEntrarCliente extends JFrame implements ActionListener
 		lblNewLabelU.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 30));
 		contentPane.add(lblNewLabelU);
 		
-		textFieldContrasena = new JTextField();
-		textFieldContrasena.setBounds(150, 400, 500, 60);
-		contentPane.add(textFieldContrasena);
-		textFieldContrasena.setColumns(10);
+		contrasenaPasswordField = new JPasswordField();
+		contrasenaPasswordField.setBounds(150, 400, 500, 60);
+		getContentPane().add(contrasenaPasswordField);
+		
+	
 		
 		JLabel lblNewLabel = new JLabel("Contraseña");
 		lblNewLabel.setBounds(150, 320, 400, 60);
@@ -121,6 +130,29 @@ public class FrameEntrarCliente extends JFrame implements ActionListener
 				break;
 		} 
 		
+	}
+	
+	private void entrarCliente() 
+	{
+		String usuario = textFieldUsuario.getText();
+		char[] passWord = contrasenaPasswordField.getPassword();
+		String contrasena = String.valueOf(passWord);
+		gestorClientes obj= new gestorClientes();
+		boolean existe; 
+		Statement state = BaseDatos.getStatement();
+		
+		existe =obj.validacionUsuarioContrasena(state, usuario, contrasena);
+		if(existe == true)
+		{
+			FrameCliente objFrameCliente= new FrameCliente();
+			objFrameCliente.setVisible(true);
+			this.dispose();
+		}
+		else
+		{
+			JOptionPane.showMessageDialog(this, "Correo o contraseña incorrectas, vuelva a introducirlas");
+		}
+		this.dispose();
 	}
 
 }

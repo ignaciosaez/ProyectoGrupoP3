@@ -84,7 +84,7 @@ public class BaseDatos
 		if (statement==null) return; 
 		try 
 		{
-			statement.executeUpdate("create table if not exists CLIENTE ( nombre string, apellido string, ciudad string, direccione string , usuario_cliente string, contrasenya string )");
+			statement.executeUpdate("create table if not exists CLIENTE ( nombre string, apellido string, ciudad string, direccione string , usuario string, contrasena string )");
 			JOptionPane.showMessageDialog(null, "La creación de tabla esta bien");  
 	} catch (SQLException e)  
 		{

@@ -35,7 +35,7 @@ public class gestorClientes
 	}
 	public boolean ExisteCliente(Statement state, String usuario)
 	{
-		String SelectBD = "select * from CLIENTE where (usuario_cliente = '" + usuario + "')";
+		String SelectBD = "select * from CLIENTE where (usuario = '" + usuario + "')";
 		try 
 		{
 			ResultSet rs = state.executeQuery( SelectBD );
@@ -55,16 +55,16 @@ public class gestorClientes
 		}
 	}
 	
-	public boolean ValidarEntradaCli(Statement state, String correo, String contrasenya)
+	public boolean validacionUsuarioContrasena(Statement state, String usuario, String contrasena)
 	{
-		String SelectBD = "select * from CLIENTE where (correo = '" + correo + "' and contrasenya = '" + contrasenya + "')";
+		String SelectBD = "select * from CLIENTE where (usuario = '" + usuario + "' and contrasena = '" + contrasena + "')";
 		try 
 		{
 			ResultSet rs = state.executeQuery( SelectBD );
 			if(rs.next())
 			{
 				rs.close();
-				JOptionPane.showMessageDialog(null, "Nombre de usuario y contraseña correctas", "Correcto",JOptionPane.INFORMATION_MESSAGE);					return true;
+				JOptionPane.showMessageDialog(null, "Usuario y contraseña correctas", "Correcto",JOptionPane.INFORMATION_MESSAGE);					return true;
 			}
 			else
 			{
