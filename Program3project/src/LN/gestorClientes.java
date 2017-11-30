@@ -10,11 +10,11 @@ public class gestorClientes
 {
 	
 	 
-	public boolean ClienteNuevo(Statement state, String correo, String nombre, String contrasenya) 
+	public boolean añadirClienteNuevo(Statement state, String nombre, String apellidos, String ciudad, String direccion, String usuario, String contrasena) 
 	{
 		try 
 		{
-			String SelectBD = "insert into CLIENTE values(" + "'" + correo + "', " + "'" + nombre + "', "+ "'" + contrasenya + "')";
+			String SelectBD = "insert into CLIENTE values(" + "'" +nombre + "', " + "'" + apellidos + "', "+ "'" + ciudad + ", " + "'" + direccion + "', " + "'" + usuario + "', " + "'" + contrasena + "'')";
 			int val;
 			val = state.executeUpdate( SelectBD );
 			//ExecuteUpdate devuelve el numero de filas que se ven afectadas que en nuestro caso debe ser 1 sino señal de que no esta bien

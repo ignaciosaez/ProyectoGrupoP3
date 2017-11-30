@@ -33,7 +33,7 @@ public class PaginaPrincipal extends JFrame
 	private JTextField texto;
 	private JMenuItem itemEntrarCliente;
 	private JMenuItem itemEntrarTrabajador;
-
+	private JMenuItem itemRegistrarcliente;;
 	private JLabel fondopantalla;
 	
 	public PaginaPrincipal() 
@@ -89,10 +89,20 @@ public class PaginaPrincipal extends JFrame
 		MenuRegistrarse = new JMenu("REGISTRASE");
 		MenuRegistrarse.setFont(new Font("Segoe UI", Font.PLAIN, 28));
 		MenuRegistrarse.setForeground(Color.BLUE);
-		
 		menu.add(MenuRegistrarse);
 		
+		itemRegistrarcliente = new JMenuItem("Registrarse / crear nuevo usuario");
+		itemRegistrarcliente.setFont(new Font("Segoe UI", Font.PLAIN, 21));
+		itemRegistrarcliente.addActionListener(new ActionListener() {
+		        public void actionPerformed(ActionEvent ev) 
+		        
+		        {
+		        	FrameRegistrarCliente obj= new FrameRegistrarCliente();
+		    		obj.setVisible(true); 
+		        }
+		    });
 		
+		MenuRegistrarse.add(itemRegistrarcliente);
 		
 		
 		fondopantalla = new JLabel("");
