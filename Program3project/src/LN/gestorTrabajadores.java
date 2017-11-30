@@ -45,7 +45,7 @@ public class gestorTrabajadores {
 	 * @param cod_producto: Codigo identificativo de cada producto
 	 * @param nom_producto: Nombre de cada producto
 	 * @param categoria_producto: Categoría a la que pertenece cada producto
-	 * @param precio_producto: Precio de cada producto
+	 * @param precio_producto: Precio de cada producto.
 	 */
 	public boolean CrearProcuto(Statement state, String cod_producto , String nom_producto ,String categoria_producto, double precio_producto)
 	{
