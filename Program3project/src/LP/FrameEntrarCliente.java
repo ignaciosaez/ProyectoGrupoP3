@@ -139,7 +139,10 @@ public class FrameEntrarCliente extends JFrame implements ActionListener
 		String contrasena = String.valueOf(passWord);
 		gestorClientes obj= new gestorClientes();
 		boolean existe; 
+		
 		Statement state = BaseDatos.getStatement();
+		//PONGO YA UN USUARIO QUE HEN METIDO PARA QUE SEA MAS RÁPIDO Y NO UN COÑAZO
+		
 		
 		existe =obj.validacionUsuarioContrasena(state, usuario, contrasena);
 		if(existe == true)
@@ -151,6 +154,7 @@ public class FrameEntrarCliente extends JFrame implements ActionListener
 		else
 		{
 			JOptionPane.showMessageDialog(this, "Correo o contraseña incorrectas, vuelva a introducirlas");
+			this.setVisible(true);
 		}
 		this.dispose();
 	}
