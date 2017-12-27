@@ -30,7 +30,7 @@ public class BaseDatos
 			 * para que no ocurra lo cerramos y nos notificará de un error
 			 */
 			statement.setQueryTimeout(30); 
-			JOptionPane.showMessageDialog(null, "La Base de Datos se ha conectado");
+			//JOptionPane.showMessageDialog(null, "La Base de Datos se ha conectado");
 			return connection;
 		} catch (ClassNotFoundException | SQLException e)
 		{
@@ -85,7 +85,7 @@ public class BaseDatos
 		try 
 		{
 			statement.executeUpdate("create table if not exists CLIENTE ( nombre string, apellido string, ciudad string, direccione string , usuario string, contrasena string )");
-			JOptionPane.showMessageDialog(null, "La creación de tabla esta bien");  
+			//JOptionPane.showMessageDialog(null, "La creación de tabla esta bien");  
 	} catch (SQLException e)  
 		{
 			JOptionPane.showMessageDialog(null, "La creación de tabla CLIENTE ha fallado");  
@@ -101,7 +101,7 @@ public class BaseDatos
 		if (statement==null) return; 
 		try 
 		{
-			statement.executeUpdate("create table if not exists TRABAJADOR( nombre string, apellido string, DNI string,contrasenya string,usuario string,cargo string )");
+			statement.executeUpdate("create table if not exists TRABAJADOR( nombre string, apellido string, DNI string,contrasenya string,usuario string )");
 		} catch (SQLException e) 
 		{
 			JOptionPane.showMessageDialog(null, "La creación de tabla TRABAJADOR ha fallado");  //Señal de que la tabla ya existe
@@ -128,73 +128,7 @@ public class BaseDatos
 	 * Crea una tabla de billetes en una base de datos, si no existía ya.
 	 * Debe haberse inicializado la conexión correctamente.
 	 */
-	/*public static void crearTablaBilleteBD()
-	{
-		if (statement==null) return; 
-		try 
-		{
-			statement.executeUpdate("create table if not exists BILLETE ( cod_billete int, precio int, cod_vuelo string, correo string )");
-		} catch (SQLException e) 
-		{
-			JOptionPane.showMessageDialog(null, "La creación de tabla BILLETE ha fallado");
-		}
-	}
-	*/
-	/** 
-	 * Crea una tabla de ciudades de origen en una base de datos, si no existía ya.
-	 * Debe haberse inicializado la conexión correctamente.
-	 */
-	/*
-	public static void crearTablaOrigenBD()
-	{
-		if (statement==null) return; 
-		try 
-		{
-			statement.executeUpdate("create table if not exists CIUDAD_ORIGEN ( cod_postal_o int, nombre_ciu_o string )");
-		} catch (SQLException e) 
-		{
-			JOptionPane.showMessageDialog(null, "La creación de tabla CIUDAD_ORIGEN ha fallado");  
-		}
-	}
 	
-	/** 
-	 * Crea una tabla de ciudades destino en una base de datos, si no existía ya.
-	 * Debe haberse inicializado la conexión correctamente.
-	 */
-	/*
-	public static void crearTablaDestinoBD()
-	{
-		if (statement==null) return; 
-		try 
-		{
-			statement.executeUpdate("create table if not exists CIUDAD_DESTINO ( cod_postal_d int, nombre_ciu_d string )");
-		} catch (SQLException e) 
-		{
-			JOptionPane.showMessageDialog(null, "La creación de tabla CIUDAD_DESTINO ha fallado");  
-		}
-	}
-	
-	/** 
-	 * Crea una tabla de tareas que tendran los trabajadores en una base de datos, si no existía ya.
-	 * Debe haberse inicializado la conexión correctamente.
-	 */
-	/*public static void crearTablaTrabajadorTareaBD()
-	{
-		if (statement==null) return; 
-		try 
-		{
-			statement.executeUpdate("create table if not exists INSERCION_PRODUCTOS ( cod_producto string, usuario_trabajador string )");
-		} catch (SQLException e) 
-		{
-			JOptionPane.showMessageDialog(null, "La creación de tabla TAREA ha fallado");   
-		}
-	}
-	*/
-	/**
-	 * Crea filas para la tabla de trabajadores, insertando trabajadores.
-	 * Debe haberse inicializada la conexión correctamente.
-	 */
-	/*
 	public static void InsertarTrabajadores(Statement statement)
 	{
 		if(statement==null)
@@ -205,13 +139,9 @@ public class BaseDatos
 		{
 			try 
 			{
-				statement.executeUpdate("insert into TRABAJADOR values('72545454B','Antonio', 'Piloto', '7254' )");
-				statement.executeUpdate("insert into TRABAJADOR values('72555555C','Laura', 'Azafata', '7255' )");
-				statement.executeUpdate("insert into TRABAJADOR values('34565758D','Belen', 'Recepcionista', '3456' )");
-				statement.executeUpdate("insert into TRABAJADOR values('56544323E','Mikel', 'Controlador Aéreo', '5654' )");
-				statement.executeUpdate("insert into TRABAJADOR values('72437891O','Arritxu', 'Azafata', '7243' )");
-				statement.executeUpdate("insert into TRABAJADOR values('54434356K','Gorka', 'Piloto', '5443' )");
-				statement.executeUpdate("insert into TRABAJADOR values('89765643T','Miren', 'Mecanica', '8976' )");
+				statement.executeUpdate("insert into TRABAJADOR values('MIKEL','AGUIRIANO', '7233432', 'MIKELO','MIKELO96' )");
+				statement.executeUpdate("insert into TRABAJADOR values('IGNACIO','GARBIZU', '723341212', 'GARBI','GARBI' )");
+				statement.executeUpdate("insert into TRABAJADOR values('JORGE','ECHEVERRIA', '723343A2', 'GIORGIO','GIORGIO' )");
 				
 			} catch (SQLException e) 
 			{
@@ -220,7 +150,7 @@ public class BaseDatos
 		}		
 	}
 	
-	*/
+	
 	
 	
 	

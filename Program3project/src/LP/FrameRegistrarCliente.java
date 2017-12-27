@@ -205,27 +205,34 @@ public class FrameRegistrarCliente extends JFrame implements ActionListener
 		 contrasena = String.valueOf(passWord);
 		
 		
-		 
 		 gestorClientes obj= new gestorClientes();
-		
-		 boolean existe;
-		 Statement state = BaseDatos.getStatement();
-			existe=obj.ExisteCliente(state,usuario);
-			if(existe==true)
-			{
-				JOptionPane.showMessageDialog(null, "El usuario introducido ya existe, ponga otro!", "ERROR", JOptionPane.ERROR_MESSAGE);
-				
-			}
-			else
-			{
-				existe=obj.añadirNuevoCliente(state, nombre, apellidos, ciudad, direccion, usuario, contrasena);
+		 if(textField1.getText().isEmpty()||textField.getText().isEmpty()||textField2.getText().isEmpty()||textField3.getText().isEmpty()||contrasenaPasswordField.getPassword().length==0)
+		{
+
+			JOptionPane.showMessageDialog(this, "DEBES RELLENAR TODOS LOS CAMPOS");
+			
+		}else
+		{
+			boolean existe;
+			 Statement state = BaseDatos.getStatement();
+				existe=obj.ExisteCliente(state,usuario);
 				if(existe==true)
 				{
+					JOptionPane.showMessageDialog(null, "El usuario introducido ya existe, ponga otro!", "ERROR", JOptionPane.ERROR_MESSAGE);
 					
-					JOptionPane.showMessageDialog(this, "Cliente registrado correctamente");
 				}
-				
-				
-			}
+				else
+				{
+					existe=obj.añadirNuevoCliente(state, nombre, apellidos, ciudad, direccion, usuario, contrasena);
+					if(existe==true)
+					{
+						
+						JOptionPane.showMessageDialog(this, "Cliente registrado correctamente");
+					}
+					
+					
+				}
+		}
+		 
 	}
 }

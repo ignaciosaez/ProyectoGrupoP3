@@ -55,7 +55,7 @@ public class gestorClientes
 		}
 	}
 	
-	public boolean validacionUsuarioContrasena(Statement state, String usuario, String contrasena)
+	public boolean validacionUsuarioContrasenaCliente(Statement state, String usuario, String contrasena)
 	{
 		String SelectBD = "select * from CLIENTE where (usuario = '" + usuario + "' and contrasena = '" + contrasena + "')";
 		try 

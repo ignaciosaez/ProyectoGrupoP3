@@ -84,7 +84,7 @@ public class FrameEntrarCliente extends JFrame implements ActionListener
 		txtrBienevnidoAAmazon.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 27));
 		txtrBienevnidoAAmazon.setText("RELLENE LOS CAMPOS !");
 		txtrBienevnidoAAmazon.setBackground(Color.CYAN);
-		txtrBienevnidoAAmazon.setBounds(150, 56, 300, 58);
+		txtrBienevnidoAAmazon.setBounds(150, 56, 400, 58);
 		contentPane.add(txtrBienevnidoAAmazon);
 		
 		btnNewButtonEntrar = new JButton("LOGIN");
@@ -110,7 +110,9 @@ public class FrameEntrarCliente extends JFrame implements ActionListener
 		getContentPane().add(IMAGEN);
 		this.setVisible(true);
 		
-		
+		//PONGO YA UN USUARIO QUE HEN METIDO Y SU CONTRA PARA AGILIZAR
+		textFieldUsuario.setText("IGNACIO96");
+		contrasenaPasswordField.setText("IGNACIO96");
 	
 	
 	}
@@ -141,10 +143,10 @@ public class FrameEntrarCliente extends JFrame implements ActionListener
 		boolean existe; 
 		
 		Statement state = BaseDatos.getStatement();
-		//PONGO YA UN USUARIO QUE HEN METIDO PARA QUE SEA MAS RÁPIDO Y NO UN COÑAZO
+	
 		
 		
-		existe =obj.validacionUsuarioContrasena(state, usuario, contrasena);
+		existe =obj.validacionUsuarioContrasenaCliente(state, usuario, contrasena);
 		if(existe == true)
 		{
 			FrameCliente objFrameCliente= new FrameCliente();

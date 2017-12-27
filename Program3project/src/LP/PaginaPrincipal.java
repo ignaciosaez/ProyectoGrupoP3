@@ -84,6 +84,14 @@ public class PaginaPrincipal extends JFrame
 		
 		itemEntrarTrabajador = new JMenuItem("Entrar como trabajador");		
 		itemEntrarTrabajador.setFont(new Font("Segoe UI", Font.PLAIN, 21));
+		itemEntrarTrabajador.addActionListener(new ActionListener() {
+	        public void actionPerformed(ActionEvent ev) 
+	        
+	        {
+	        	FrameEntrarTrabajador obj= new FrameEntrarTrabajador();
+	    		obj.setVisible(true); 
+	        }
+	    });
 		MenuEntrar.add(itemEntrarTrabajador);
 		
 		MenuRegistrarse = new JMenu("REGISTRASE");
