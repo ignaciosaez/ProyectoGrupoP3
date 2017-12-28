@@ -117,7 +117,7 @@ public class BaseDatos
 		if (statement==null) return; 
 		try 
 		{
-			statement.executeUpdate("create table if not exists PRODUCTO ( cod_producto string, descripcion_producto string, categoria_producto string, precio_producto double  )");
+			statement.executeUpdate("create table if not exists PRODUCTO ( cod_producto string,nombre_producto, descripcion_producto string, categoria_producto string, precio_producto double  )");
 		} catch (SQLException e) 
 		{
 			JOptionPane.showMessageDialog(null, "La creación de tabla PRODUCTO ha fallado"); 

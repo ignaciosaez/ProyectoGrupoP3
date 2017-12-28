@@ -155,7 +155,7 @@ public class FrameRegistrarCliente extends JFrame implements ActionListener
 		btnNewButtonEntrar.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnNewButtonEntrar.setBounds(1180, 580, 198, 48);
 		contentPane.add(btnNewButtonEntrar);
-		btnNewButtonEntrar.setActionCommand(BUTTON_CANCELARREGISTRO);
+		btnNewButtonEntrar.setActionCommand(BUTTON_CANCELAR);
 		btnNewButtonEntrar.addActionListener(this);
 		
 		
@@ -177,7 +177,7 @@ public class FrameRegistrarCliente extends JFrame implements ActionListener
 				
 				break;
 		
-			case BUTTON_CANCELARREGISTRO: this.dispose();
+			case BUTTON_CANCELAR: this.dispose();
 				
 				break;
 		} 

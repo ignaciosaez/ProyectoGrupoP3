@@ -6,14 +6,19 @@ public class clsProducto implements Serializable
 {
 	 private String cod_producto;
 	 private  String nom_producto;
+	 private String descripcion_producto;
 	 private String categoria_producto;
 	 private double precio_producto;
 	 
-	 public clsProducto(String cod_producto,String nom_producto,double precio_producto )
+
+
+	 
+	 public clsProducto(String cod_producto,String nom_producto, String descripcion,double precio_producto )
 	 {
 		 
 		 this.cod_producto= cod_producto;
 		 this.nom_producto= nom_producto;
+		 this.descripcion_producto=descripcion;
 		 this.categoria_producto= cod_producto;
 		 this.precio_producto= precio_producto;
 	 }
@@ -49,7 +54,17 @@ public class clsProducto implements Serializable
 	public void setCategoria_producto(String categoria_producto) {
 		this.categoria_producto = categoria_producto;
 	}
-	
+	public String getDescripcion_producto() {
+		return descripcion_producto;
+	}
+
+	public void setDescripcion_producto(String descripcion_producto) {
+		this.descripcion_producto = descripcion_producto;
+	}
+
+	public void setPrecio_producto(double precio_producto) {
+		this.precio_producto = precio_producto;
+	}
 	public String toString()
 	{		
 		StringBuffer salida = new StringBuffer();

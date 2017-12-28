@@ -11,5 +11,5 @@ public class constantesActionCommand
 	public final static String BUTTON_ENTRAR = "BUTTON_ENTRAR";
 	public final static String BUTTON_CANCELAR = "BUTTON_CANCELAR";
 	public final static String BUTTON_REGISTARSE = "BUTTON_REGISTRASE";
-	public final static String BUTTON_CANCELARREGISTRO = "BUTTON_CANCELARREGISTRO";
+	public final static String BUTTON_ANADIRPRODUCTO= " BUTTON_ANADIRPRODUCTO";
 }

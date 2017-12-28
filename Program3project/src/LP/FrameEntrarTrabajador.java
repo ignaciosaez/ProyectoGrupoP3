@@ -153,8 +153,8 @@ public class FrameEntrarTrabajador extends JFrame implements ActionListener
 		existe =objT.validacionUsuarioContrasenaTrabajador(state, usuario, contrasena);
 		if(existe == true)
 		{
-			FrameCliente objFrameCliente= new FrameCliente();
-			objFrameCliente.setVisible(true);
+			FrameTrabajador obj= new FrameTrabajador();
+			obj.setVisible(true);
 			this.dispose();
 		}
 		else
