@@ -37,7 +37,7 @@ public class gestorTrabajadores {
 		try 
 		{
 			
-			String SelectBD = "INSERT INTO PRODUCTO values(" + "'" + cod_producto + "', "+ "'" + descripcion_producto + "', "+ "'" + nom_producto + "', "+ "'" + categoria_producto +  "', "+ "'" +  precio_producto  + "')";
+			String SelectBD = "INSERT INTO PRODUCTO values(" + "'" + cod_producto + "', "+ "'" + nom_producto + "', "+ "'" + descripcion_producto + "', "+ "'" + categoria_producto +  "', "+ "'" +  precio_producto  + "')";
 			state.executeUpdate(SelectBD);
 		
 		}catch (SQLException e)
@@ -46,7 +46,7 @@ public class gestorTrabajadores {
 			
 		}
 	}
-	/*
+	
 	public void eliminarProducto(Statement state)
 	{
 		
@@ -62,7 +62,7 @@ public class gestorTrabajadores {
 		
 	
 	}
-	*/
+	
 	public boolean ExisteProducto(Statement state, int codigo)
 	{
 		String SelectBD = "select * from PRODUCTO where (cod_producto = '" + codigo + "')";

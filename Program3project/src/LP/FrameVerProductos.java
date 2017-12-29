@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -22,13 +23,16 @@ import LN.gestorTrabajadores;
 
 public class FrameVerProductos extends JFrame
 {
-	static Statement state ;
+
+	static Statement state= BaseDatos.getStatement();
 	static ResultSet rs;
 	private JPanel contentPane;
-	private JTable	tabla;
 	private JScrollPane scroll;
-	static Connection connection = null;
-	
+	static Connection connection ;
+	Connection con= BaseDatos.getConnection();
+	private JTable tabla;
+	private DefaultTableModel modelo;
+	static ResultSetMetaData rm;
 	public FrameVerProductos() 
 	{
 		atributosVentana();
@@ -54,9 +58,10 @@ public class FrameVerProductos extends JFrame
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		
 		tabla= new JTable();
 		scroll= new JScrollPane();
-		scroll.setBounds(10, 70, 766, 367);
+		scroll.setBounds(10, 70, 1200, 400);
 		getContentPane().add(scroll);
 		scroll.setViewportView(tabla);
 		
@@ -66,6 +71,7 @@ public class FrameVerProductos extends JFrame
 
 	private void construirTabla()
 	{
+		
 		DefaultTableModel modelo= new DefaultTableModel();
 		modelo.addColumn("Código");
 		modelo.addColumn("Nombre");
@@ -91,39 +97,25 @@ public class FrameVerProductos extends JFrame
 		ArrayList<Object[]> datos= new ArrayList<Object[]>();
 		
 		
-		try
-		{
-			String query= "SELECT * FROM PRODUCTO" ;
-			PreparedStatement pat = connection.prepareStatement(query);
-			ResultSet rs = pat.executeQuery();
+		
 			
-			while(rs.next())
-			{
-				Object [] filas=new Object[5];
-				for(int i=0;i<5;i++)
-				{
-					
-					filas[i]=rs.getObject(i+1);
-				}
-				datos.add(filas);
+			try {
+				String query= "SELECT * FROM PRODUCTO" ;
+				rs=state.executeQuery(query);
+				rm=rs.getMetaData();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
 			}
+		
+
 			
-		}catch(Exception e)
-		{
-			e.printStackTrace();
-		}
-		/*try {
-			rs=state.executeQuery(query);
-			System.out.println("CORRECTO");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	
 		try {
 			while(rs.next())
 			{
-				Object [] filas=new Object[5];
-				for(int i=0;i<5;i++)
+				Object [] filas=new Object[rm.getColumnCount()];
+				for(int i=0;i<rm.getColumnCount();i++)
 				{
 					
 					filas[i]=rs.getObject(i+1);
@@ -134,7 +126,6 @@ public class FrameVerProductos extends JFrame
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		*/
 		return datos;
 	}
 	private String[][] obtenerMatriz()

@@ -163,6 +163,7 @@ public class FrameInsertarProducto extends JFrame implements ActionListener
 		switch(e.getActionCommand())
 		{
 			case BUTTON_ANADIRPRODUCTO: 
+				
 				anadirproductos();
 				
 				break;
@@ -200,7 +201,6 @@ public class FrameInsertarProducto extends JFrame implements ActionListener
 			
 			PRECIO=textField4.getText();
 			precio= Double.valueOf(PRECIO).doubleValue();
-			
 			gestorTrabajadores obj= new gestorTrabajadores();
 			
 			Statement state = BaseDatos.getStatement();
