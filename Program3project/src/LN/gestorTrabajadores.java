@@ -1,5 +1,6 @@
 package LN;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -30,30 +31,38 @@ public class gestorTrabajadores {
 		}
 	}
 	
-	/*
-	public boolean CrearProcuto(Statement state, String cod_producto , String nom_producto ,String categoria_producto, double precio_producto)
+	
+	public void CrearProcuto(Statement state, String cod_producto , String nom_producto ,String descripcion_producto,String categoria_producto, double precio_producto)
 	{
 		try 
 		{
-			String SelectBD = "insert into PRODUCTO values(" + "'" + cod_producto + "', " + "'" + nom_producto + "', "+ "'" + categoria_producto +  "', "+ "'" +  precio_producto  + "')";
-			int val;
-			val = state.executeUpdate( SelectBD );
 			
-			if (val!= 1)
-			{
-				return false;  
-			}else
-			{
-				return true;
-			}
+			String SelectBD = "INSERT INTO PRODUCTO values(" + "'" + cod_producto + "', "+ "'" + descripcion_producto + "', "+ "'" + nom_producto + "', "+ "'" + categoria_producto +  "', "+ "'" +  precio_producto  + "')";
+			state.executeUpdate(SelectBD);
+		
 		}catch (SQLException e)
 		{
 			e.printStackTrace();
-			return false;
+			
 		}
 	}
+	/*
+	public void eliminarProducto(Statement state)
+	{
+		
+		
 	
+			String SelectBD = "DROP TABLE PRODUCTO ";
+			try {
+				state.executeUpdate(SelectBD);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
 	
+	}
+	*/
 	public boolean ExisteProducto(Statement state, int codigo)
 	{
 		String SelectBD = "select * from PRODUCTO where (cod_producto = '" + codigo + "')";
@@ -76,7 +85,7 @@ public class gestorTrabajadores {
 		}
 	}
 	
-	
+	/*
 	public boolean CancelarProducto(Statement state, String cod_producto)
 	{
 		String SelectBD1 = "select * from PRODUCTO";
