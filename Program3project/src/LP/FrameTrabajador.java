@@ -29,9 +29,9 @@ public class FrameTrabajador extends JFrame
 	private JMenu MenuEntrar;
 	private JMenu MenuRegistrarse;
 	private JTextField texto;
-	private JMenuItem itemEntrarCliente;
-	private JMenuItem itemEntrarTrabajador;
-	private JMenuItem itemRegistrarcliente;;
+	private JMenuItem itemInsertarProductos;
+	private JMenuItem itemEntrarEliminarProductos;
+	private JMenuItem itemVerProductos;
 	private JLabel fondopantalla;
 	
 	public FrameTrabajador() 
@@ -67,9 +67,22 @@ public class FrameTrabajador extends JFrame
 		
 		MenuEntrar.setForeground(Color.BLACK);
 		
-		itemEntrarCliente = new JMenuItem("Insertar Productos");
-		itemEntrarCliente.setFont(new Font("Segoe UI", Font.PLAIN, 21));
-		itemEntrarCliente.addActionListener(new ActionListener() {
+		itemVerProductos = new JMenuItem("Ver productos");
+		itemVerProductos.setFont(new Font("Segoe UI", Font.PLAIN, 21));
+		itemVerProductos.addActionListener(new ActionListener() {
+		        public void actionPerformed(ActionEvent ev) 
+		        
+		        {
+		        	FrameVerProductos objV= new FrameVerProductos();
+		        	objV.setVisible(true);
+		        }
+		    });
+		
+		MenuEntrar.add(itemVerProductos);
+		
+		itemInsertarProductos = new JMenuItem("Insertar Productos");
+		itemInsertarProductos.setFont(new Font("Segoe UI", Font.PLAIN, 21));
+		itemInsertarProductos.addActionListener(new ActionListener() {
 		        public void actionPerformed(ActionEvent ev) 
 		        
 		        {
@@ -78,28 +91,17 @@ public class FrameTrabajador extends JFrame
 		        }
 		    });
 		
-		MenuEntrar.add(itemEntrarCliente);
+		MenuEntrar.add(itemInsertarProductos);
 		
-		itemEntrarTrabajador = new JMenuItem("Eliminar productos");		
-		itemEntrarTrabajador.setFont(new Font("Segoe UI", Font.PLAIN, 21));
-		MenuEntrar.add(itemEntrarTrabajador);
+		itemEntrarEliminarProductos = new JMenuItem("Eliminar productos");		
+		itemEntrarEliminarProductos.setFont(new Font("Segoe UI", Font.PLAIN, 21));
+		MenuEntrar.add(itemEntrarEliminarProductos);
 		
 		MenuRegistrarse = new JMenu("DATOS TRABAJADORES");
 		MenuRegistrarse.setFont(new Font("Segoe UI", Font.PLAIN, 28));
 		MenuRegistrarse.setForeground(Color.BLUE);
 		menu.add(MenuRegistrarse);
 		
-		itemRegistrarcliente = new JMenuItem("Trabajadores");
-		itemRegistrarcliente.setFont(new Font("Segoe UI", Font.PLAIN, 21));
-		itemRegistrarcliente.addActionListener(new ActionListener() {
-		        public void actionPerformed(ActionEvent ev) 
-		        
-		        {
-		        	 
-		        }
-		    });
-		
-		MenuRegistrarse.add(itemRegistrarcliente);
 		
 		
 	
