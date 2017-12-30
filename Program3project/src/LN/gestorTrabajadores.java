@@ -2,13 +2,20 @@ package LN;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
+import LD.BaseDatos;
+
 public class gestorTrabajadores {
 
+	static Statement state= BaseDatos.getStatement();
+	static ResultSetMetaData rm;
+	static ResultSet rs;
 	public boolean validacionUsuarioContrasenaTrabajador(Statement state, String usuario, String contrasena)
 	{
 		String SelectBD = "select * from TRABAJADOR where (usuario = '" + usuario + "' and contrasenya = '" + contrasena + "')";
@@ -84,7 +91,44 @@ public class gestorTrabajadores {
 			return false;
 		}
 	}
+	public static ArrayList<Object[]> llenarTabla()
+	{
+		
 	
+		ArrayList<Object[]> datos= new ArrayList<Object[]>();
+		
+		
+		
+			
+			try {
+				String query= "SELECT * FROM PRODUCTO" ;
+				rs=state.executeQuery(query);
+				rm=rs.getMetaData();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		
+
+			
+	
+		try {
+			while(rs.next())
+			{
+				Object [] filas=new Object[rm.getColumnCount()];
+				for(int i=0;i<rm.getColumnCount();i++)
+				{
+					
+					filas[i]=rs.getObject(i+1);
+				}
+				datos.add(filas);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return datos;
+	}
 	/*
 	public boolean CancelarProducto(Statement state, String cod_producto)
 	{

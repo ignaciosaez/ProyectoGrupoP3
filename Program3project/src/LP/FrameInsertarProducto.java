@@ -8,18 +8,23 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Statement;
+import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 
 import LD.BaseDatos;
 import LN.gestorTrabajadores;
@@ -34,6 +39,7 @@ public class FrameInsertarProducto extends JFrame implements ActionListener
 	private JLabel lblNewLabel3;
 	private JLabel lblNewLabel4;
 	private JLabel lblNewLabel5;
+	private JLabel lblNewLabel6;
 	private JLabel IMAGEN;
 	private JTextField textField;
 	private JTextField textField1;
@@ -41,6 +47,10 @@ public class FrameInsertarProducto extends JFrame implements ActionListener
 	private JTextField textField3;
 	private JTextField textField4;
 	private JButton btnNewButtonEntrar;
+	private JButton btnNewButtonCancelar;
+	private JButton btnNewButtonVerProductos;
+	private JTable tabla;
+	private JScrollPane scroll;
 	private JPasswordField contrasenaPasswordField;
 
 	public FrameInsertarProducto ()
@@ -126,11 +136,14 @@ public class FrameInsertarProducto extends JFrame implements ActionListener
 	
 		
 		lblNewLabel5 = new JLabel("€");
-		lblNewLabel5.setBounds(1000, 230, 500, 60);
-		lblNewLabel5.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 30));
+		lblNewLabel5.setBounds(950, 230, 500, 60);
+		lblNewLabel5.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 25));
 		contentPane.add(lblNewLabel5);
 		
-		
+		lblNewLabel6 = new JLabel("Utilizar . para los decimales");
+		lblNewLabel6.setBounds(950, 260, 700, 60);
+		lblNewLabel6.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 14));
+		contentPane.add(lblNewLabel6);
 		
 	
 		
@@ -143,17 +156,25 @@ public class FrameInsertarProducto extends JFrame implements ActionListener
 		btnNewButtonEntrar.addActionListener(this);
 		contentPane.add(btnNewButtonEntrar);
 		
-		btnNewButtonEntrar = new JButton("CANCELAR");
-		btnNewButtonEntrar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnNewButtonEntrar.setBounds(1180, 580, 198, 48);
-		contentPane.add(btnNewButtonEntrar);
-		btnNewButtonEntrar.setActionCommand(BUTTON_CANCELAR);
-		btnNewButtonEntrar.addActionListener(this);
+		btnNewButtonCancelar = new JButton("CANCELAR");
+		btnNewButtonCancelar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnNewButtonCancelar.setBounds(1180, 580, 198, 48);
+		contentPane.add(btnNewButtonCancelar);
+		btnNewButtonCancelar.setActionCommand(BUTTON_CANCELAR);
+		btnNewButtonCancelar.addActionListener(this);
 		
-		
+	
+		btnNewButtonVerProductos = new JButton("VER PRODUCTOS EXISTENTES");
+		btnNewButtonVerProductos.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnNewButtonVerProductos.setBounds(1480, 580, 380, 48);
+		contentPane.add(btnNewButtonVerProductos);
+		btnNewButtonVerProductos.setActionCommand(BUTTON_VERPRODUCTOS);
+		btnNewButtonVerProductos.addActionListener(this);
+	
 		
 		this.setVisible(true);
 	}
+	
 	
 	
 	@Override
@@ -171,10 +192,38 @@ public class FrameInsertarProducto extends JFrame implements ActionListener
 			case BUTTON_CANCELAR: this.dispose();
 				
 				break;
+				
+			case BUTTON_VERPRODUCTOS:	construirTabla();			
+			break;	
 		} 
 		
 	}
-	
+	private void construirTabla()
+	{
+		tabla= new JTable();
+		scroll= new JScrollPane();
+		scroll.setBounds(1200, 70, 700, 400);
+		getContentPane().add(scroll);
+		scroll.setViewportView(tabla); 
+		
+		DefaultTableModel modelo= new DefaultTableModel();
+		modelo.addColumn("Código");
+		modelo.addColumn("Nombre");
+		modelo.addColumn("Descripcion");
+		modelo.addColumn("Categoria");
+		modelo.addColumn("Precio");
+		tabla.setModel(modelo);
+		ArrayList<Object[]> datos= new ArrayList<Object[]>();
+		gestorTrabajadores obj = new gestorTrabajadores();
+		datos= obj.llenarTabla();
+		
+		for(int i=0;i<datos.size();i++)
+		{
+			modelo.addRow(datos.get(i));
+		}
+		
+		
+	}
 	private void anadirproductos()
 	{
 		BaseDatos.getConnection();

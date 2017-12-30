@@ -9,7 +9,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -24,15 +26,14 @@ import LN.gestorTrabajadores;
 public class FrameVerProductos extends JFrame
 {
 
-	static Statement state= BaseDatos.getStatement();
-	static ResultSet rs;
+	
 	private JPanel contentPane;
 	private JScrollPane scroll;
 	static Connection connection ;
 	Connection con= BaseDatos.getConnection();
 	private JTable tabla;
 	private DefaultTableModel modelo;
-	static ResultSetMetaData rm;
+	private JLabel IMAGEN;
 	public FrameVerProductos() 
 	{
 		atributosVentana();
@@ -59,11 +60,8 @@ public class FrameVerProductos extends JFrame
 		contentPane.setLayout(null);
 		
 		
-		tabla= new JTable();
-		scroll= new JScrollPane();
-		scroll.setBounds(10, 70, 1200, 400);
-		getContentPane().add(scroll);
-		scroll.setViewportView(tabla);
+	
+		
 		
 		construirTabla();
 		
@@ -71,6 +69,11 @@ public class FrameVerProductos extends JFrame
 
 	private void construirTabla()
 	{
+		tabla= new JTable();
+		scroll= new JScrollPane();
+		scroll.setBounds(10, 70, 1500, 400);
+		getContentPane().add(scroll);
+		scroll.setViewportView(tabla); 
 		
 		DefaultTableModel modelo= new DefaultTableModel();
 		modelo.addColumn("Código");
@@ -80,7 +83,8 @@ public class FrameVerProductos extends JFrame
 		modelo.addColumn("Precio");
 		tabla.setModel(modelo);
 		ArrayList<Object[]> datos= new ArrayList<Object[]>();
-		datos= llenarTabla();
+		gestorTrabajadores obj = new gestorTrabajadores();
+		datos= obj.llenarTabla();
 		
 		for(int i=0;i<datos.size();i++)
 		{
@@ -89,48 +93,6 @@ public class FrameVerProductos extends JFrame
 		
 		
 	}
-	public static ArrayList<Object[]> llenarTabla()
-	{
-		//SENTENCIA=STATE
-		//RESULTADO=RESULSET
 	
-		ArrayList<Object[]> datos= new ArrayList<Object[]>();
-		
-		
-		
-			
-			try {
-				String query= "SELECT * FROM PRODUCTO" ;
-				rs=state.executeQuery(query);
-				rm=rs.getMetaData();
-			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-		
 
-			
-	
-		try {
-			while(rs.next())
-			{
-				Object [] filas=new Object[rm.getColumnCount()];
-				for(int i=0;i<rm.getColumnCount();i++)
-				{
-					
-					filas[i]=rs.getObject(i+1);
-				}
-				datos.add(filas);
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return datos;
-	}
-	private String[][] obtenerMatriz()
-	{
-		return null;
-		
-	}
 }
