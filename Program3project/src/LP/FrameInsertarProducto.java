@@ -49,9 +49,12 @@ public class FrameInsertarProducto extends JFrame implements ActionListener
 	private JButton btnNewButtonEntrar;
 	private JButton btnNewButtonCancelar;
 	private JButton btnNewButtonVerProductos;
+	private JButton btnNewButtonVerProductosActualizados;
 	private JTable tabla;
 	private JScrollPane scroll;
 	private JPasswordField contrasenaPasswordField;
+	DefaultTableModel modelo;
+
 
 	public FrameInsertarProducto ()
 	{
@@ -170,7 +173,20 @@ public class FrameInsertarProducto extends JFrame implements ActionListener
 		contentPane.add(btnNewButtonVerProductos);
 		btnNewButtonVerProductos.setActionCommand(BUTTON_VERPRODUCTOS);
 		btnNewButtonVerProductos.addActionListener(this);
-	
+		
+		
+
+		btnNewButtonVerProductosActualizados = new JButton("ACTUALIZAR TABLA");
+		btnNewButtonVerProductos.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnNewButtonVerProductosActualizados.setBounds(1480, 680, 380, 48);
+		contentPane.add(btnNewButtonVerProductosActualizados);
+		btnNewButtonVerProductosActualizados.setActionCommand(BUTTON_VERPRODUCTOSACTUALIZADOS);
+		btnNewButtonVerProductosActualizados.addActionListener(this);
+		
+		btnNewButtonVerProductosActualizados.setEnabled(false);;
+
+		
+		
 		
 		this.setVisible(true);
 	}
@@ -193,20 +209,29 @@ public class FrameInsertarProducto extends JFrame implements ActionListener
 				
 				break;
 				
-			case BUTTON_VERPRODUCTOS:	construirTabla();			
+			case BUTTON_VERPRODUCTOS:	construirTabla();
+		
+			break;	
+			case BUTTON_VERPRODUCTOSACTUALIZADOS:actualizarTabla();	;
+			
 			break;	
 		} 
 		
 	}
 	private void construirTabla()
 	{
+	
+		
+		btnNewButtonVerProductosActualizados.setEnabled(true);;
+		
+		
 		tabla= new JTable();
 		scroll= new JScrollPane();
 		scroll.setBounds(1200, 70, 700, 400);
 		getContentPane().add(scroll);
 		scroll.setViewportView(tabla); 
 		
-		DefaultTableModel modelo= new DefaultTableModel();
+		modelo= new DefaultTableModel();
 		modelo.addColumn("Código");
 		modelo.addColumn("Nombre");
 		modelo.addColumn("Descripcion");
@@ -221,6 +246,7 @@ public class FrameInsertarProducto extends JFrame implements ActionListener
 		{
 			modelo.addRow(datos.get(i));
 		}
+		modelo.fireTableDataChanged();
 		
 		
 	}
@@ -235,7 +261,7 @@ public class FrameInsertarProducto extends JFrame implements ActionListener
 		String codigo;
 		String PRECIO;
 		double precio;
-		
+		boolean existe;
 		
 		
 		if(textField1.getText().isEmpty()||textField.getText().isEmpty()||textField2.getText().isEmpty()||textField3.getText().isEmpty()||textField4.getText().isEmpty())
@@ -251,24 +277,49 @@ public class FrameInsertarProducto extends JFrame implements ActionListener
 			PRECIO=textField4.getText();
 			precio= Double.valueOf(PRECIO).doubleValue();
 			gestorTrabajadores obj= new gestorTrabajadores();
-			
 			Statement state = BaseDatos.getStatement();
-			obj.CrearProcuto(state, codigo, nombre ,descripcion, categoria, precio);
-			JOptionPane.showMessageDialog(this, "El producto se ha añadido correctamente");
-			int siOno= JOptionPane.showConfirmDialog(null,"¿Quiere seguir añadiendo productos?","SEGUIR AÑADIENDO PRODUCTOS",JOptionPane.YES_NO_OPTION);
-			if(siOno==0)
+			existe=obj.validacionCodigoPorducto(state, codigo);
+			if(existe==false)
 			{
-			textField.setText("");
-			textField1.setText("");
-			textField2.setText("");
-			textField3.setText("");
-			textField4.setText("");
+				obj.CrearProcuto(state, codigo, nombre ,descripcion, categoria, precio);
+				
+				JOptionPane.showMessageDialog(this, "El producto se ha añadido correctamente");
+				
+				int siOno= JOptionPane.showConfirmDialog(null,"¿Quiere seguir añadiendo productos?","SEGUIR AÑADIENDO PRODUCTOS",JOptionPane.YES_NO_OPTION);
+				if(siOno==0)
+				{
+				textField.setText("");
+				textField1.setText("");
+				textField2.setText("");
+				textField3.setText("");
+				textField4.setText("");
+				}
+				else
+				{
+					this.dispose();
+				}
 			}else
 			{
-				this.dispose();
+				JOptionPane.showMessageDialog(this, "CODIGO EXISTENTE");
 			}
+			
+			
 		}
 		
 	}
+	private void actualizarTabla()
+	{
+		ArrayList<Object[]> datos= new ArrayList<Object[]>();
+		gestorTrabajadores obj = new gestorTrabajadores();
+		datos= obj.llenarTabla();
+		
+		for(int i=0;i<datos.size();i++)
+		{
+			modelo.addRow(datos.get(i));
+		}
+		modelo.fireTableDataChanged();
+	
+	}
+	
 
 }

@@ -120,14 +120,39 @@ public class gestorTrabajadores {
 				{
 					
 					filas[i]=rs.getObject(i+1);
+					
 				}
 				datos.add(filas);
+				
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		return datos;
+	}
+	
+	public boolean validacionCodigoPorducto(Statement state, String cod)
+	{
+		String SelectBD = "select * from PRODUCTO where (cod_producto = '" + cod + "')";
+		try 
+		{
+			ResultSet rs = state.executeQuery( SelectBD );
+			if(rs.next())
+			{
+				rs.close();
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		} catch (SQLException e)
+		{
+			e.printStackTrace();
+			return false;
+		}
 	}
 	/*
 	public boolean CancelarProducto(Statement state, String cod_producto)

@@ -13,4 +13,5 @@ public class constantesActionCommand
 	public final static String BUTTON_REGISTARSE = "BUTTON_REGISTRASE";
 	public final static String BUTTON_ANADIRPRODUCTO= " BUTTON_ANADIRPRODUCTO";
 	public final static String BUTTON_VERPRODUCTOS= " BUTTON_VERPRODUCTOS";
+	public final static String BUTTON_VERPRODUCTOSACTUALIZADOS= " BUTTON_VERPRODUCTOSACTUALIZADOS";
 }
