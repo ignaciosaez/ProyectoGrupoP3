@@ -154,7 +154,7 @@ public class gestorTrabajadores {
 			return false;
 		}
 	}
-	/*
+	
 	public boolean CancelarProducto(Statement state, String cod_producto)
 	{
 		String SelectBD1 = "select * from PRODUCTO";
@@ -180,6 +180,6 @@ public class gestorTrabajadores {
 			e.printStackTrace();
 			return false;
 		}
-	}*/
+	}
 	
 }

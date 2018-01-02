@@ -4,10 +4,5 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="librerias/junit-4.6.jar"/>
 	<classpathentry kind="lib" path="librerias/sqlite-jdbc-3.14.2.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/PC/Desktop/Librerias LookAndFeel/JGoodies/jgoodies-common-1.7.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/PC/Desktop/Librerias LookAndFeel/JGoodies/jgoodies-looks-2.5.3.jar"/>
-	<classpathentry kind="lib" path="C:/Users/PC/Desktop/Librerias LookAndFeel/JTattooDemo/JTattooDemo.jar"/>
-	<classpathentry kind="lib" path="C:/Users/PC/Desktop/Librerias LookAndFeel/Liquid/liquidlnf.jar"/>
-	<classpathentry kind="lib" path="C:/Users/PC/Desktop/Librerias LookAndFeel/UpperEssential/UpperEssentialLookAndFeel.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

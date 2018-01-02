@@ -1,10 +1,8 @@
 package DefaultPackage;
 import javax.swing.UIManager;
-import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 
-import com.jgoodies.looks.plastic.Plastic3DLookAndFeel;
-import com.jgoodies.looks.plastic.theme.DesertBlue;
+
 
 import LD.BaseDatos;
 import LP.PaginaPrincipal;

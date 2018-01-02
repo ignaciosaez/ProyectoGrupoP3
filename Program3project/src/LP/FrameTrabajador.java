@@ -111,15 +111,21 @@ public class FrameTrabajador extends JFrame
 		
 		itemEntrarEliminarProductos = new JMenuItem("Eliminar producto");		
 		itemEntrarEliminarProductos.setFont(new Font("Segoe UI", Font.PLAIN, 21));
+		itemEntrarEliminarProductos.addActionListener(new ActionListener(){
+			
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				FrameEliminarProducto obj= new FrameEliminarProducto();
+				obj.setVisible(true);
+				
+			}
+		});
 		MenuEntrar.add(itemEntrarEliminarProductos);
 		
 		MenuRegistrarse = new JMenu("DATOS TRABAJADORES");
 		MenuRegistrarse.setFont(new Font("Segoe UI", Font.PLAIN, 28));
 		MenuRegistrarse.setForeground(Color.BLUE);
 		menu.add(MenuRegistrarse);
-		
-	
-		
 		
 		
 		this.setVisible(true);
