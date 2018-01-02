@@ -54,7 +54,7 @@ public class gestorTrabajadores {
 		}
 	}
 	
-	public void eliminarProducto(Statement state)
+	public void eliminarTablaProducto(Statement state)
 	{
 		
 		
@@ -70,27 +70,7 @@ public class gestorTrabajadores {
 	
 	}
 	
-	public boolean ExisteProducto(Statement state, int codigo)
-	{
-		String SelectBD = "select * from PRODUCTO where (cod_producto = '" + codigo + "')";
-		try 
-		{
-			ResultSet rs = state.executeQuery( SelectBD );
-			if(rs.next())
-			{
-				rs.close();
-				return true;
-			}
-			else
-			{
-				return false;
-			}
-		} catch (SQLException e)
-		{
-			e.printStackTrace();
-			return false;
-		}
-	}
+	
 	public static ArrayList<Object[]> llenarTabla()
 	{
 		
@@ -155,31 +135,20 @@ public class gestorTrabajadores {
 		}
 	}
 	
-	public boolean CancelarProducto(Statement state, String cod_producto)
+	public void EliminarProducto(Statement state, String cod_producto)
 	{
-		String SelectBD1 = "select * from PRODUCTO";
-		String SelectBD2 = "delete from PRODUCTO where (cod_vuelo = '" + cod_producto + "')";
 		
-		try 
-		{
-			ResultSet rs1 = state.executeQuery( SelectBD1 );
-			ResultSet rs2 = state.executeQuery( SelectBD2 );
-			
-			if(rs1==rs2)
-			{
-				return false;
-			}
-			else
-			{
-				JOptionPane.showMessageDialog(null, "Se ha eliminado el producto", "Correcto",JOptionPane.INFORMATION_MESSAGE);
-				return true;
-			}
-			
-		} catch (SQLException e)
-		{
+		String query = "delete from PRODUCTO where (cod_producto = '" + cod_producto + "')";
+		
+		 try {
+			state.execute(query);
+			JOptionPane.showMessageDialog(null, "Eliminado correctamente");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return false;
 		}
+		
+	
 	}
 	
 }

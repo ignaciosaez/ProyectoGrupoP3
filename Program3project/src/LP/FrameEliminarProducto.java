@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
@@ -34,10 +36,12 @@ public class FrameEliminarProducto extends JFrame implements ActionListener {
 	private JPanel contentPane;
 	private JScrollPane scroll;
 	static Connection connection ;
-	Connection con= BaseDatos.getConnection();
 	private JTable tabla;
 	private DefaultTableModel modelo;
-	private JLabel IMAGEN;
+	int filaseleccionada;
+	private  JButton btnEliminar;
+	private String codigo;
+	private boolean clicado;
 	public FrameEliminarProducto() 
 	{
 		atributosVentana();
@@ -63,20 +67,10 @@ public class FrameEliminarProducto extends JFrame implements ActionListener {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		/*tabla.addMouseListener(new MouseAdapter()
-		{
-			@Override
-			public void mouseClicked(MouseEvent arg0) 
-			{
-			//	int row=tabla.getSelectedRow();
-				int row = tabla.getSelectedRow();
-				int column = tabla.getSelectedColumn();
-				codProducto = tabla.getModel().getValueAt(row, column).toString();
-			}
-		});
-		*/
+
 		
-		JButton btnEliminar = new JButton("ELIMINAR");
+		
+		btnEliminar = new JButton("ELIMINAR");
 		btnEliminar.setActionCommand("ELIMINAR");
 		btnEliminar.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnEliminar.addActionListener(this);
@@ -91,6 +85,11 @@ public class FrameEliminarProducto extends JFrame implements ActionListener {
 		btnNewButtonCancelar.addActionListener(this);
 		
 		
+		
+		
+		
+		
+		
 		construirTabla();
 		
 	}
@@ -103,13 +102,14 @@ public class FrameEliminarProducto extends JFrame implements ActionListener {
 		getContentPane().add(scroll);
 		scroll.setViewportView(tabla); 
 		
-		DefaultTableModel modelo= new DefaultTableModel();
+		modelo= new DefaultTableModel();
 		modelo.addColumn("Código");
 		modelo.addColumn("Nombre");
 		modelo.addColumn("Descripcion");
 		modelo.addColumn("Categoria");
 		modelo.addColumn("Precio");
 		tabla.setModel(modelo);
+		
 		ArrayList<Object[]> datos= new ArrayList<Object[]>();
 		gestorTrabajadores obj = new gestorTrabajadores();
 		datos= obj.llenarTabla();
@@ -119,21 +119,45 @@ public class FrameEliminarProducto extends JFrame implements ActionListener {
 			modelo.addRow(datos.get(i));
 			
 		}
-		modelo.addTableModelListener(new TableModelListener() {
+		tabla.addMouseListener(new MouseListener() {
 			
 			@Override
-			public void tableChanged(TableModelEvent e) 
+			public void mouseReleased(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent arg0) 
 			{
-				if(e.getType()==TableModelEvent.UPDATE)
-				{
-					int columna=e.getColumn();
-					int fila =e.getFirstRow();
-				}
+				filaseleccionada=tabla.getSelectedRow();
+				codigo = (String)tabla.getValueAt(filaseleccionada, 0);
+				//clicado=true;
 				
 			}
 		});
 		
 	}
+		
+	
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) 
@@ -141,20 +165,8 @@ public class FrameEliminarProducto extends JFrame implements ActionListener {
 		switch(arg0.getActionCommand())
 		{
 			
-		case "ELIMINAR":
-			boolean aviso = false;
-			if(codProducto!=null)
-			{
-				aviso = this.Aviso();
-				if(aviso!=true)
-				{
-					this.EliminarProducto();
-					this.dispose();
-				}
-			}else
-			{
-				JOptionPane.showMessageDialog(null, "Elija el producto que desea eliminar");
-			}
+		case "ELIMINAR":EliminarProducto();
+			
 			break;
 			case BUTTON_CANCELAR: this.dispose();
 				
@@ -165,36 +177,14 @@ public class FrameEliminarProducto extends JFrame implements ActionListener {
 	
 	public void EliminarProducto()
 	{
-		gestorTrabajadores  gesTra = new gestorTrabajadores();
+		gestorTrabajadores obj= new gestorTrabajadores();
 		Statement state = BaseDatos.getStatement();
+		modelo= (DefaultTableModel) tabla.getModel();
+		modelo.removeRow(filaseleccionada);
+		obj.EliminarProducto(state, codigo);
 
-		String cod_vuelo = codProducto;
 		
-		gesTra.CancelarProducto(state, cod_vuelo);
+		
 	}
 	
-	private boolean Aviso() 
-	{
-		boolean aviso = false;
-		 int respuesta = JOptionPane.showConfirmDialog(null, "¿Seguro que desea eliminar?", "DeustoAmazonShop - Aviso",JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-	    
-	    if (respuesta == JOptionPane.NO_OPTION) 
-	    {
-	      aviso = true;
-	    } 
-	    else if (respuesta == JOptionPane.YES_OPTION) 
-	    {
-	      aviso = false;
-	    } 
-	    else if (respuesta == JOptionPane.CLOSED_OPTION) 
-	    {
-	      aviso = true;
-	    }
-	    
-		return aviso;		
-	}
-	
-
-
-
-}
+}	
