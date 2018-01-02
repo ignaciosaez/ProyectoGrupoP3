@@ -31,6 +31,7 @@ public class FrameTrabajador extends JFrame
 	private JTextField texto;
 	private JMenuItem itemInsertarProductos;
 	private JMenuItem itemEntrarEliminarProductos;
+	private JMenuItem itemEntrarModificarProductos;
 	private JMenuItem itemVerProductos;
 	private JLabel fondopantalla;
 	
@@ -93,7 +94,22 @@ public class FrameTrabajador extends JFrame
 		
 		MenuEntrar.add(itemInsertarProductos);
 		
-		itemEntrarEliminarProductos = new JMenuItem("Eliminar productos");		
+		itemEntrarModificarProductos = new JMenuItem("Modificar producto");		
+		itemEntrarModificarProductos.setFont(new Font("Segoe UI", Font.PLAIN, 21));
+		itemEntrarModificarProductos.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				FrameModificarProducto obj= new FrameModificarProducto();
+				obj.setVisible(true);
+				
+			}
+		});
+		MenuEntrar.add(itemEntrarModificarProductos);
+		
+		
+		itemEntrarEliminarProductos = new JMenuItem("Eliminar producto");		
 		itemEntrarEliminarProductos.setFont(new Font("Segoe UI", Font.PLAIN, 21));
 		MenuEntrar.add(itemEntrarEliminarProductos);
 		
@@ -101,8 +117,6 @@ public class FrameTrabajador extends JFrame
 		MenuRegistrarse.setFont(new Font("Segoe UI", Font.PLAIN, 28));
 		MenuRegistrarse.setForeground(Color.BLUE);
 		menu.add(MenuRegistrarse);
-		
-		
 		
 	
 		
