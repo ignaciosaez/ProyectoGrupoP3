@@ -76,5 +76,23 @@ public class gestorClientes
 			return false;
 		}
 	}
+	public void ComprarProducto(Statement state, String cod_producto,String nombre_producto, double precio,int cantidad, String usuario)
+	{
+		
+		
+			String query = "insert into CARRITOCOMPRA values(" + "'" + cod_producto + "'," + "'" + nombre_producto + "'," + "'" + precio + "',"+ "'" + cantidad+ "'," + "'" + usuario + "')";
+			
+			try {
+				state.executeUpdate( query );
+				JOptionPane.showMessageDialog(null, "Compra realizada con exito");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+		
+	}
+	
 
 }

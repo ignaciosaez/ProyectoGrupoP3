@@ -42,7 +42,7 @@ public class FrameVerProductos extends JFrame implements ActionListener
 	Connection con= BaseDatos.getConnection();
 	private JTable tabla;
 	private DefaultTableModel modelo;
-	private JLabel IMAGEN;
+
 	public FrameVerProductos() 
 	{
 		atributosVentana();
@@ -75,7 +75,6 @@ public class FrameVerProductos extends JFrame implements ActionListener
 		contentPane.add(btnNewButtonCancelar);
 		btnNewButtonCancelar.setActionCommand(BUTTON_CANCELAR);
 		btnNewButtonCancelar.addActionListener(this);
-		
 		
 		construirTabla();
 		

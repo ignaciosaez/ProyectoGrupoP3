@@ -124,6 +124,17 @@ public class BaseDatos
 		}
 	}
 	
+	public static void crearTablaCompraBD()
+	{
+		if (statement==null) return; 
+		try 
+		{
+			statement.executeUpdate("create table if not exists CARRITOCOMPRA ( cod_producto string,nombre_producto, precio_producto double, cantidad int, usuario string  )");
+		} catch (SQLException e) 
+		{
+			JOptionPane.showMessageDialog(null, "La creación de tabla CARRITOCOMPRA ha fallado"); 
+		}
+	}
 	/** 
 	 * Crea una tabla de billetes en una base de datos, si no existía ya.
 	 * Debe haberse inicializado la conexión correctamente.

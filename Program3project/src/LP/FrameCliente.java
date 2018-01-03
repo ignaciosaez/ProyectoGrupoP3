@@ -30,7 +30,7 @@ public class FrameCliente extends JFrame
 	private JMenu MenuRegistrarse;
 	private JTextField texto;
 	private JMenuItem itemEntrarCliente;
-	private JMenuItem itemEntrarTrabajador;
+	private JMenuItem itemEntrarComprar;
 	private JMenuItem itemRegistrarcliente;;
 	private JLabel fondopantalla;
 	
@@ -67,21 +67,21 @@ public class FrameCliente extends JFrame
 		
 		MenuEntrar.setForeground(Color.BLACK);
 		
-		itemEntrarCliente = new JMenuItem("Más vendidos");
-		itemEntrarCliente.setFont(new Font("Segoe UI", Font.PLAIN, 21));
-		itemEntrarCliente.addActionListener(new ActionListener() {
-		        public void actionPerformed(ActionEvent ev) 
-		        
-		        {
-		        	
-		        }
-		    });
+	
 		
-		MenuEntrar.add(itemEntrarCliente);
-		
-		itemEntrarTrabajador = new JMenuItem("Mejor valorados");		
-		itemEntrarTrabajador.setFont(new Font("Segoe UI", Font.PLAIN, 21));
-		MenuEntrar.add(itemEntrarTrabajador);
+		itemEntrarComprar = new JMenuItem("Comprar productos");		
+		itemEntrarComprar.setFont(new Font("Segoe UI", Font.PLAIN, 21));
+		itemEntrarComprar.addActionListener(new ActionListener() 
+		{
+			
+			@Override
+			public void actionPerformed(ActionEvent e) 
+			{
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		MenuEntrar.add(itemEntrarComprar);
 		
 		MenuRegistrarse = new JMenu("CARRITO DE COMPRA");
 		MenuRegistrarse.setFont(new Font("Segoe UI", Font.PLAIN, 28));
@@ -103,7 +103,13 @@ public class FrameCliente extends JFrame
 		
 		
 	
-		
+
+		fondopantalla = new JLabel("");
+		fondopantalla.setIcon(new ImageIcon(PaginaPrincipal.class.getResource("/imagenes/logodeusto.jpg")));
+		fondopantalla.setBounds(0,0,1000,1000 );
+		fondopantalla.setOpaque(false);
+		fondopantalla.setMaximumSize(getMaximumSize());
+		getContentPane().add(fondopantalla);
 		
 		
 		this.setVisible(true);
