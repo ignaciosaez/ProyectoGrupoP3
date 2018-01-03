@@ -238,6 +238,7 @@ public class FrameInsertarProducto extends JFrame implements ActionListener
 		modelo.addColumn("Categoria");
 		modelo.addColumn("Precio");
 		tabla.setModel(modelo);
+		
 		ArrayList<Object[]> datos= new ArrayList<Object[]>();
 		gestorTrabajadores obj = new gestorTrabajadores();
 		datos= obj.llenarTabla();
@@ -309,7 +310,7 @@ public class FrameInsertarProducto extends JFrame implements ActionListener
 	}
 	private void actualizarTabla()
 	{
-		
+		modelo.fireTableDataChanged();
 		construirTabla();
 	
 	}

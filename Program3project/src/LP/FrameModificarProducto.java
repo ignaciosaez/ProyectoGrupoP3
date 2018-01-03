@@ -34,7 +34,6 @@ import LD.BaseDatos;
 import LN.gestorTrabajadores;
 
 import static COMUN.constantesActionCommand.*;
-import static COMUN.constantesActionCommand.BUTTON_CANCELAR;
 
 
 public class FrameModificarProducto extends JFrame implements ActionListener 
@@ -52,6 +51,7 @@ public class FrameModificarProducto extends JFrame implements ActionListener
 	private JTextField textField3;
 	private JTextField textField4;
 	private JButton btnNewButtonCancelar;
+	private JButton btnNewButtonVerProductosActualizados;
 	private JPanel contentPane;
 	private JScrollPane scroll;
 	private JLabel etiqueta;
@@ -181,6 +181,12 @@ public class FrameModificarProducto extends JFrame implements ActionListener
 		btnNewButtonCancelar.setActionCommand(BUTTON_CANCELAR);
 		btnNewButtonCancelar.addActionListener(this);
 	//modificar producto
+		btnNewButtonVerProductosActualizados = new JButton("ACTUALIZAR TABLA");
+		btnNewButtonVerProductosActualizados.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnNewButtonVerProductosActualizados.setBounds(1580, 580, 280, 48);
+		contentPane.add(btnNewButtonVerProductosActualizados);
+		btnNewButtonVerProductosActualizados.setActionCommand(BUTTON_VERPRODUCTOSACTUALIZADOS);
+		btnNewButtonVerProductosActualizados.addActionListener(this);
 		
 		
 		construirTabla();
@@ -195,7 +201,7 @@ public class FrameModificarProducto extends JFrame implements ActionListener
 		getContentPane().add(scroll);
 		scroll.setViewportView(tabla); 
 		
-		DefaultTableModel modelo= new DefaultTableModel();
+		modelo= new DefaultTableModel();
 		modelo.addColumn("Código");
 		modelo.addColumn("Nombre");
 		modelo.addColumn("Descripcion");
@@ -211,6 +217,9 @@ public class FrameModificarProducto extends JFrame implements ActionListener
 			modelo.addRow(datos.get(i));
 			
 		}
+		
+		modelo.fireTableDataChanged();
+		
 		tabla.addMouseListener(new MouseListener() {
 			
 			@Override
@@ -269,15 +278,17 @@ public class FrameModificarProducto extends JFrame implements ActionListener
 	{
 		switch(arg0.getActionCommand())
 		{
-		case BUTTON_MODIFICARPRODUCTOS: ModificarProducto();
+		case BUTTON_MODIFICARPRODUCTOS: 
+		ModificarProducto();break;
 		
+		case BUTTON_CANCELAR:
+		this.dispose();break;
+		
+		case BUTTON_VERPRODUCTOSACTUALIZADOS: actualizartabla(); 
 		break;
-		
-			case BUTTON_CANCELAR:
 			
-				this.dispose();
+		
 				
-				break;
 		} 
 		
 	}
@@ -298,26 +309,25 @@ public class FrameModificarProducto extends JFrame implements ActionListener
 			precio= Double.valueOf(PRECIO).doubleValue();
 			obj.modificar(state, codigo, textField.getText(),textField1.getText(),textField2.getText(), precio);
 		
-			//JOptionPane.showMessageDialog(this, "El producto se ha modificado correctamente");
-			
-			
-			
-			int siOno= JOptionPane.showConfirmDialog(null,"¿Quiere seguir modificando productos?","SEGUIR MODIFICANDO PRODUCTOS",JOptionPane.YES_NO_OPTION);
-			if(siOno==0)
-			{
-			
+			textField.setText("");
 			textField1.setText("");
 			textField2.setText("");
 			textField3.setText("");
 			textField4.setText("");
-			}
-			else
-			{
-				this.dispose();
-			}
-		}
+			
+			
+		}	
 		
 	}
+	
+	private void actualizartabla()
+	{
+		
+		modelo.fireTableDataChanged();
+		
+		construirTabla();
+	}
+
 	
 
 }
