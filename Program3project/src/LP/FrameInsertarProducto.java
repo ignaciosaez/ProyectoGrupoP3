@@ -309,15 +309,8 @@ public class FrameInsertarProducto extends JFrame implements ActionListener
 	}
 	private void actualizarTabla()
 	{
-		ArrayList<Object[]> datos= new ArrayList<Object[]>();
-		gestorTrabajadores obj = new gestorTrabajadores();
-		datos= obj.llenarTabla();
 		
-		for(int i=0;i<datos.size();i++)
-		{
-			modelo.addRow(datos.get(i));
-		}
-		modelo.fireTableDataChanged();
+		construirTabla();
 	
 	}
 	
