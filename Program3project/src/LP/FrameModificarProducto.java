@@ -6,6 +6,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,6 +20,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -29,8 +32,9 @@ import javax.swing.table.DefaultTableModel;
 
 import LD.BaseDatos;
 import LN.gestorTrabajadores;
+
+import static COMUN.constantesActionCommand.*;
 import static COMUN.constantesActionCommand.BUTTON_CANCELAR;
-import static COMUN.constantesActionCommand.BUTTON_REGISTARSE;
 
 
 public class FrameModificarProducto extends JFrame implements ActionListener 
@@ -55,7 +59,15 @@ public class FrameModificarProducto extends JFrame implements ActionListener
 	static Connection connection ;
 	Connection con= BaseDatos.getConnection();
 	private JTable tabla;
+	private int filaseleccionada;
+	private String codigo;
+	private String nombre;
+	private String Descripcion;
+	private String categoria;
+	private double precio;
+	private JButton btnModificar;
 	private DefaultTableModel modelo;
+	
 	
 	
 
@@ -93,13 +105,7 @@ public class FrameModificarProducto extends JFrame implements ActionListener
 		etiqueta2 = new JLabel("Seleccione el producto que desea modificar");
 		etiqueta2.setBounds(1050, 420, 900, 60);
 		etiqueta2.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 30));
-	
-		btnNewButtonCancelar = new JButton(" VOLVER ATRÁS");
-		btnNewButtonCancelar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnNewButtonCancelar.setBounds(1380, 780, 198, 48);
-		contentPane.add(btnNewButtonCancelar);
-		btnNewButtonCancelar.setActionCommand(BUTTON_CANCELAR);
-		btnNewButtonCancelar.addActionListener(this);
+
 		
 
 		lblNewLabel = new JLabel("Nombre del producto");
@@ -159,6 +165,21 @@ public class FrameModificarProducto extends JFrame implements ActionListener
 		contentPane.add(textField4);
 		textField4.setColumns(10);
 		
+		
+
+		btnModificar = new JButton("Modificar producto");
+		btnModificar.setActionCommand(BUTTON_MODIFICARPRODUCTOS);
+		btnModificar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnModificar.addActionListener(this);
+		btnModificar.setBounds(900, 580, 418, 50);
+		contentPane.add(btnModificar);
+		
+		btnNewButtonCancelar = new JButton(" VOLVER ATRÁS");
+		btnNewButtonCancelar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnNewButtonCancelar.setBounds(1380, 580, 198, 48);
+		contentPane.add(btnNewButtonCancelar);
+		btnNewButtonCancelar.setActionCommand(BUTTON_CANCELAR);
+		btnNewButtonCancelar.addActionListener(this);
 	//modificar producto
 		
 		
@@ -190,16 +211,50 @@ public class FrameModificarProducto extends JFrame implements ActionListener
 			modelo.addRow(datos.get(i));
 			
 		}
-		modelo.addTableModelListener(new TableModelListener() {
+		tabla.addMouseListener(new MouseListener() {
 			
 			@Override
-			public void tableChanged(TableModelEvent e) 
+			public void mouseReleased(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent arg0) 
 			{
-				if(e.getType()==TableModelEvent.UPDATE)
-				{
-					int columna=e.getColumn();
-					int fila =e.getFirstRow();
-				}
+				filaseleccionada=tabla.getSelectedRow();
+				codigo = (String)tabla.getValueAt(filaseleccionada, 0);
+				nombre=(String)tabla.getValueAt(filaseleccionada, 1);
+				Descripcion=(String)tabla.getValueAt(filaseleccionada, 2);
+				categoria=(String)tabla.getValueAt(filaseleccionada, 3);
+				precio=(Double)tabla.getValueAt(filaseleccionada, 4);
+				
+				String stringPrecio=String.valueOf(precio);
+				textField.setText(nombre);
+				textField1.setText(Descripcion);
+				textField2.setText(categoria);
+				textField3.setText(codigo);
+				textField3.setEnabled(false);
+				textField4.setText(stringPrecio);
+				//clicado=true;
 				
 			}
 		});
@@ -209,18 +264,58 @@ public class FrameModificarProducto extends JFrame implements ActionListener
 
 
 
-
 	@Override
 	public void actionPerformed(ActionEvent arg0) 
 	{
 		switch(arg0.getActionCommand())
 		{
-			
+		case BUTTON_MODIFICARPRODUCTOS: ModificarProducto();
 		
-			case BUTTON_CANCELAR: this.dispose();
+		break;
+		
+			case BUTTON_CANCELAR:
+			
+				this.dispose();
 				
 				break;
 		} 
+		
+	}
+	
+	private void ModificarProducto()
+	{
+		//falta validar que las tablas no esten vacias
+		gestorTrabajadores obj= new gestorTrabajadores();
+		Statement state = BaseDatos.getStatement();
+		if(textField1.getText().isEmpty()||textField.getText().isEmpty()||textField2.getText().isEmpty()||textField3.getText().isEmpty()||textField4.getText().isEmpty())
+		{
+			JOptionPane.showMessageDialog(null, "DEBES RELLENAR TODOS LOS CAMPOS");
+		}else
+		{
+			String PRECIO;
+			double precio;
+			PRECIO=textField4.getText();
+			precio= Double.valueOf(PRECIO).doubleValue();
+			obj.modificar(state, codigo, textField.getText(),textField1.getText(),textField2.getText(), precio);
+		
+			//JOptionPane.showMessageDialog(this, "El producto se ha modificado correctamente");
+			
+			
+			
+			int siOno= JOptionPane.showConfirmDialog(null,"¿Quiere seguir modificando productos?","SEGUIR MODIFICANDO PRODUCTOS",JOptionPane.YES_NO_OPTION);
+			if(siOno==0)
+			{
+			
+			textField1.setText("");
+			textField2.setText("");
+			textField3.setText("");
+			textField4.setText("");
+			}
+			else
+			{
+				this.dispose();
+			}
+		}
 		
 	}
 	
