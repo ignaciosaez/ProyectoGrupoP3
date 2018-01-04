@@ -116,7 +116,18 @@ public class PaginaPrincipal extends JFrame
 		
 		MenuRegistrarse.add(itemRegistrarcliente);
 		
+		fondopantalla = new JLabel("");
+		fondopantalla.setIcon(new ImageIcon(PaginaPrincipal.class.getResource("/imagenes/70030553-shop-wallpapers.jpg")));
+		fondopantalla.setBounds(0,0,3200,1000 );
+		fondopantalla.setOpaque(false);
+		getContentPane().add(fondopantalla);
 		
+		JTextArea txtrBienevnidoAAmazon = new JTextArea();
+		txtrBienevnidoAAmazon.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 27));
+		txtrBienevnidoAAmazon.setText("Bienvenido a AMAZON DEUSTO SHOP!!");
+		txtrBienevnidoAAmazon.setBackground(Color.gray);
+		txtrBienevnidoAAmazon.setBounds(706, 56, 609, 58);
+		contentPane.add(txtrBienevnidoAAmazon);
 		
 		
 		this.setVisible(true);
