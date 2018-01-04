@@ -36,7 +36,6 @@ import javax.swing.table.DefaultTableModel;
 import LD.BaseDatos;
 import LN.gestorClientes;
 import LN.gestorTrabajadores;
-
 import static COMUN.constantesActionCommand.*;
 
 
@@ -56,6 +55,7 @@ public class FrameCompraCliente extends JFrame implements ActionListener
 	private JTable tabla;
 	private JTable tablaCarrito;
 	private DefaultTableModel modelo;
+	private DefaultTableModel modeloCarrito;
 	private JSpinner spinnerCantidad;
 	private int filaseleccionada;
 	private String codigo;
@@ -110,7 +110,7 @@ public class FrameCompraCliente extends JFrame implements ActionListener
 		contentPane.add(btnAnadir);
 		
 		btnEliminar = new JButton("Eliminar del carrito");
-		btnEliminar.setActionCommand(BUTTON_ANADIRCARRITO);
+		btnEliminar.setActionCommand(BUTTON_ELIMINARDELCARRITO);
 		btnEliminar.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnEliminar.addActionListener(this);
 		btnEliminar.setBounds(1100, 550, 200, 50);
@@ -153,7 +153,8 @@ public class FrameCompraCliente extends JFrame implements ActionListener
 		getContentPane().add(scroll);
 		scroll.setViewportView(tabla); 
 		
-		DefaultTableModel modelo= new DefaultTableModel();
+		//DefaultTableModel modelo= new DefaultTableModel();
+		modelo= new DefaultTableModel();
 		modelo.addColumn("Código");
 		modelo.addColumn("Nombre");
 		modelo.addColumn("Descripcion");
@@ -176,7 +177,7 @@ public class FrameCompraCliente extends JFrame implements ActionListener
 		getContentPane().add(scroll);
 		scroll.setViewportView(tablaCarrito); 
 		
-		DefaultTableModel modeloCarrito= new DefaultTableModel();
+		modeloCarrito= new DefaultTableModel();
 		modeloCarrito.addColumn("Código");
 		modeloCarrito.addColumn("Nombre");
 		modeloCarrito.addColumn("Descripcion");
@@ -217,6 +218,8 @@ public class FrameCompraCliente extends JFrame implements ActionListener
 				filaseleccionada=tabla.getSelectedRow();
 				codigo = (String)tabla.getValueAt(filaseleccionada, 0);
 				nombre=(String)tabla.getValueAt(filaseleccionada, 1);
+				Descripcion=(String)tabla.getValueAt(filaseleccionada, 2);
+				categoria=(String)tabla.getValueAt(filaseleccionada, 3);
 				precio=(Double)tabla.getValueAt(filaseleccionada, 4);
 				
 			}
@@ -244,12 +247,40 @@ public class FrameCompraCliente extends JFrame implements ActionListener
 		
 		
 	}
+	
+	private void anadirCarrito()
+	{
+
+		Object[] fila = new Object[5];
+		
+		fila[0] = codigo;
+		fila[1] = nombre;
+		fila[2] = Descripcion;
+		fila[3] = categoria;
+		fila[4] = precio;
+		modelo.removeRow(filaseleccionada);
+		modeloCarrito.addRow(fila);
+		
+	}
+	
+	private void eliminarCarrito()
+	{
+		
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) 
 	{
 		switch(arg0.getActionCommand())
 		{
+		
+		case BUTTON_ANADIRCARRITO: anadirCarrito();
+			
+			break;
+			
+		case BUTTON_ELIMINARDELCARRITO: eliminarCarrito();
+			
+			break;
 			
 		case BUTTON_COMPRARPRODUCTOS: ComprarProducto();
 		
