@@ -63,8 +63,9 @@ public class FrameEntrarTrabajador extends JFrame implements ActionListener
 		textFieldUsuario.setColumns(10);
 		
 		lblNewLabelU = new JLabel("Usuario");
+		lblNewLabelU.setForeground(Color.DARK_GRAY);
 		lblNewLabelU.setBounds(150, 160, 400, 60);
-		lblNewLabelU.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 30));
+		lblNewLabelU.setFont(new Font("Copperplate Gothic Bold", Font.BOLD, 30));
 		contentPane.add(lblNewLabelU);
 		
 		contrasenaPasswordField = new JPasswordField();
@@ -74,8 +75,9 @@ public class FrameEntrarTrabajador extends JFrame implements ActionListener
 	
 		
 		JLabel lblNewLabel = new JLabel("Contraseña");
+		lblNewLabel.setForeground(Color.DARK_GRAY);
 		lblNewLabel.setBounds(150, 320, 400, 60);
-		lblNewLabel.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 30));
+		lblNewLabel.setFont(new Font("Copperplate Gothic Bold", Font.BOLD, 30));
 		contentPane.add(lblNewLabel);
 		
 		JTextArea txtrBienevnidoAAmazon = new JTextArea();
@@ -86,14 +88,18 @@ public class FrameEntrarTrabajador extends JFrame implements ActionListener
 		contentPane.add(txtrBienevnidoAAmazon);
 		
 		btnNewButtonEntrar = new JButton("LOGIN");
-		btnNewButtonEntrar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnNewButtonEntrar.setForeground(Color.DARK_GRAY);
+		btnNewButtonEntrar.setBackground(Color.GREEN);
+		btnNewButtonEntrar.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		btnNewButtonEntrar.setBounds(150, 500, 198, 48);
 		btnNewButtonEntrar.setActionCommand(BUTTON_ENTRAR);
 		btnNewButtonEntrar.addActionListener(this);
 		contentPane.add(btnNewButtonEntrar);
 		
 		btnNewButtonEntrar = new JButton("CANCELAR");
-		btnNewButtonEntrar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnNewButtonEntrar.setForeground(Color.DARK_GRAY);
+		btnNewButtonEntrar.setBackground(Color.RED);
+		btnNewButtonEntrar.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		btnNewButtonEntrar.setBounds(450, 500, 198, 48);
 		contentPane.add(btnNewButtonEntrar);
 		btnNewButtonEntrar.setActionCommand(BUTTON_CANCELAR);
