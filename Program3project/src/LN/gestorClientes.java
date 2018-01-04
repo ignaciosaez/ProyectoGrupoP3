@@ -1,14 +1,23 @@
 package LN;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
+import LD.BaseDatos;
+
 public class gestorClientes 
 {
-	
+	static Statement state= BaseDatos.getStatement();
+	java.sql.Connection con=  BaseDatos.getConnection();
+	static ResultSetMetaData rm;
+	static ResultSet rs;
 	 
 
 	
@@ -84,7 +93,7 @@ public class gestorClientes
 			
 			try {
 				state.executeUpdate( query );
-				JOptionPane.showMessageDialog(null, "Compra realizada con exito");
+				JOptionPane.showMessageDialog(null, "Producto añadido correctamente al carrito de la compra");
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -93,6 +102,102 @@ public class gestorClientes
 			
 		
 	}
+	public static ArrayList<Object[]> llenarTablaCarrito()
+	{
+		
+	
+		ArrayList<Object[]> datos= new ArrayList<Object[]>();
+		
+		
+		
+			
+			try {
+				String query= "SELECT * FROM CARRITOCOMPRA" ;
+				rs=state.executeQuery(query);
+				rm=rs.getMetaData();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		
+
+			
+	
+		try {
+			while(rs.next())
+			{
+				Object [] filas=new Object[rm.getColumnCount()];
+				for(int i=0;i<rm.getColumnCount();i++)
+				{
+					
+					filas[i]=rs.getObject(i+1);
+					
+				}
+				datos.add(filas);
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return datos;
+	}
+	
+	public void EliminarProductoCarrito(Statement state, String cod,String usuario)
+	{
+		
+		String query = "delete from CARRITOCOMPRA where (cod_producto = '" + cod + "' AND usuario= '"+usuario+"' )";
+		
+		 try {
+			state.execute(query);
+			JOptionPane.showMessageDialog(null, "Eliminado correctamente");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	
+	}
+	/*
+	public double TotalApagar(Statement state, Connection connection)
+	{
+		try 
+		{
+			double total=0;
+			ArrayList<	Double> arrayPrecio = new ArrayList<Double>();
+			ArrayList<Integer> arrayCantidad = new ArrayList<Integer>();
+			String query = "select * from CARRITOCOMPRA";
+			PreparedStatement pat = connection.prepareStatement(query);
+			ResultSet rs = pat.executeQuery();
+			
+			//Recorremos el cursor hasta que no haya más registros
+			do
+			{
+				double precio= rs.getDouble("precio_producto");
+			    arrayPrecio.add(precio);
+			    int cantidad= rs.getInt("cantidad");
+			    arrayCantidad.add(cantidad);
+			} while(rs.next() == true);
+			
+			if(arrayPrecio.size()>=1)
+			{
+				
+					for(int i=1; i<arrayCantidad.size();i++)
+					{
+						total = total + arrayCantidad.get(i);
+					}
+			
+				
+			}
+		     return total;
+
+		} catch (SQLException e)
+		{
+			e.printStackTrace();
+			return 0;
+		}
+	}*/
 	public void eliminarTablaCompra(Statement state)
 	{
 		

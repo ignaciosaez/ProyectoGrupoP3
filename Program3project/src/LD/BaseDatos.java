@@ -124,7 +124,7 @@ public class BaseDatos
 		}
 	}
 	
-	public static void crearTablaCompraBD()
+	public static void crearTablaCarritoCompraBD()
 	{
 		if (statement==null) return; 
 		try 

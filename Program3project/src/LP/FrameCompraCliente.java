@@ -53,9 +53,7 @@ public class FrameCompraCliente extends JFrame implements ActionListener
 	static Connection connection ;
 	Connection con= BaseDatos.getConnection();
 	private JTable tabla;
-	private JTable tablaCarrito;
 	private DefaultTableModel modelo;
-	private DefaultTableModel modeloCarrito;
 	private JSpinner spinnerCantidad;
 	private int filaseleccionada;
 	private String codigo;
@@ -109,19 +107,7 @@ public class FrameCompraCliente extends JFrame implements ActionListener
 		btnAnadir.setBounds(1100, 500, 200, 50);
 		contentPane.add(btnAnadir);
 		
-		btnEliminar = new JButton("Eliminar del carrito");
-		btnEliminar.setActionCommand(BUTTON_ELIMINARDELCARRITO);
-		btnEliminar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnEliminar.addActionListener(this);
-		btnEliminar.setBounds(1100, 550, 200, 50);
-		contentPane.add(btnEliminar);
-		
-		btnComprar = new JButton("Comprar");
-		btnComprar.setActionCommand(BUTTON_COMPRARPRODUCTOS);
-		btnComprar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnComprar.addActionListener(this);
-		btnComprar.setBounds(1100, 600, 200, 50);
-		contentPane.add(btnComprar);
+
 		
 		btnNewButtonCancelar = new JButton("Cancelar");
 		btnNewButtonCancelar.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -131,10 +117,7 @@ public class FrameCompraCliente extends JFrame implements ActionListener
 		btnNewButtonCancelar.addActionListener(this);
 		
 
-		JLabel lblcarritoCompra = new JLabel("CARRITO DE LA COMPRA");
-		lblcarritoCompra.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblcarritoCompra.setBounds(10, 470, 242, 33);
-		contentPane.add(lblcarritoCompra);
+		
 		
 		spinnerCantidad = new JSpinner();
 		spinnerCantidad.setModel(new SpinnerNumberModel(1, 1, 100, 1));
@@ -170,20 +153,6 @@ public class FrameCompraCliente extends JFrame implements ActionListener
 			modelo.addRow(datos.get(i));
 			
 		}
-		
-		tablaCarrito= new JTable();
-		scroll= new JScrollPane();
-		scroll.setBounds(10, 500, 1000, 200);
-		getContentPane().add(scroll);
-		scroll.setViewportView(tablaCarrito); 
-		
-		modeloCarrito= new DefaultTableModel();
-		modeloCarrito.addColumn("Código");
-		modeloCarrito.addColumn("Nombre");
-		modeloCarrito.addColumn("Descripcion");
-		modeloCarrito.addColumn("Categoria");
-		modeloCarrito.addColumn("Precio");
-		tablaCarrito.setModel(modeloCarrito);
 		
 	
 		tabla.addMouseListener(new MouseListener() {
@@ -227,11 +196,11 @@ public class FrameCompraCliente extends JFrame implements ActionListener
 		
 	}
 
-	private void ComprarProducto()
+	private void AñadirAlcarritoComprarProducto()
 	{
 		
 		BaseDatos.getConnection();
-		BaseDatos.crearTablaCompraBD();
+		BaseDatos.crearTablaCarritoCompraBD();
 		Statement state = BaseDatos.getStatement();
 		gestorClientes obj= new gestorClientes();
 		cantidad=(int) spinnerCantidad.getValue();
@@ -248,41 +217,15 @@ public class FrameCompraCliente extends JFrame implements ActionListener
 		
 	}
 	
-	private void anadirCarrito()
-	{
-
-		Object[] fila = new Object[5];
-		
-		fila[0] = codigo;
-		fila[1] = nombre;
-		fila[2] = Descripcion;
-		fila[3] = categoria;
-		fila[4] = precio;
-		modelo.removeRow(filaseleccionada);
-		modeloCarrito.addRow(fila);
-		
-	}
 	
-	private void eliminarCarrito()
-	{
-		
-	}
-
 	@Override
 	public void actionPerformed(ActionEvent arg0) 
 	{
 		switch(arg0.getActionCommand())
 		{
 		
-		case BUTTON_ANADIRCARRITO: anadirCarrito();
-			
-			break;
-			
-		case BUTTON_ELIMINARDELCARRITO: eliminarCarrito();
-			
-			break;
-			
-		case BUTTON_COMPRARPRODUCTOS: ComprarProducto();
+	
+		case BUTTON_ANADIRCARRITO: AñadirAlcarritoComprarProducto();
 		
 		break;
 		

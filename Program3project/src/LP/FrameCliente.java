@@ -27,11 +27,11 @@ public class FrameCliente extends JFrame
 	private JPanel contentPane;
 	private JMenuBar menu;
 	private JMenu MenuEntrar;
-	private JMenu MenuRegistrarse;
+	private JMenu MenuCarrito;
 	private JTextField texto;
 	private JMenuItem itemEntrarCliente;
 	private JMenuItem itemEntrarComprar;
-	private JMenuItem itemRegistrarcliente;;
+	private JMenuItem itemVerProductos;;
 	private JLabel fondopantalla;
 	
 	String usuario;
@@ -88,23 +88,23 @@ public class FrameCliente extends JFrame
 		});
 		MenuEntrar.add(itemEntrarComprar);
 		
-		MenuRegistrarse = new JMenu("CARRITO DE COMPRA");
-		MenuRegistrarse.setFont(new Font("Segoe UI", Font.PLAIN, 28));
-		MenuRegistrarse.setForeground(Color.BLUE);
-		menu.add(MenuRegistrarse);
+		MenuCarrito = new JMenu("CARRITO DE COMPRA");
+		MenuCarrito.setFont(new Font("Segoe UI", Font.PLAIN, 28));
+		MenuCarrito.setForeground(Color.BLUE);
+		menu.add(MenuCarrito);
 		
-		itemRegistrarcliente = new JMenuItem("Ver productos comprados");
-		itemRegistrarcliente.setFont(new Font("Segoe UI", Font.PLAIN, 21));
-		itemRegistrarcliente.addActionListener(new ActionListener() {
+		itemVerProductos = new JMenuItem("Ver productos comprados");
+		itemVerProductos.setFont(new Font("Segoe UI", Font.PLAIN, 21));
+		itemVerProductos.addActionListener(new ActionListener() {
 		        public void actionPerformed(ActionEvent ev) 
 		        
 		        {
-		        	FrameRegistrarCliente obj= new FrameRegistrarCliente();
-		    		obj.setVisible(true); 
+		        	FrameCarritoCompra obj= new FrameCarritoCompra();
+		        	obj.setVisible(true);
 		        }
 		    });
 		
-		MenuRegistrarse.add(itemRegistrarcliente);
+		MenuCarrito.add(itemVerProductos);
 		
 	}
 	
