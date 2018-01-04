@@ -50,7 +50,7 @@ public class PaginaPrincipal extends JFrame
 		
 		
 		setForeground(Color.BLACK);
-		setTitle("AMAZON DEUSTO-ACCESO AL PROGRAMA");
+		setTitle("ACCESO AL PROGRAMA");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(450, 200, 549, 453);
 		this.setExtendedState(MAXIMIZED_BOTH);
@@ -68,13 +68,13 @@ public class PaginaPrincipal extends JFrame
 		
 		
 		MenuEntrar = new JMenu("ENTRAR");
-		MenuEntrar.setFont(new Font("Segoe UI", Font.PLAIN, 28));
+		MenuEntrar.setFont(new Font("Segoe UI", Font.PLAIN, 40));
 		menu.add(MenuEntrar);
 		
-		MenuEntrar.setForeground(Color.BLACK);
+		MenuEntrar.setForeground(Color.RED);
 		
 		itemEntrarCliente = new JMenuItem("Entrar como cliente");
-		itemEntrarCliente.setFont(new Font("Segoe UI", Font.PLAIN, 21));
+		itemEntrarCliente.setFont(new Font("Segoe UI", Font.PLAIN, 24));
 		itemEntrarCliente.addActionListener(new ActionListener() {
 		        public void actionPerformed(ActionEvent ev) 
 		        
@@ -87,7 +87,7 @@ public class PaginaPrincipal extends JFrame
 		MenuEntrar.add(itemEntrarCliente);
 		
 		itemEntrarTrabajador = new JMenuItem("Entrar como trabajador");		
-		itemEntrarTrabajador.setFont(new Font("Segoe UI", Font.PLAIN, 21));
+		itemEntrarTrabajador.setFont(new Font("Segoe UI", Font.PLAIN, 24));
 		itemEntrarTrabajador.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent ev) 
 	        
@@ -99,12 +99,12 @@ public class PaginaPrincipal extends JFrame
 		MenuEntrar.add(itemEntrarTrabajador);
 		
 		MenuRegistrarse = new JMenu("REGISTRASE");
-		MenuRegistrarse.setFont(new Font("Segoe UI", Font.PLAIN, 28));
+		MenuRegistrarse.setFont(new Font("Segoe UI", Font.PLAIN, 40));
 		MenuRegistrarse.setForeground(Color.BLUE);
 		menu.add(MenuRegistrarse);
 		
 		itemRegistrarcliente = new JMenuItem("Registrarse / crear nuevo usuario");
-		itemRegistrarcliente.setFont(new Font("Segoe UI", Font.PLAIN, 21));
+		itemRegistrarcliente.setFont(new Font("Segoe UI", Font.PLAIN, 24));
 		itemRegistrarcliente.addActionListener(new ActionListener() {
 		        public void actionPerformed(ActionEvent ev) 
 		        
@@ -118,15 +118,15 @@ public class PaginaPrincipal extends JFrame
 		
 		fondopantalla = new JLabel("");
 		fondopantalla.setIcon(new ImageIcon(PaginaPrincipal.class.getResource("/imagenes/70030553-shop-wallpapers.jpg")));
-		fondopantalla.setBounds(0,0,3200,1000 );
+		fondopantalla.setBounds(150,0,3000,1000 );
 		fondopantalla.setOpaque(false);
 		getContentPane().add(fondopantalla);
 		
 		JTextArea txtrBienevnidoAAmazon = new JTextArea();
-		txtrBienevnidoAAmazon.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 27));
-		txtrBienevnidoAAmazon.setText("Bienvenido a AMAZON DEUSTO SHOP!!");
+		txtrBienevnidoAAmazon.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 60));
+		txtrBienevnidoAAmazon.setText("Welcome to AMAZON DEUSTO SHOP!!!");
 		txtrBienevnidoAAmazon.setBackground(Color.gray);
-		txtrBienevnidoAAmazon.setBounds(706, 56, 609, 58);
+		txtrBienevnidoAAmazon.setBounds(150, 30, 1325, 70);
 		contentPane.add(txtrBienevnidoAAmazon);
 		
 		
