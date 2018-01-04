@@ -36,8 +36,12 @@ public class PaginaPrincipal extends JFrame
 	private JMenuItem itemRegistrarcliente;;
 	private JLabel fondopantalla;
 	
+	//recogeremos el usuario para luego en la ventana de comprar producto podamos tenerlo y guardar asi su transacción
+	
+	
 	public PaginaPrincipal() 
 	{	
+		
 		AtributosVentana();
 	}
 	

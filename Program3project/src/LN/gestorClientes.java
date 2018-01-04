@@ -93,6 +93,22 @@ public class gestorClientes
 			
 		
 	}
+	public void eliminarTablaCompra(Statement state)
+	{
+		
+		
+	
+			String SelectBD = "DROP TABLE CARRITOCOMPRA ";
+			try {
+				state.executeUpdate(SelectBD);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+	
+	}
+	
 	
 
 }

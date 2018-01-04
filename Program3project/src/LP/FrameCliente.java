@@ -34,8 +34,11 @@ public class FrameCliente extends JFrame
 	private JMenuItem itemRegistrarcliente;;
 	private JLabel fondopantalla;
 	
-	public FrameCliente() 
+	String usuario;
+	
+	public FrameCliente( String usuario) 
 	{	
+		this.usuario=usuario;
 		AtributosVentana();
 	}
 	
@@ -77,6 +80,8 @@ public class FrameCliente extends JFrame
 			@Override
 			public void actionPerformed(ActionEvent e) 
 			{
+				FrameCompraCliente obj= new FrameCompraCliente(usuario);
+				obj.setVisible(true);
 				// TODO Auto-generated method stub
 				
 			}
@@ -101,9 +106,9 @@ public class FrameCliente extends JFrame
 		
 		MenuRegistrarse.add(itemRegistrarcliente);
 		
-		
+	}
 	
-
+/*
 		fondopantalla = new JLabel("");
 		fondopantalla.setIcon(new ImageIcon(PaginaPrincipal.class.getResource("/imagenes/logodeusto.jpg")));
 		fondopantalla.setBounds(0,0,1000,1000 );
@@ -114,7 +119,8 @@ public class FrameCliente extends JFrame
 		
 		this.setVisible(true);
 	}
-
+*/
+		
 }
 
 	

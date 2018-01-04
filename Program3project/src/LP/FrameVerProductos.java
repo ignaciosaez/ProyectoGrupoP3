@@ -104,19 +104,7 @@ public class FrameVerProductos extends JFrame implements ActionListener
 			modelo.addRow(datos.get(i));
 			
 		}
-		modelo.addTableModelListener(new TableModelListener() {
-			
-			@Override
-			public void tableChanged(TableModelEvent e) 
-			{
-				if(e.getType()==TableModelEvent.UPDATE)
-				{
-					int columna=e.getColumn();
-					int fila =e.getFirstRow();
-				}
-				
-			}
-		});
+		
 		
 	}
 

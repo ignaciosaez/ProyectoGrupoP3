@@ -102,9 +102,7 @@ public class FrameModificarProducto extends JFrame implements ActionListener
 		etiqueta.setForeground(Color.blue);
 		contentPane.add(etiqueta);
 		
-		etiqueta2 = new JLabel("Seleccione el producto que desea modificar");
-		etiqueta2.setBounds(1050, 420, 900, 60);
-		etiqueta2.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 30));
+	
 
 		
 
@@ -270,29 +268,6 @@ public class FrameModificarProducto extends JFrame implements ActionListener
 		
 	}
 
-
-
-
-	@Override
-	public void actionPerformed(ActionEvent arg0) 
-	{
-		switch(arg0.getActionCommand())
-		{
-		case BUTTON_MODIFICARPRODUCTOS: 
-		ModificarProducto();break;
-		
-		case BUTTON_CANCELAR:
-		this.dispose();break;
-		
-		case BUTTON_VERPRODUCTOSACTUALIZADOS: actualizartabla(); 
-		break;
-			
-		
-				
-		} 
-		
-	}
-	
 	private void ModificarProducto()
 	{
 		//falta validar que las tablas no esten vacias
@@ -327,6 +302,29 @@ public class FrameModificarProducto extends JFrame implements ActionListener
 		
 		construirTabla();
 	}
+
+
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) 
+	{
+		switch(arg0.getActionCommand())
+		{
+		case BUTTON_MODIFICARPRODUCTOS: 
+		ModificarProducto();break;
+		
+		case BUTTON_CANCELAR:
+		this.dispose();break;
+		
+		case BUTTON_VERPRODUCTOSACTUALIZADOS: actualizartabla(); 
+		break;
+			
+		
+				
+		} 
+		
+	}
+	
 
 	
 

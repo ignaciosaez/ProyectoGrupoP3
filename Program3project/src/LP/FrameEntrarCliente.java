@@ -149,7 +149,7 @@ public class FrameEntrarCliente extends JFrame implements ActionListener
 		existe =obj.validacionUsuarioContrasenaCliente(state, usuario, contrasena);
 		if(existe == true)
 		{
-			FrameCliente objFrameCliente= new FrameCliente();
+			FrameCliente objFrameCliente= new FrameCliente(usuario);
 			objFrameCliente.setVisible(true);
 			this.dispose();
 		}
