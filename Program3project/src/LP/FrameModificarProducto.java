@@ -58,7 +58,6 @@ public class FrameModificarProducto extends JFrame implements ActionListener
 	private JLabel etiqueta2;
 	static Connection connection ;
 	Connection con= BaseDatos.getConnection();
-	private JTable tabla;
 	private int filaseleccionada;
 	private String codigo;
 	private String nombre;
@@ -66,8 +65,8 @@ public class FrameModificarProducto extends JFrame implements ActionListener
 	private String categoria;
 	private double precio;
 	private JButton btnModificar;
-	private DefaultTableModel modelo;
-	
+	 DefaultTableModel modelo;
+	 JTable tabla;
 	
 	
 
@@ -193,36 +192,7 @@ public class FrameModificarProducto extends JFrame implements ActionListener
 		
 		construirTabla();
 		
-	}
-
-	private void construirTabla()
-	{
-		tabla= new JTable();
-		scroll= new JScrollPane();
-		scroll.setBounds(0, 0, 1930, 400);
-		getContentPane().add(scroll);
-		scroll.setViewportView(tabla); 
-		
-		modelo= new DefaultTableModel();
-		modelo.addColumn("Código");
-		modelo.addColumn("Nombre");
-		modelo.addColumn("Descripcion");
-		modelo.addColumn("Categoria");
-		modelo.addColumn("Precio");
-		tabla.setModel(modelo);
-		ArrayList<Object[]> datos= new ArrayList<Object[]>();
-		gestorTrabajadores obj = new gestorTrabajadores();
-		datos= obj.llenarTabla();
-		
-		for(int i=0;i<datos.size();i++)
-		{
-			modelo.addRow(datos.get(i));
-			
-		}
-		
-		modelo.fireTableDataChanged();
-		
-		tabla.addMouseListener(new MouseListener() {
+tabla.addMouseListener(new MouseListener() {
 			
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
@@ -269,6 +239,36 @@ public class FrameModificarProducto extends JFrame implements ActionListener
 				
 			}
 		});
+	}
+
+	private void construirTabla()
+	{
+		tabla= new JTable();
+		scroll= new JScrollPane();
+		scroll.setBounds(0, 0, 1930, 400);
+		getContentPane().add(scroll);
+		scroll.setViewportView(tabla); 
+		
+		modelo= new DefaultTableModel();
+		modelo.addColumn("Código");
+		modelo.addColumn("Nombre");
+		modelo.addColumn("Descripcion");
+		modelo.addColumn("Categoria");
+		modelo.addColumn("Precio");
+		tabla.setModel(modelo);
+		ArrayList<Object[]> datos= new ArrayList<Object[]>();
+		gestorTrabajadores obj = new gestorTrabajadores();
+		datos= obj.llenarTabla();
+		
+		for(int i=0;i<datos.size();i++)
+		{
+			modelo.addRow(datos.get(i));
+			
+		}
+		
+		modelo.fireTableDataChanged();
+		
+		
 		
 	}
 

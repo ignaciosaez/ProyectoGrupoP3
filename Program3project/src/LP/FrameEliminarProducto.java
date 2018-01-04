@@ -36,8 +36,8 @@ public class FrameEliminarProducto extends JFrame implements ActionListener {
 	private JPanel contentPane;
 	private JScrollPane scroll;
 	static Connection connection ;
-	private JTable tabla;
-	private DefaultTableModel modelo;
+	JTable tabla;
+	 DefaultTableModel modelo;
 	int filaseleccionada;
 	private  JButton btnEliminar;
 	private String codigo;
@@ -88,42 +88,9 @@ public class FrameEliminarProducto extends JFrame implements ActionListener {
 		btnNewButtonCancelar.setActionCommand(BUTTON_CANCELAR);
 		btnNewButtonCancelar.addActionListener(this);
 		
-		
-		
-		
-		
-		
-		
 		construirTabla();
 		
-	}
-
-	private void construirTabla()
-	{
-		tabla= new JTable();
-		scroll= new JScrollPane();
-		scroll.setBounds(10, 70, 1500, 400);
-		getContentPane().add(scroll);
-		scroll.setViewportView(tabla); 
-		
-		modelo= new DefaultTableModel();
-		modelo.addColumn("Código");
-		modelo.addColumn("Nombre");
-		modelo.addColumn("Descripcion");
-		modelo.addColumn("Categoria");
-		modelo.addColumn("Precio");
-		tabla.setModel(modelo);
-		
-		ArrayList<Object[]> datos= new ArrayList<Object[]>();
-		gestorTrabajadores obj = new gestorTrabajadores();
-		datos= obj.llenarTabla();
-		
-		for(int i=0;i<datos.size();i++)
-		{
-			modelo.addRow(datos.get(i));
-			
-		}
-		tabla.addMouseListener(new MouseListener() {
+tabla.addMouseListener(new MouseListener() {
 			
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
@@ -158,6 +125,35 @@ public class FrameEliminarProducto extends JFrame implements ActionListener {
 				
 			}
 		});
+		
+		
+	}
+
+	private void construirTabla()
+	{
+		tabla= new JTable();
+		scroll= new JScrollPane();
+		scroll.setBounds(10, 70, 1500, 400);
+		getContentPane().add(scroll);
+		scroll.setViewportView(tabla); 
+		
+		modelo= new DefaultTableModel();
+		modelo.addColumn("Código");
+		modelo.addColumn("Nombre");
+		modelo.addColumn("Descripcion");
+		modelo.addColumn("Categoria");
+		modelo.addColumn("Precio");
+		tabla.setModel(modelo);
+		
+		ArrayList<Object[]> datos= new ArrayList<Object[]>();
+		gestorTrabajadores obj = new gestorTrabajadores();
+		datos= obj.llenarTabla();
+		
+		for(int i=0;i<datos.size();i++)
+		{
+			modelo.addRow(datos.get(i));
+			
+		}
 		
 	}
 		

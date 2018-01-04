@@ -52,8 +52,8 @@ public class FrameCompraCliente extends JFrame implements ActionListener
 	private JLabel etiqueta;
 	static Connection connection ;
 	Connection con= BaseDatos.getConnection();
-	private JTable tabla;
-	private DefaultTableModel modelo;
+	 JTable tabla;
+	 DefaultTableModel modelo;
 	private JSpinner spinnerCantidad;
 	private int filaseleccionada;
 	private String codigo;
@@ -128,37 +128,9 @@ public class FrameCompraCliente extends JFrame implements ActionListener
 		spinnerCantidad.setBounds(1650, 70, 83, 72);
 		spinnerCantidad.setValue(1);
 		contentPane.add(spinnerCantidad);
+			
 		construirTabla();
 		
-	}
-
-	private void construirTabla()
-	{
-		tabla= new JTable();
-		scroll= new JScrollPane();
-		scroll.setBounds(10, 70, 1500, 400);
-		getContentPane().add(scroll);
-		scroll.setViewportView(tabla); 
-		
-		//DefaultTableModel modelo= new DefaultTableModel();
-		modelo= new DefaultTableModel();
-		modelo.addColumn("Código");
-		modelo.addColumn("Nombre");
-		modelo.addColumn("Descripcion");
-		modelo.addColumn("Categoria");
-		modelo.addColumn("Precio");
-		tabla.setModel(modelo);
-		ArrayList<Object[]> datos= new ArrayList<Object[]>();
-		gestorTrabajadores obj = new gestorTrabajadores();
-		datos= obj.llenarTabla();
-		
-		for(int i=0;i<datos.size();i++)
-		{
-			modelo.addRow(datos.get(i));
-			
-		}
-		
-	
 		tabla.addMouseListener(new MouseListener() {
 			
 			@Override
@@ -197,6 +169,37 @@ public class FrameCompraCliente extends JFrame implements ActionListener
 				
 			}
 		});
+		
+	}
+
+	private void construirTabla()
+	{
+		tabla= new JTable();
+		scroll= new JScrollPane();
+		scroll.setBounds(10, 70, 1500, 400);
+		getContentPane().add(scroll);
+		scroll.setViewportView(tabla); 
+		
+		//DefaultTableModel modelo= new DefaultTableModel();
+		modelo= new DefaultTableModel();
+		modelo.addColumn("Código");
+		modelo.addColumn("Nombre");
+		modelo.addColumn("Descripcion");
+		modelo.addColumn("Categoria");
+		modelo.addColumn("Precio");
+		tabla.setModel(modelo);
+		ArrayList<Object[]> datos= new ArrayList<Object[]>();
+		gestorTrabajadores obj = new gestorTrabajadores();
+		datos= obj.llenarTabla();
+		
+		for(int i=0;i<datos.size();i++)
+		{
+			modelo.addRow(datos.get(i));
+			
+		}
+		
+	
+		
 		
 	}
 

@@ -209,6 +209,7 @@ public class FrameCarritoCompra extends JFrame implements ActionListener
 		modelo= (DefaultTableModel) tabla.getModel();
 		modelo.removeRow(filaseleccionada);
 		obj.EliminarProductoCarrito(state, codigo, usuario);
+		totalapagar();
 
 		
 		
@@ -233,7 +234,6 @@ public class FrameCarritoCompra extends JFrame implements ActionListener
 			total=total+ precio * cantidad;
 			
 		}
-		System.out.println(total);
 		String stringPrecio=String.valueOf(total);
 		textField.setText(stringPrecio);
 		
