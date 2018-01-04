@@ -10,9 +10,6 @@ public class clsProducto implements Serializable
 	 private String categoria_producto;
 	 private double precio_producto;
 	 
-
-
-	 
 	 public clsProducto(String cod_producto,String nom_producto, String descripcion,double precio_producto )
 	 {
 		 
@@ -21,8 +18,10 @@ public class clsProducto implements Serializable
 		 this.descripcion_producto=descripcion;
 		 this.categoria_producto= cod_producto;
 		 this.precio_producto= precio_producto;
+	
 	 }
 	 
+
 	public String getCod_producto() {
 		return cod_producto;
 	}
@@ -65,6 +64,8 @@ public class clsProducto implements Serializable
 	public void setPrecio_producto(double precio_producto) {
 		this.precio_producto = precio_producto;
 	}
+
+
 	public String toString()
 	{		
 		StringBuffer salida = new StringBuffer();

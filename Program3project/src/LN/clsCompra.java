@@ -1,6 +1,7 @@
 package LN;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class clsCompra implements Serializable
 {
@@ -8,19 +9,20 @@ public class clsCompra implements Serializable
 	String codigo_producto;
 	String nombre_producto;
 	int cantidad;
+	ArrayList carritoCompra;
 	
-	public clsCompra(double precio,String codigo,String nombre,int cantidad)
+	public clsCompra(double precio,String codigo,String nombre,int cantidad, ArrayList carritoCompra)
 	{
 		this.precio= precio;
 		this.codigo_producto=codigo;
 		this.nombre_producto=nombre;
 		this.cantidad=cantidad;
-		
-		
+		this.carritoCompra=carritoCompra;
 	}
 	public double getPrecio() {
 		return precio;
 	}
+
 	public void setPrecio(double precio) {
 		this.precio = precio;
 	}
@@ -41,5 +43,11 @@ public class clsCompra implements Serializable
 	}
 	public void setCantidad(int cantidad) {
 		this.cantidad = cantidad;
+	}
+	public ArrayList getCarritoCompra() {
+		return carritoCompra;
+	}
+	public void setCarritoCompra(ArrayList carritoCompra) {
+		this.carritoCompra = carritoCompra;
 	}
 }

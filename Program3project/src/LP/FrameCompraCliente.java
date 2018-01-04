@@ -45,6 +45,8 @@ public class FrameCompraCliente extends JFrame implements ActionListener
 
 	private JButton btnNewButtonCancelar;
 	private JButton btnComprar;
+	private JButton btnEliminar;
+	private JButton btnAnadir;
 	private JPanel contentPane;
 	private JScrollPane scroll;
 	private JLabel etiqueta2;
@@ -52,6 +54,7 @@ public class FrameCompraCliente extends JFrame implements ActionListener
 	static Connection connection ;
 	Connection con= BaseDatos.getConnection();
 	private JTable tabla;
+	private JTable tablaCarrito;
 	private DefaultTableModel modelo;
 	private JSpinner spinnerCantidad;
 	private int filaseleccionada;
@@ -99,19 +102,39 @@ public class FrameCompraCliente extends JFrame implements ActionListener
 		etiqueta2.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 30));
 		contentPane.add(etiqueta2);
 		
-		btnNewButtonCancelar = new JButton(" CANCELAR");
+		btnAnadir = new JButton("Añadir al carrito");
+		btnAnadir.setActionCommand(BUTTON_ANADIRCARRITO);
+		btnAnadir.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnAnadir.addActionListener(this);
+		btnAnadir.setBounds(1100, 500, 200, 50);
+		contentPane.add(btnAnadir);
+		
+		btnEliminar = new JButton("Eliminar del carrito");
+		btnEliminar.setActionCommand(BUTTON_ANADIRCARRITO);
+		btnEliminar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnEliminar.addActionListener(this);
+		btnEliminar.setBounds(1100, 550, 200, 50);
+		contentPane.add(btnEliminar);
+		
+		btnComprar = new JButton("Comprar");
+		btnComprar.setActionCommand(BUTTON_COMPRARPRODUCTOS);
+		btnComprar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnComprar.addActionListener(this);
+		btnComprar.setBounds(1100, 600, 200, 50);
+		contentPane.add(btnComprar);
+		
+		btnNewButtonCancelar = new JButton("Cancelar");
 		btnNewButtonCancelar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnNewButtonCancelar.setBounds(1580, 750, 198, 48);
+		btnNewButtonCancelar.setBounds(1100, 650, 200, 50);
 		contentPane.add(btnNewButtonCancelar);
 		btnNewButtonCancelar.setActionCommand(BUTTON_CANCELAR);
 		btnNewButtonCancelar.addActionListener(this);
 		
-		btnComprar = new JButton("Añadir al carrito de compra");
-		btnComprar.setActionCommand(BUTTON_COMPRARPRODUCTOS);
-		btnComprar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnComprar.addActionListener(this);
-		btnComprar.setBounds(750, 750, 618, 50);
-		contentPane.add(btnComprar);
+
+		JLabel lblcarritoCompra = new JLabel("CARRITO DE LA COMPRA");
+		lblcarritoCompra.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblcarritoCompra.setBounds(10, 470, 242, 33);
+		contentPane.add(lblcarritoCompra);
 		
 		spinnerCantidad = new JSpinner();
 		spinnerCantidad.setModel(new SpinnerNumberModel(1, 1, 100, 1));
@@ -146,6 +169,22 @@ public class FrameCompraCliente extends JFrame implements ActionListener
 			modelo.addRow(datos.get(i));
 			
 		}
+		
+		tablaCarrito= new JTable();
+		scroll= new JScrollPane();
+		scroll.setBounds(10, 500, 1000, 200);
+		getContentPane().add(scroll);
+		scroll.setViewportView(tablaCarrito); 
+		
+		DefaultTableModel modeloCarrito= new DefaultTableModel();
+		modeloCarrito.addColumn("Código");
+		modeloCarrito.addColumn("Nombre");
+		modeloCarrito.addColumn("Descripcion");
+		modeloCarrito.addColumn("Categoria");
+		modeloCarrito.addColumn("Precio");
+		tablaCarrito.setModel(modeloCarrito);
+		
+	
 		tabla.addMouseListener(new MouseListener() {
 			
 			@Override
@@ -180,16 +219,10 @@ public class FrameCompraCliente extends JFrame implements ActionListener
 				nombre=(String)tabla.getValueAt(filaseleccionada, 1);
 				precio=(Double)tabla.getValueAt(filaseleccionada, 4);
 				
-			
-				
-				
-				
 			}
 		});
 		
 	}
-
-
 
 	private void ComprarProducto()
 	{
