@@ -42,6 +42,7 @@ public class FrameCarritoCompra extends JFrame implements ActionListener
 	private JButton btnNewButtonCancelar;
 	private JButton btnEliminar;
 	private JButton btnNewButtonFinalizarCompra;
+	private JLabel IMAGEN;
 	private JPanel contentPane;
 	private JScrollPane scroll;
 	static Connection connection ;
@@ -84,6 +85,8 @@ public class FrameCarritoCompra extends JFrame implements ActionListener
 		contentPane.setLayout(null);
 		
 		btnNewButtonFinalizarCompra = new JButton("FINALIZAR COMPRA");
+		btnNewButtonFinalizarCompra.setForeground(Color.DARK_GRAY);
+		btnNewButtonFinalizarCompra.setBackground(Color.GREEN);
 		btnNewButtonFinalizarCompra.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnNewButtonFinalizarCompra.setBounds(1180, 500, 358, 48);
 		contentPane.add(btnNewButtonFinalizarCompra);
@@ -99,7 +102,9 @@ public class FrameCarritoCompra extends JFrame implements ActionListener
 		btnEliminar.setBounds(1180, 600, 318, 50);
 		contentPane.add(btnEliminar);
 		
-		btnNewButtonCancelar = new JButton(" VOLVER ATRÁS");
+		btnNewButtonCancelar = new JButton("VOLVER ATRÁS");
+		btnNewButtonCancelar.setForeground(Color.DARK_GRAY);
+		btnNewButtonCancelar.setBackground(Color.RED);
 		btnNewButtonCancelar.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnNewButtonCancelar.setBounds(1180, 700, 198, 48);
 		contentPane.add(btnNewButtonCancelar);
@@ -112,11 +117,14 @@ public class FrameCarritoCompra extends JFrame implements ActionListener
 		lblNewLabel.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 30));
 		contentPane.add(lblNewLabel);
 		
+		
 		textField = new JTextField();
 		textField.setBounds(450, 480, 100, 60);
 		contentPane.add(textField);
 		textField.setColumns(10);
 	
+		
+		
 		construirTabla();
 		totalapagar();
 		tabla.addMouseListener(new MouseListener() {

@@ -101,6 +101,8 @@ public class FrameCompraCliente extends JFrame implements ActionListener
 		contentPane.add(etiqueta2);
 		
 		btnAnadir = new JButton("Añadir al carrito");
+		btnAnadir.setForeground(Color.DARK_GRAY);
+		btnAnadir.setBackground(Color.GREEN);
 		btnAnadir.setActionCommand(BUTTON_ANADIRCARRITO);
 		btnAnadir.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnAnadir.addActionListener(this);
@@ -110,6 +112,8 @@ public class FrameCompraCliente extends JFrame implements ActionListener
 
 		
 		btnNewButtonCancelar = new JButton("Cancelar");
+		btnNewButtonCancelar.setForeground(Color.DARK_GRAY);
+		btnNewButtonCancelar.setBackground(Color.RED);
 		btnNewButtonCancelar.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnNewButtonCancelar.setBounds(1100, 650, 200, 50);
 		contentPane.add(btnNewButtonCancelar);

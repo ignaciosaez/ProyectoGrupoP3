@@ -1,5 +1,8 @@
 package LP;
 
+import static COMUN.constantesActionCommand.BUTTON_CANCELAR;
+import static COMUN.constantesActionCommand.BUTTON_ELIMINARDELCARRITO;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -21,13 +24,15 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-public class FrameCliente extends JFrame 
+public class FrameCliente extends JFrame implements ActionListener 
 {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JMenuBar menu;
 	private JMenu MenuEntrar;
 	private JMenu MenuCarrito;
+	private JMenu MenuVolver;
+	private JButton btnNewButtonCancelar;
 	private JTextField texto;
 	private JMenuItem itemEntrarCliente;
 	private JMenuItem itemEntrarComprar;
@@ -106,6 +111,28 @@ public class FrameCliente extends JFrame
 		
 		MenuCarrito.add(itemVerProductos);
 		
+		btnNewButtonCancelar = new JButton("VOLVER ATRÁS");
+		btnNewButtonCancelar.setForeground(Color.DARK_GRAY);
+		btnNewButtonCancelar.setBackground(Color.RED);
+		btnNewButtonCancelar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnNewButtonCancelar.setBounds(1680, 860, 198, 48);
+		contentPane.add(btnNewButtonCancelar);
+		btnNewButtonCancelar.setActionCommand(BUTTON_CANCELAR);
+		btnNewButtonCancelar.addActionListener(this);
+		
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		switch(e.getActionCommand())
+		{
+			
+			
+			case BUTTON_CANCELAR: this.dispose();
+			break;
+		} 
 	}
 	
 /*
