@@ -166,6 +166,8 @@ public class FrameModificarProducto extends JFrame implements ActionListener
 		
 
 		btnModificar = new JButton("Modificar producto");
+		btnModificar.setForeground(Color.DARK_GRAY);
+		btnModificar.setBackground(Color.GREEN);
 		btnModificar.setActionCommand(BUTTON_MODIFICARPRODUCTOS);
 		btnModificar.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnModificar.addActionListener(this);
@@ -173,6 +175,8 @@ public class FrameModificarProducto extends JFrame implements ActionListener
 		contentPane.add(btnModificar);
 		
 		btnNewButtonCancelar = new JButton(" VOLVER ATRÁS");
+		btnNewButtonCancelar.setForeground(Color.DARK_GRAY);
+		btnNewButtonCancelar.setBackground(Color.RED);
 		btnNewButtonCancelar.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnNewButtonCancelar.setBounds(1380, 580, 198, 48);
 		contentPane.add(btnNewButtonCancelar);

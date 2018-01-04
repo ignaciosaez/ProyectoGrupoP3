@@ -72,12 +72,16 @@ public class FrameEliminarProducto extends JFrame implements ActionListener {
 		
 		btnEliminar = new JButton("ELIMINAR");
 		btnEliminar.setActionCommand("ELIMINAR");
+		btnEliminar.setForeground(Color.DARK_GRAY);
+		btnEliminar.setBackground(Color.GREEN);
 		btnEliminar.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnEliminar.addActionListener(this);
 		btnEliminar.setBounds(900, 580, 118, 50);
 		contentPane.add(btnEliminar);
 		
 		btnNewButtonCancelar = new JButton(" VOLVER ATRÁS");
+		btnNewButtonCancelar.setForeground(Color.DARK_GRAY);
+		btnNewButtonCancelar.setBackground(Color.RED);
 		btnNewButtonCancelar.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnNewButtonCancelar.setBounds(1180, 580, 198, 48);
 		contentPane.add(btnNewButtonCancelar);

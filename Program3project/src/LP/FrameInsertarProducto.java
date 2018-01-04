@@ -153,6 +153,8 @@ public class FrameInsertarProducto extends JFrame implements ActionListener
 		
 		
 		btnNewButtonEntrar = new JButton("AÑADIR PRODUCTO");
+		btnNewButtonEntrar.setForeground(Color.DARK_GRAY);
+		btnNewButtonEntrar.setBackground(Color.GREEN);
 		btnNewButtonEntrar.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnNewButtonEntrar.setBounds(800, 580, 300, 48);
 		btnNewButtonEntrar.setActionCommand(BUTTON_ANADIRPRODUCTO);
@@ -160,6 +162,8 @@ public class FrameInsertarProducto extends JFrame implements ActionListener
 		contentPane.add(btnNewButtonEntrar);
 		
 		btnNewButtonCancelar = new JButton("CANCELAR");
+		btnNewButtonCancelar.setForeground(Color.DARK_GRAY);
+		btnNewButtonCancelar.setBackground(Color.RED);
 		btnNewButtonCancelar.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnNewButtonCancelar.setBounds(1180, 580, 198, 48);
 		contentPane.add(btnNewButtonCancelar);

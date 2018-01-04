@@ -1,5 +1,7 @@
 package LP;
 
+import static COMUN.constantesActionCommand.BUTTON_CANCELAR;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -21,13 +23,14 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-public class FrameTrabajador extends JFrame 
+public class FrameTrabajador extends JFrame implements ActionListener 
 {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JMenuBar menu;
 	private JMenu MenuEntrar;
 	private JMenu MenuRegistrarse;
+	private JButton btnNewButtonCancelar;
 	private JTextField texto;
 	private JMenuItem itemInsertarProductos;
 	private JMenuItem itemEntrarEliminarProductos;
@@ -59,6 +62,15 @@ public class FrameTrabajador extends JFrame
 		
 		menu = new JMenuBar();
 		setJMenuBar(menu);
+		
+		btnNewButtonCancelar = new JButton("VOLVER ATRÁS");
+		btnNewButtonCancelar.setForeground(Color.DARK_GRAY);
+		btnNewButtonCancelar.setBackground(Color.RED);
+		btnNewButtonCancelar.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnNewButtonCancelar.setBounds(1680, 860, 198, 48);
+		contentPane.add(btnNewButtonCancelar);
+		btnNewButtonCancelar.setActionCommand(BUTTON_CANCELAR);
+		btnNewButtonCancelar.addActionListener(this);
 		
 		
 		
@@ -129,6 +141,18 @@ public class FrameTrabajador extends JFrame
 		
 		
 		this.setVisible(true);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		switch(arg0.getActionCommand())
+		{
+			
+			
+			case BUTTON_CANCELAR: this.dispose();
+			break;
+		} 
 	}
 
 }
