@@ -123,7 +123,8 @@ public class FrameCarritoCompra extends JFrame implements ActionListener
 		
 		
 		construirTabla();
-		totalapagar();
+		totalPagar();
+		//totalapagar();
 		
 		tabla.addMouseListener(new MouseListener() {
 			
@@ -183,15 +184,9 @@ public class FrameCarritoCompra extends JFrame implements ActionListener
 		modelo.addColumn("Cantidad");
 		modelo.addColumn("Usuario");
 		tabla.setModel(modelo);
-		ArrayList<Object[]> datos= new ArrayList<Object[]>();
-		gestorClientes obj= new  gestorClientes();
-		datos=obj.llenarTablaCarrito();
 		
-		for(int i=0;i<datos.size();i++)
-		{
-			modelo.addRow(datos.get(i));
-			
-		}
+		gestorClientes obj= new gestorClientes();
+		obj.devolverTabla(tabla);
 		
 		
 		
@@ -205,35 +200,20 @@ public class FrameCarritoCompra extends JFrame implements ActionListener
 		modelo= (DefaultTableModel) tabla.getModel();
 		modelo.removeRow(filaseleccionada);
 		obj.EliminarProductoCarrito(state, codigo, usuario);
-		totalapagar();
+		totalPagar();
 
 		
 		
 	}
-
-	
-	private void totalapagar()
+	public void totalPagar()
 	{
 		gestorClientes obj= new gestorClientes();
-		
-		int filaseleccionada;
-		int columnaseleccionada;
-		double total=0;
-		double precio=0;
-		int cantidad=0;
-		Statement state = BaseDatos.getStatement();
-		for(int i=0;i<tabla.getRowCount();i++)
-		{
-			precio=(double) tabla.getValueAt(i,2 );
-			cantidad=(int) tabla.getValueAt(i,3 );
-			
-			total=total+ precio * cantidad;
-			
-		}
+		double total=obj.totalPAGAR(tabla);
 		String stringPrecio=String.valueOf(total);
 		textField.setText(stringPrecio+" €");
 		
 	}
+
 	@Override
 	public void actionPerformed(ActionEvent arg0) 
 	{

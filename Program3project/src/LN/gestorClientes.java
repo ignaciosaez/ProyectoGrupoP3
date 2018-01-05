@@ -9,6 +9,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 import LD.BaseDatos;
 
@@ -159,45 +161,44 @@ public class gestorClientes
 		
 	
 	}
-	/*
-	public double TotalApagar(Statement state, Connection connection)
+	public JTable devolverTabla( JTable tabla) 
 	{
-		try 
+		ArrayList<Object[]> datos= new ArrayList<Object[]>();
+		datos= llenarTablaCarrito();
+		DefaultTableModel modelo;
+		modelo=(DefaultTableModel) tabla.getModel();
+		for(int i=0;i<datos.size();i++)
 		{
-			double total=0;
-			ArrayList<	Double> arrayPrecio = new ArrayList<Double>();
-			ArrayList<Integer> arrayCantidad = new ArrayList<Integer>();
-			String query = "select * from CARRITOCOMPRA";
-			PreparedStatement pat = connection.prepareStatement(query);
-			ResultSet rs = pat.executeQuery();
+			modelo.addRow(datos.get(i));
 			
-			//Recorremos el cursor hasta que no haya más registros
-			do
-			{
-				double precio= rs.getDouble("precio_producto");
-			    arrayPrecio.add(precio);
-			    int cantidad= rs.getInt("cantidad");
-			    arrayCantidad.add(cantidad);
-			} while(rs.next() == true);
-			
-			if(arrayPrecio.size()>=1)
-			{
-				
-					for(int i=1; i<arrayCantidad.size();i++)
-					{
-						total = total + arrayCantidad.get(i);
-					}
-			
-				
-			}
-		     return total;
-
-		} catch (SQLException e)
-		{
-			e.printStackTrace();
-			return 0;
 		}
-	}*/
+		return tabla;
+	}
+	public double totalPAGAR(JTable tabla)
+	{
+		
+		double total=0;
+		
+		int filaseleccionada;
+		int columnaseleccionada;
+		double precio=0;
+		int cantidad=0;
+		Statement state = BaseDatos.getStatement();
+		for(int i=0;i<tabla.getRowCount();i++)
+		{
+			precio=(double) tabla.getValueAt(i,2 );
+			cantidad=(int) tabla.getValueAt(i,3 );
+			
+			total=total+ precio * cantidad;
+			
+		}
+		
+		return total;
+		
+		
+		
+		
+	}
 	public void eliminarTablaCompra(Statement state)
 	{
 		

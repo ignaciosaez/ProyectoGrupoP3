@@ -178,6 +178,28 @@ public class gestorTrabajadores {
 		
 	}
 	
+	public ArrayList<clsProducto> DevolverProductos (Statement state)
+	{
+		ArrayList<clsProducto> ArrayP = new ArrayList<clsProducto>();
+		
+		String SelectBD = "select * from PRODUCTO ";
+		ResultSet rs;
+		try
+		{
+			rs = state.executeQuery(SelectBD);
+			while(rs.next())
+			{
+				ArrayP.add(new clsProducto( rs.getString("cod_producto"),rs.getString("nombre_producto"), rs.getString("descripcion_producto"),rs.getString("categoria_producto") ,rs.getDouble("precio_producto")));
+			}
+		} catch (SQLException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return ArrayP;
+	}
+	
 }
 
 

@@ -10,7 +10,7 @@ public class clsProducto implements Serializable
 	 private String categoria_producto;
 	 private double precio_producto;
 	 
-	 public clsProducto(String cod_producto,String nom_producto, String descripcion,double precio_producto )
+	 public clsProducto(String cod_producto,String nom_producto, String descripcion,String categoria,double precio_producto )
 	 {
 		 
 		 this.cod_producto= cod_producto;
