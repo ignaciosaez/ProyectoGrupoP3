@@ -134,11 +134,13 @@ public class FrameTrabajador extends JFrame implements ActionListener
 		});
 		MenuEntrar.add(itemEntrarEliminarProductos);
 		
-		MenuRegistrarse = new JMenu("DATOS TRABAJADORES");
-		MenuRegistrarse.setFont(new Font("Segoe UI", Font.PLAIN, 28));
-		MenuRegistrarse.setForeground(Color.BLUE);
-		menu.add(MenuRegistrarse);
 		
+		
+		fondopantalla = new JLabel("");
+		fondopantalla.setIcon(new ImageIcon(PaginaPrincipal.class.getResource("/imagenes/70030553-shop-wallpapers.jpg")));
+		fondopantalla.setBounds(150,0,3000,1000 );
+		fondopantalla.setOpaque(false);
+		getContentPane().add(fondopantalla);
 		
 		this.setVisible(true);
 	}

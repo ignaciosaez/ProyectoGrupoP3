@@ -55,6 +55,7 @@ public class FrameModificarProducto extends JFrame implements ActionListener
 	private JPanel contentPane;
 	private JScrollPane scroll;
 	private JLabel etiqueta;
+	private JLabel etiqueta1;
 	private JLabel etiqueta2;
 	static Connection connection ;
 	Connection con= BaseDatos.getConnection();
@@ -95,8 +96,14 @@ public class FrameModificarProducto extends JFrame implements ActionListener
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		etiqueta1 = new JLabel("PRODUCTOS EN EL CATALOGO");
+		etiqueta1.setBounds(10, 10, 900, 60);
+		etiqueta1.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 30));
+		etiqueta1.setForeground(Color.blue);
+		contentPane.add(etiqueta1);  
+		
 		etiqueta = new JLabel("Seleccione el producto que desea modificar");
-		etiqueta.setBounds(1050, 420, 900, 60);
+		etiqueta.setBounds(1050, 490, 900, 60);
 		etiqueta.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 30));
 		etiqueta.setForeground(Color.blue);
 		contentPane.add(etiqueta);
@@ -123,18 +130,18 @@ public class FrameModificarProducto extends JFrame implements ActionListener
 		contentPane.add(lblNewLabel1);
 		
 		textField1 = new JTextField();
-		textField1.setBounds(100, 630, 400, 200);
+		textField1.setBounds(100, 630, 400, 100);
 		contentPane.add(textField1);
 		textField1.setColumns(10);
 		
 
 		lblNewLabel2 = new JLabel("Categoria");
-		lblNewLabel2.setBounds(100, 830, 400, 60);
+		lblNewLabel2.setBounds(100, 730, 400, 60);
 		lblNewLabel2.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 30));
 		contentPane.add(lblNewLabel2);
 		
 		textField2 = new JTextField();
-		textField2.setBounds(100, 900, 400, 60);
+		textField2.setBounds(100, 800, 400, 60);
 		contentPane.add(textField2);
 		textField2.setColumns(10);
 		
@@ -170,21 +177,21 @@ public class FrameModificarProducto extends JFrame implements ActionListener
 		btnModificar.setActionCommand(BUTTON_MODIFICARPRODUCTOS);
 		btnModificar.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnModificar.addActionListener(this);
-		btnModificar.setBounds(900, 580, 418, 50);
+		btnModificar.setBounds(900, 800, 418, 50);
 		contentPane.add(btnModificar);
 		
 		btnNewButtonCancelar = new JButton(" VOLVER ATRÁS");
 		btnNewButtonCancelar.setForeground(Color.DARK_GRAY);
 		btnNewButtonCancelar.setBackground(Color.RED);
 		btnNewButtonCancelar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnNewButtonCancelar.setBounds(1380, 580, 198, 48);
+		btnNewButtonCancelar.setBounds(1380, 800, 198, 48);
 		contentPane.add(btnNewButtonCancelar);
 		btnNewButtonCancelar.setActionCommand(BUTTON_CANCELAR);
 		btnNewButtonCancelar.addActionListener(this);
 	//modificar producto
 		btnNewButtonVerProductosActualizados = new JButton("ACTUALIZAR TABLA");
 		btnNewButtonVerProductosActualizados.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnNewButtonVerProductosActualizados.setBounds(1580, 580, 280, 48);
+		btnNewButtonVerProductosActualizados.setBounds(1580, 800, 280, 48);
 		contentPane.add(btnNewButtonVerProductosActualizados);
 		btnNewButtonVerProductosActualizados.setActionCommand(BUTTON_VERPRODUCTOSACTUALIZADOS);
 		btnNewButtonVerProductosActualizados.addActionListener(this);
@@ -192,7 +199,7 @@ public class FrameModificarProducto extends JFrame implements ActionListener
 		
 		construirTabla();
 		
-tabla.addMouseListener(new MouseListener() {
+		tabla.addMouseListener(new MouseListener() {
 			
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
@@ -245,7 +252,7 @@ tabla.addMouseListener(new MouseListener() {
 	{
 		tabla= new JTable();
 		scroll= new JScrollPane();
-		scroll.setBounds(0, 0, 1930, 400);
+		scroll.setBounds(0, 100, 1930, 300);
 		getContentPane().add(scroll);
 		scroll.setViewportView(tabla); 
 		

@@ -42,7 +42,8 @@ public class FrameVerProductos extends JFrame implements ActionListener
 	Connection con= BaseDatos.getConnection();
 	private JTable tabla;
 	private DefaultTableModel modelo;
-
+	private JLabel etiqueta;
+	
 	public FrameVerProductos() 
 	{
 		atributosVentana();
@@ -68,6 +69,11 @@ public class FrameVerProductos extends JFrame implements ActionListener
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		etiqueta = new JLabel("PRODUCTOS EN EL CATALOGO");
+		etiqueta.setBounds(10, 10, 900, 60);
+		etiqueta.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 30));
+		etiqueta.setForeground(Color.blue);
+		contentPane.add(etiqueta); 
 		
 		btnNewButtonCancelar = new JButton(" VOLVER ATRÁS");
 		btnNewButtonCancelar.setForeground(Color.DARK_GRAY);

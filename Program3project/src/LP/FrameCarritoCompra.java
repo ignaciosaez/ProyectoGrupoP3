@@ -54,8 +54,8 @@ public class FrameCarritoCompra extends JFrame implements ActionListener
 	private int filasTabla;
 	private int filaseleccionada;
 	private String codigo;
-	private String usuario;
-
+	private String usuario;	
+	private JLabel etiqueta;
 
 
 	public FrameCarritoCompra() 
@@ -84,11 +84,17 @@ public class FrameCarritoCompra extends JFrame implements ActionListener
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		etiqueta = new JLabel("CARRITO DE COMPRA");
+		etiqueta.setBounds(10, 10, 900, 60);
+		etiqueta.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 30));
+		etiqueta.setForeground(Color.blue);
+		contentPane.add(etiqueta); 
+		
 		btnNewButtonFinalizarCompra = new JButton("FINALIZAR COMPRA");
 		btnNewButtonFinalizarCompra.setForeground(Color.DARK_GRAY);
 		btnNewButtonFinalizarCompra.setBackground(Color.GREEN);
 		btnNewButtonFinalizarCompra.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnNewButtonFinalizarCompra.setBounds(1180, 500, 358, 48);
+		btnNewButtonFinalizarCompra.setBounds(750, 500, 358, 48);
 		contentPane.add(btnNewButtonFinalizarCompra);
 		btnNewButtonFinalizarCompra.setActionCommand(BUTTON_COMPRARPRODUCTOS);
 		btnNewButtonFinalizarCompra.addActionListener(this);
@@ -99,14 +105,14 @@ public class FrameCarritoCompra extends JFrame implements ActionListener
 		btnEliminar.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnEliminar.addActionListener(this);
 		btnEliminar.setActionCommand(BUTTON_ELIMINARDELCARRITO);
-		btnEliminar.setBounds(1180, 600, 318, 50);
+		btnEliminar.setBounds(1280, 500, 318, 50);
 		contentPane.add(btnEliminar);
 		
 		btnNewButtonCancelar = new JButton("VOLVER ATRÁS");
 		btnNewButtonCancelar.setForeground(Color.DARK_GRAY);
 		btnNewButtonCancelar.setBackground(Color.RED);
 		btnNewButtonCancelar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnNewButtonCancelar.setBounds(1180, 700, 198, 48);
+		btnNewButtonCancelar.setBounds(1680, 860, 198, 48);
 		contentPane.add(btnNewButtonCancelar);
 		btnNewButtonCancelar.setActionCommand(BUTTON_CANCELAR);
 		btnNewButtonCancelar.addActionListener(this);
@@ -127,6 +133,7 @@ public class FrameCarritoCompra extends JFrame implements ActionListener
 		
 		construirTabla();
 		totalapagar();
+		
 		tabla.addMouseListener(new MouseListener() {
 			
 			@Override
@@ -197,8 +204,6 @@ public class FrameCarritoCompra extends JFrame implements ActionListener
 		
 		
 		
-		
-		
 	}
 
 
@@ -235,7 +240,7 @@ public class FrameCarritoCompra extends JFrame implements ActionListener
 			
 		}
 		String stringPrecio=String.valueOf(total);
-		textField.setText(stringPrecio);
+		textField.setText(stringPrecio+" €");
 		
 	}
 	@Override

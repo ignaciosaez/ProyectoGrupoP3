@@ -120,7 +120,11 @@ public class FrameCliente extends JFrame implements ActionListener
 		btnNewButtonCancelar.setActionCommand(BUTTON_CANCELAR);
 		btnNewButtonCancelar.addActionListener(this);
 		
-		
+		fondopantalla = new JLabel("");
+		fondopantalla.setIcon(new ImageIcon(PaginaPrincipal.class.getResource("/imagenes/70030553-shop-wallpapers.jpg")));
+		fondopantalla.setBounds(150,0,3000,1000 );
+		fondopantalla.setOpaque(false);
+		getContentPane().add(fondopantalla);
 	}
 
 	@Override

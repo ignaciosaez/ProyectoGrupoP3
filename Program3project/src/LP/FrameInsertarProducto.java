@@ -156,7 +156,7 @@ public class FrameInsertarProducto extends JFrame implements ActionListener
 		btnNewButtonEntrar.setForeground(Color.DARK_GRAY);
 		btnNewButtonEntrar.setBackground(Color.GREEN);
 		btnNewButtonEntrar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnNewButtonEntrar.setBounds(800, 580, 300, 48);
+		btnNewButtonEntrar.setBounds(750, 800, 300, 48);
 		btnNewButtonEntrar.setActionCommand(BUTTON_ANADIRPRODUCTO);
 		btnNewButtonEntrar.addActionListener(this);
 		contentPane.add(btnNewButtonEntrar);
@@ -165,7 +165,7 @@ public class FrameInsertarProducto extends JFrame implements ActionListener
 		btnNewButtonCancelar.setForeground(Color.DARK_GRAY);
 		btnNewButtonCancelar.setBackground(Color.RED);
 		btnNewButtonCancelar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnNewButtonCancelar.setBounds(1180, 580, 198, 48);
+		btnNewButtonCancelar.setBounds(1200, 800, 198, 48);
 		contentPane.add(btnNewButtonCancelar);
 		btnNewButtonCancelar.setActionCommand(BUTTON_CANCELAR);
 		btnNewButtonCancelar.addActionListener(this);
@@ -173,7 +173,7 @@ public class FrameInsertarProducto extends JFrame implements ActionListener
 	
 		btnNewButtonVerProductos = new JButton("VER PRODUCTOS EXISTENTES");
 		btnNewButtonVerProductos.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnNewButtonVerProductos.setBounds(1480, 580, 380, 48);
+		btnNewButtonVerProductos.setBounds(1480, 700, 380, 48);
 		contentPane.add(btnNewButtonVerProductos);
 		btnNewButtonVerProductos.setActionCommand(BUTTON_VERPRODUCTOS);
 		btnNewButtonVerProductos.addActionListener(this);
@@ -182,7 +182,7 @@ public class FrameInsertarProducto extends JFrame implements ActionListener
 
 		btnNewButtonVerProductosActualizados = new JButton("ACTUALIZAR TABLA");
 		btnNewButtonVerProductos.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnNewButtonVerProductosActualizados.setBounds(1480, 680, 380, 48);
+		btnNewButtonVerProductosActualizados.setBounds(1480, 800, 380, 48);
 		contentPane.add(btnNewButtonVerProductosActualizados);
 		btnNewButtonVerProductosActualizados.setActionCommand(BUTTON_VERPRODUCTOSACTUALIZADOS);
 		btnNewButtonVerProductosActualizados.addActionListener(this);
@@ -231,7 +231,7 @@ public class FrameInsertarProducto extends JFrame implements ActionListener
 		
 		tabla= new JTable();
 		scroll= new JScrollPane();
-		scroll.setBounds(1200, 70, 700, 400);
+		scroll.setBounds(1200, 250, 700, 400);
 		getContentPane().add(scroll);
 		scroll.setViewportView(tabla); 
 		
