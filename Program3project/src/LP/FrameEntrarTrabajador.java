@@ -18,6 +18,8 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import org.edisoncor.gui.varios.ClockDigital;
+
 import LD.BaseDatos;
 import LN.gestorClientes;
 import LN.gestorTrabajadores;
@@ -118,6 +120,9 @@ public class FrameEntrarTrabajador extends JFrame implements ActionListener
 		textFieldUsuario.setText("GARBI");
 		contrasenaPasswordField.setText("GARBI");
 	
+		ClockDigital clockDigital = new ClockDigital();
+		clockDigital.setBounds(1700, 15, 259, 69);
+		contentPane.add(clockDigital);
 	
 	}
 

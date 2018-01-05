@@ -128,7 +128,7 @@ public class FrameCompraCliente extends JFrame implements ActionListener
 		spinnerCantidad.setBounds(1650, 70, 83, 72);
 		spinnerCantidad.setValue(1);
 		contentPane.add(spinnerCantidad);
-			
+		
 		construirTabla();
 		
 		tabla.addMouseListener(new MouseListener() {
@@ -169,6 +169,7 @@ public class FrameCompraCliente extends JFrame implements ActionListener
 				
 			}
 		});
+		
 		
 	}
 

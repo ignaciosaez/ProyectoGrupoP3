@@ -23,6 +23,8 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import org.edisoncor.gui.varios.ClockFace;
+
 public class FrameTrabajador extends JFrame implements ActionListener 
 {
 	private static final long serialVersionUID = 1L;
@@ -138,9 +140,13 @@ public class FrameTrabajador extends JFrame implements ActionListener
 		
 		fondopantalla = new JLabel("");
 		fondopantalla.setIcon(new ImageIcon(PaginaPrincipal.class.getResource("/imagenes/70030553-shop-wallpapers.jpg")));
-		fondopantalla.setBounds(150,0,3000,1000 );
+		fondopantalla.setBounds(75,0,3000,1000 );
 		fondopantalla.setOpaque(false);
 		getContentPane().add(fondopantalla);
+		
+		ClockFace clockFace = new ClockFace();
+		clockFace.setBounds(1720, 20, 150, 150);
+		contentPane.add(clockFace);
 		
 		this.setVisible(true);
 	}

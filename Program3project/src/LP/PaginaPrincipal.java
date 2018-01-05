@@ -23,6 +23,9 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import org.edisoncor.gui.varios.ClockDigital;
+import org.edisoncor.gui.varios.ClockFace;
+
 public class PaginaPrincipal extends JFrame 
 {
 	private static final long serialVersionUID = 1L;
@@ -118,7 +121,7 @@ public class PaginaPrincipal extends JFrame
 		
 		fondopantalla = new JLabel("");
 		fondopantalla.setIcon(new ImageIcon(PaginaPrincipal.class.getResource("/imagenes/70030553-shop-wallpapers.jpg")));
-		fondopantalla.setBounds(150,0,3000,1000 );
+		fondopantalla.setBounds(75,0,3000,1000 );
 		fondopantalla.setOpaque(false);
 		getContentPane().add(fondopantalla);
 		
@@ -126,8 +129,13 @@ public class PaginaPrincipal extends JFrame
 		txtrBienevnidoAAmazon.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 60));
 		txtrBienevnidoAAmazon.setText("Welcome to AMAZON DEUSTO SHOP!!!");
 		txtrBienevnidoAAmazon.setBackground(Color.gray);
-		txtrBienevnidoAAmazon.setBounds(150, 30, 1325, 70);
+		txtrBienevnidoAAmazon.setBounds(75, 30, 1325, 70);
 		contentPane.add(txtrBienevnidoAAmazon);
+		
+		ClockFace clockFace = new ClockFace();
+		clockFace.setBounds(1720, 20, 150, 150);
+		contentPane.add(clockFace);
+		
 		
 		
 		this.setVisible(true);

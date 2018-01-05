@@ -4,5 +4,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="librerias/junit-4.6.jar"/>
 	<classpathentry kind="lib" path="librerias/sqlite-jdbc-3.14.2.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/PC/Downloads/dist/edisoncorSX.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -90,15 +90,6 @@ public class FrameCarritoCompra extends JFrame implements ActionListener
 		etiqueta.setForeground(Color.blue);
 		contentPane.add(etiqueta); 
 		
-		btnNewButtonFinalizarCompra = new JButton("FINALIZAR COMPRA");
-		btnNewButtonFinalizarCompra.setForeground(Color.DARK_GRAY);
-		btnNewButtonFinalizarCompra.setBackground(Color.GREEN);
-		btnNewButtonFinalizarCompra.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		btnNewButtonFinalizarCompra.setBounds(750, 500, 358, 48);
-		contentPane.add(btnNewButtonFinalizarCompra);
-		btnNewButtonFinalizarCompra.setActionCommand(BUTTON_COMPRARPRODUCTOS);
-		btnNewButtonFinalizarCompra.addActionListener(this);
-		
 
 		btnEliminar = new JButton("ELIMINAR PRODUCTO");
 		btnEliminar.setActionCommand("ELIMINAR");

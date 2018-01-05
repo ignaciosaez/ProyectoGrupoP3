@@ -21,6 +21,8 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import org.edisoncor.gui.varios.ClockDigital;
+
 import LD.BaseDatos;
 import LN.gestorClientes;
 
@@ -120,7 +122,10 @@ public class FrameEntrarCliente extends JFrame implements ActionListener
 		//PONGO YA UN USUARIO QUE HEN METIDO Y SU CONTRA PARA AGILIZAR
 		textFieldUsuario.setText("IGNACIO96");
 		contrasenaPasswordField.setText("IGNACIO96");
-	
+		
+		ClockDigital clockDigital = new ClockDigital();
+		clockDigital.setBounds(1700, 15, 259, 69);
+		contentPane.add(clockDigital);
 	
 	}
 
