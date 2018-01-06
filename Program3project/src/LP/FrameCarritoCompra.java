@@ -177,7 +177,7 @@ public class FrameCarritoCompra extends JFrame implements ActionListener
 		getContentPane().add(scroll);
 		scroll.setViewportView(tabla); 
 		
-		DefaultTableModel modelo= new DefaultTableModel();
+		modelo= new DefaultTableModel();
 		modelo.addColumn("Código");
 		modelo.addColumn("Nombre");
 		modelo.addColumn("Precio");
