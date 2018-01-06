@@ -59,7 +59,7 @@ public class FrameCliente extends JFrame implements ActionListener
 		setBounds(450, 200, 549, 453);
 		this.setExtendedState(MAXIMIZED_BOTH);
 		
-		
+	
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setSize(500, 500);
@@ -70,7 +70,7 @@ public class FrameCliente extends JFrame implements ActionListener
 		setJMenuBar(menu);
 		
 		
-		
+		System.out.println(usuario);
 		MenuEntrar = new JMenu("Catalogo de productos");
 		MenuEntrar.setFont(new Font("Segoe UI", Font.PLAIN, 28));
 		menu.add(MenuEntrar);
@@ -106,7 +106,7 @@ public class FrameCliente extends JFrame implements ActionListener
 		        public void actionPerformed(ActionEvent ev) 
 		        
 		        {
-		        	FrameCarritoCompra obj= new FrameCarritoCompra();
+		        	FrameCarritoCompra obj= new FrameCarritoCompra(usuario);
 		        	obj.setVisible(true);
 		        }
 		    });
@@ -147,18 +147,7 @@ public class FrameCliente extends JFrame implements ActionListener
 		} 
 	}
 	
-/*
-		fondopantalla = new JLabel("");
-		fondopantalla.setIcon(new ImageIcon(PaginaPrincipal.class.getResource("/imagenes/logodeusto.jpg")));
-		fondopantalla.setBounds(0,0,1000,1000 );
-		fondopantalla.setOpaque(false);
-		fondopantalla.setMaximumSize(getMaximumSize());
-		getContentPane().add(fondopantalla);
-		
-		
-		this.setVisible(true);
-	}
-*/
+
 		
 }
 

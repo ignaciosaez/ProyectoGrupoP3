@@ -54,12 +54,13 @@ public class FrameCarritoCompra extends JFrame implements ActionListener
 	private int filasTabla;
 	private int filaseleccionada;
 	private String codigo;
-	private String usuario;	
+	 String usuario;	
 	private JLabel etiqueta;
+	
 
-
-	public FrameCarritoCompra() 
+	public FrameCarritoCompra(String usuario) 
 	{
+		this.usuario=usuario;
 		java.sql.Connection con=  BaseDatos.getConnection();
 		atributosVentana();
 	} 
@@ -153,7 +154,7 @@ public class FrameCarritoCompra extends JFrame implements ActionListener
 			{
 				filaseleccionada=tabla.getSelectedRow();
 				codigo = (String)tabla.getValueAt(filaseleccionada, 0);
-				usuario= (String)tabla.getValueAt(filaseleccionada, 4);
+				//usuario= (String)tabla.getValueAt(filaseleccionada, 4);
 				//clicado=true;
 				
 			}
@@ -186,7 +187,7 @@ public class FrameCarritoCompra extends JFrame implements ActionListener
 		tabla.setModel(modelo);
 		
 		gestorClientes obj= new gestorClientes();
-		obj.devolverTabla(tabla);
+		obj.devolverTabla(tabla,usuario);
 		
 		
 		

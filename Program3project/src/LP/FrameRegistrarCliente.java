@@ -232,6 +232,7 @@ public class FrameRegistrarCliente extends JFrame implements ActionListener
 					{
 						
 						JOptionPane.showMessageDialog(this, "Cliente registrado correctamente");
+						this.dispose();
 					}
 					
 					

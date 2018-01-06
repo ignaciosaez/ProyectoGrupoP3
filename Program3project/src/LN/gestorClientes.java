@@ -104,7 +104,7 @@ public class gestorClientes
 			
 		
 	}
-	public static ArrayList<Object[]> llenarTablaCarrito()
+	public static ArrayList<Object[]> llenarTablaCarrito(String usuario)
 	{
 		
 	
@@ -114,7 +114,7 @@ public class gestorClientes
 		
 			
 			try {
-				String query= "SELECT * FROM CARRITOCOMPRA" ;
+				String query= "SELECT * FROM CARRITOCOMPRA where (usuario= '"+usuario+"' )" ;
 				rs=state.executeQuery(query);
 				rm=rs.getMetaData();
 			} catch (SQLException e1) {
@@ -161,10 +161,10 @@ public class gestorClientes
 		
 	
 	}
-	public JTable devolverTabla( JTable tabla) 
+	public JTable devolverTabla( JTable tabla, String usuario) 
 	{
 		ArrayList<Object[]> datos= new ArrayList<Object[]>();
-		datos= llenarTablaCarrito();
+		datos= llenarTablaCarrito(usuario);
 		DefaultTableModel modelo;
 		modelo=(DefaultTableModel) tabla.getModel();
 		for(int i=0;i<datos.size();i++)
