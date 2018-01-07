@@ -27,6 +27,13 @@ import LD.BaseDatos;
 import LN.gestorClientes;
 
 import static COMUN.constantesActionCommand.*;
+
+/**
+ * Clase para la creación de la ventana que nos permite iniciar sesion en el sistema con usuario y contraseña. El usuario y contraseña que previamente introducimos en el area de registrar cliente. 
+ * Si los datos no coinciden se mostrará un mensaje.
+ * @author Alumno
+ */
+
 public class FrameEntrarCliente extends JFrame implements ActionListener
 
 {

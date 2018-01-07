@@ -26,6 +26,11 @@ import javax.swing.border.EmptyBorder;
 
 import org.edisoncor.gui.varios.ClockFace;
 
+/**
+ * Clase para la creación de la ventana que nos permite visualizar las opciones que tiene el cliente una vez se haya registrado con éxito. Es decir, ver el catalogo de producto o el carrito de compra.
+ * @author Alumno
+ */
+
 public class FrameCliente extends JFrame implements ActionListener 
 {
 	private static final long serialVersionUID = 1L;

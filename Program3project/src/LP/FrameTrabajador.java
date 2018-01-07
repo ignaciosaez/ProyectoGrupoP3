@@ -25,6 +25,11 @@ import javax.swing.border.EmptyBorder;
 
 import org.edisoncor.gui.varios.ClockFace;
 
+/**
+ * Clase para la creación de la ventana que nos permite visualizar las opciones que tiene un trabajador respecto al catalogo de productos. 
+ * @author Alumno
+ */
+
 public class FrameTrabajador extends JFrame implements ActionListener 
 {
 	private static final long serialVersionUID = 1L;

@@ -28,6 +28,12 @@ import LN.gestorClientes;
 
 import static COMUN.constantesActionCommand.*;
 
+/**
+ * Clase para la creación de la ventana que nos permite registrar a un cliente en el sistema. Si un cliente no está registrado no puede comprar nada, ya que se le exige que se identifique.
+ * Por tanto, en esta ventana se le pediran al nuevo cliente que inserte sus datos personales. 
+ * @author Alumno
+ */
+
 public class FrameRegistrarCliente extends JFrame implements ActionListener
 {
 	private static final long serialVersionUID = 1L;

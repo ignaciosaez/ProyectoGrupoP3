@@ -35,6 +35,12 @@ import LN.gestorTrabajadores;
 
 import static COMUN.constantesActionCommand.*;
 
+/**
+ * Clase para la creación de la ventana que nos permite visualizar y modificar la lista de los productos disponibles en nuestra tienda.
+ * Se nos mostrará la lista de productos y una vez seleccionado el producto a modificar, se podrán cambiar los valores.
+ * Una vez modificado el producto, también se podrá actualizar la lista que vemos en pantalla mediante un botón. 
+ * @author Alumno
+ */
 
 public class FrameModificarProducto extends JFrame implements ActionListener 
 {

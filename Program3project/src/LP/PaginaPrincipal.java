@@ -26,6 +26,11 @@ import javax.swing.border.EmptyBorder;
 import org.edisoncor.gui.varios.ClockDigital;
 import org.edisoncor.gui.varios.ClockFace;
 
+/**
+ * Clase para la creación de la pantalla principal. Aquí se mostraran las opciones de entrar y registrarse. 
+ * @author Alumno
+ */
+
 public class PaginaPrincipal extends JFrame 
 {
 	private static final long serialVersionUID = 1L;

@@ -38,6 +38,10 @@ import LN.gestorClientes;
 import LN.gestorTrabajadores;
 import static COMUN.constantesActionCommand.*;
 
+/**
+ * Clase para la creación de la ventana que nos permite seleccionar algunos productos del catalogo y añadirlos al carrito en las cantidades que deseemos.
+ * @author Alumno
+ */
 
 public class FrameCompraCliente extends JFrame implements ActionListener
 {

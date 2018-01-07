@@ -29,6 +29,11 @@ import javax.swing.table.DefaultTableModel;
 import LD.BaseDatos;
 import LN.gestorTrabajadores;
 
+/**
+ * Clase para la creación de la ventana que nos permite visualizar la lista de los productos disponibles en nuestra tienda y además seleccionar y eliminar productos. 
+ * @author Alumno
+ */
+
 public class FrameEliminarProducto extends JFrame implements ActionListener {
 	
 	private String codProducto;

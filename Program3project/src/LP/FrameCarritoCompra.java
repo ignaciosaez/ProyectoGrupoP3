@@ -35,6 +35,10 @@ import LN.gestorClientes;
 import LN.gestorTrabajadores;
 import static COMUN.constantesActionCommand.*;
 
+/**
+ * Clase para la creación de la ventana que nos permite visualizar los productos que hemos añadido a nuestro carrito de compra. Aquí se mostraran las opciones de eliminar algun producto del carrito y además podremos ver el total que nos corresponde pagar. 
+ * @author Alumno
+ */
 
 public class FrameCarritoCompra extends JFrame implements ActionListener
 {

@@ -30,6 +30,13 @@ import LD.BaseDatos;
 import LN.gestorTrabajadores;
 
 import static COMUN.constantesActionCommand.*;
+
+/**
+ * Clase para la creación de la ventana que nos permite introducir los datos de un nuevo producto al sistema. 
+ * Además, antes de introducir los datos, podremos también ver la lista de productos dados de alta mediante un botón.
+ * @author Alumno
+ */
+
 public class FrameInsertarProducto extends JFrame implements ActionListener
 {
 	private JPanel contentPane;

@@ -25,6 +25,13 @@ import LN.gestorClientes;
 import LN.gestorTrabajadores;
 
 import static COMUN.constantesActionCommand.*;
+
+/**
+ * Clase para la creación de la ventana que nos permite iniciar sesion en el sistema con usuario y contraseña. 
+ * Si los datos no coinciden se mostrará un mensaje.
+ * @author Alumno
+ */
+
 public class FrameEntrarTrabajador extends JFrame implements ActionListener
 
 {
