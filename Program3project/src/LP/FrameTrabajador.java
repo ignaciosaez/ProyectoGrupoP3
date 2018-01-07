@@ -55,7 +55,7 @@ public class FrameTrabajador extends JFrame implements ActionListener
 		
 		
 		setForeground(Color.BLACK);
-		setTitle("");
+		setTitle("BIENVENIDO A AMAZONDEUSTOSHOP");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(450, 200, 549, 453);
 		this.setExtendedState(MAXIMIZED_BOTH);

@@ -95,7 +95,7 @@ public class FrameEliminarProducto extends JFrame implements ActionListener {
 		
 		construirTabla();
 		
-tabla.addMouseListener(new MouseListener() {
+		tabla.addMouseListener(new MouseListener() {
 			
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
@@ -126,7 +126,7 @@ tabla.addMouseListener(new MouseListener() {
 			{
 				filaseleccionada=tabla.getSelectedRow();
 				codigo = (String)tabla.getValueAt(filaseleccionada, 0);
-				//clicado=true;
+				
 				
 			}
 		});
@@ -150,15 +150,9 @@ tabla.addMouseListener(new MouseListener() {
 		modelo.addColumn("Precio");
 		tabla.setModel(modelo);
 		
-		ArrayList<Object[]> datos= new ArrayList<Object[]>();
-		gestorTrabajadores obj = new gestorTrabajadores();
-		datos= obj.llenarTabla();
 		
-		for(int i=0;i<datos.size();i++)
-		{
-			modelo.addRow(datos.get(i));
-			
-		}
+		gestorTrabajadores obj = new gestorTrabajadores();
+		obj.devolverTabla(tabla);
 		
 	}
 		
@@ -187,7 +181,8 @@ tabla.addMouseListener(new MouseListener() {
 		modelo= (DefaultTableModel) tabla.getModel();
 		modelo.removeRow(filaseleccionada);
 		obj.EliminarProducto(state, codigo);
-
+		
+		
 		
 		
 	}

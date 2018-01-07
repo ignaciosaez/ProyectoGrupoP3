@@ -62,7 +62,7 @@ public class FrameRegistrarCliente extends JFrame implements ActionListener
 		
 		
 		setForeground(Color.BLACK);
-		setTitle("AMAZON DEUSTO-ACCESO AL PROGRAMA");
+		setTitle("REGISTRARSE");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(450, 200, 549, 453);
 		this.setExtendedState(MAXIMIZED_BOTH);

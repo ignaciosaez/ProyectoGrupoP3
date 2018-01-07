@@ -129,7 +129,7 @@ public class FrameCarritoCompra extends JFrame implements ActionListener
 		
 		construirTabla();
 		totalPagar();
-		//totalapagar();
+		
 		
 		tabla.addMouseListener(new MouseListener() {
 			
@@ -158,8 +158,6 @@ public class FrameCarritoCompra extends JFrame implements ActionListener
 			{
 				filaseleccionada=tabla.getSelectedRow();
 				codigo = (String)tabla.getValueAt(filaseleccionada, 0);
-				//usuario= (String)tabla.getValueAt(filaseleccionada, 4);
-				//clicado=true;
 				
 			}
 

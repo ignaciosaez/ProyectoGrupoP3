@@ -59,7 +59,7 @@ public class FrameCliente extends JFrame implements ActionListener
 		
 		
 		setForeground(Color.BLACK);
-		setTitle("");
+		setTitle("BIENVENIDO A AMAZONDEUSTOSHOP");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(450, 200, 549, 453);
 		this.setExtendedState(MAXIMIZED_BOTH);
@@ -74,8 +74,7 @@ public class FrameCliente extends JFrame implements ActionListener
 		menu = new JMenuBar();
 		setJMenuBar(menu);
 		
-		
-		System.out.println(usuario);
+	
 		MenuEntrar = new JMenu("Catalogo de productos");
 		MenuEntrar.setFont(new Font("Segoe UI", Font.PLAIN, 28));
 		menu.add(MenuEntrar);
