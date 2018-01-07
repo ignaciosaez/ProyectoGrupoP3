@@ -259,29 +259,9 @@ public class gestorClientes
 		
 		return total;
 		
-		
-		
-		
+			
 	}
-	/**
-	 * Método que elimina la tabla compra
-	 * @param state: Objeto necesario para ejecutar una sentencia de SQL sobre la BD que debe estar abierta anteriormente mediante connection
-	 */
-	public void eliminarTablaCompra(Statement state)
-	{
-		
-		
-	
-			String SelectBD = "DROP TABLE CARRITOCOMPRA ";
-			try {
-				state.executeUpdate(SelectBD);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		
-	
-	}
+
 	
 	
 

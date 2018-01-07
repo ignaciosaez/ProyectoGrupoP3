@@ -80,25 +80,7 @@ public class gestorTrabajadores {
 		}
 	}
 	
-	/**
-	 * Método que elimina la tabla producto
-	 * @param state: Objeto necesario para ejecutar una sentencia de SQL sobre la Base de Datos que debe estar abierta anteriormente mediante connection
-	 */
-	public void eliminarTablaProducto(Statement state)
-	{
-		
-		
-	
-			String SelectBD = "DROP TABLE PRODUCTO ";
-			try {
-				state.executeUpdate(SelectBD);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		
-	
-	}
+
 	
 	/**
 	 * Método que llena la tabla producto
@@ -252,6 +234,25 @@ public class gestorTrabajadores {
 		return ArrayP;
 	}
 	
+	/**
+	 * Método que elimina la tabla PRODUCTO
+	 * @param state: Objeto necesario para ejecutar una sentencia de SQL sobre la BD que debe estar abierta anteriormente mediante connection
+	 */
+	public void eliminarTablaProducto(Statement state)
+	{
+		
+		
+	
+			String SelectBD = "DROP TABLE PRODUCTO ";
+			try {
+				state.executeUpdate(SelectBD);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+	
+	}
 }
 
 
