@@ -27,6 +27,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import LD.BaseDatos;
+import LN.gestorClientes;
 import LN.gestorTrabajadores;
 
 import static COMUN.constantesActionCommand.*;
@@ -249,16 +250,9 @@ public class FrameInsertarProducto extends JFrame implements ActionListener
 		modelo.addColumn("Categoria");
 		modelo.addColumn("Precio");
 		tabla.setModel(modelo);
-		
-		ArrayList<Object[]> datos= new ArrayList<Object[]>();
-		gestorTrabajadores obj = new gestorTrabajadores();
-		datos= obj.llenarTabla();
-		
-		for(int i=0;i<datos.size();i++)
-		{
-			modelo.addRow(datos.get(i));
-		}
 		modelo.fireTableDataChanged();
+		gestorTrabajadores obj= new gestorTrabajadores();
+		obj.devolverTabla(tabla);
 		
 		
 	}

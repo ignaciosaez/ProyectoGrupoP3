@@ -106,15 +106,10 @@ public class FrameVerProductos extends JFrame implements ActionListener
 		modelo.addColumn("Categoria");
 		modelo.addColumn("Precio");
 		tabla.setModel(modelo);
-		ArrayList<Object[]> datos= new ArrayList<Object[]>();
-		gestorTrabajadores obj = new gestorTrabajadores();
-		datos= obj.llenarTabla();
 		
-		for(int i=0;i<datos.size();i++)
-		{
-			modelo.addRow(datos.get(i));
-			
-		}
+		gestorTrabajadores obj= new gestorTrabajadores();
+		obj.devolverTabla(tabla);
+		
 		
 	}
 

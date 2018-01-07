@@ -130,10 +130,7 @@ public class FrameEntrarCliente extends JFrame implements ActionListener
 		textFieldUsuario.setText("IGNACIO96");
 		contrasenaPasswordField.setText("IGNACIO96");
 		
-		ClockDigital clockDigital = new ClockDigital();
-		clockDigital.setBounds(1700, 15, 259, 69);
-		contentPane.add(clockDigital);
-	
+		
 	}
 
 	@Override

@@ -8,6 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 import com.sun.corba.se.pept.transport.Connection;
 
@@ -126,6 +128,23 @@ public class gestorTrabajadores {
 		}
 		
 		return datos;
+	}
+	/**
+	 * Método que contruye una tabla de los productos
+	 * @return tabla, un a tabla con todos los productos
+	 */
+	public JTable devolverTabla( JTable tabla) 
+	{
+		ArrayList<Object[]> datos= new ArrayList<Object[]>();
+		datos= llenarTabla();
+		DefaultTableModel modelo;
+		modelo=(DefaultTableModel) tabla.getModel();
+		for(int i=0;i<datos.size();i++)
+		{
+			modelo.addRow(datos.get(i));
+			
+		}
+		return tabla;
 	}
 	
 	/**

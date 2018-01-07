@@ -127,9 +127,7 @@ public class FrameEntrarTrabajador extends JFrame implements ActionListener
 		textFieldUsuario.setText("GARBI");
 		contrasenaPasswordField.setText("GARBI");
 	
-		ClockDigital clockDigital = new ClockDigital();
-		clockDigital.setBounds(1700, 15, 259, 69);
-		contentPane.add(clockDigital);
+		
 	
 	}
 
