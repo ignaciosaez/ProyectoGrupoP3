@@ -175,7 +175,7 @@ public class FrameEntrarCliente extends JFrame implements ActionListener
 			JOptionPane.showMessageDialog(this, "Correo o contraseña incorrectas, intentelo de nuevo");
 			this.setVisible(true);
 		}
-		this.dispose();
+		
 	}
 
 }

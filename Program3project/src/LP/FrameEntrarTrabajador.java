@@ -178,7 +178,7 @@ public class FrameEntrarTrabajador extends JFrame implements ActionListener
 			JOptionPane.showMessageDialog(this, "Correo o contraseña incorrectas, vuelva a introducirlas");
 			this.setVisible(true);
 		}
-		this.dispose();
+		
 	}
 
 }
