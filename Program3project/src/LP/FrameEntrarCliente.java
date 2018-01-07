@@ -44,6 +44,7 @@ public class FrameEntrarCliente extends JFrame implements ActionListener
 	private JTextField textFieldUsuario;
 	private JTextField textFieldContrasena;
 	private JButton btnNewButtonEntrar;
+	private JButton btnNewButtonCancelar;
 	private JPasswordField contrasenaPasswordField;
 	public FrameEntrarCliente() 
 	{
@@ -108,14 +109,14 @@ public class FrameEntrarCliente extends JFrame implements ActionListener
 		btnNewButtonEntrar.addActionListener(this);
 		contentPane.add(btnNewButtonEntrar);
 		
-		btnNewButtonEntrar = new JButton("CANCELAR");
-		btnNewButtonEntrar.setForeground(Color.DARK_GRAY);
-		btnNewButtonEntrar.setBackground(Color.RED);
-		btnNewButtonEntrar.setFont(new Font("Tahoma", Font.PLAIN, 24));
-		btnNewButtonEntrar.setBounds(450, 500, 198, 48);
-		contentPane.add(btnNewButtonEntrar);
-		btnNewButtonEntrar.setActionCommand(BUTTON_CANCELAR);
-		btnNewButtonEntrar.addActionListener(this);
+		btnNewButtonCancelar = new JButton("CANCELAR");
+		btnNewButtonCancelar.setForeground(Color.DARK_GRAY);
+		btnNewButtonCancelar.setBackground(Color.RED);
+		btnNewButtonCancelar.setFont(new Font("Tahoma", Font.PLAIN, 24));
+		btnNewButtonCancelar.setBounds(450, 500, 198, 48);
+		contentPane.add(btnNewButtonCancelar);
+		btnNewButtonCancelar.setActionCommand(BUTTON_CANCELAR);
+		btnNewButtonCancelar.addActionListener(this);
 		
 		
 		IMAGEN = new JLabel("");
