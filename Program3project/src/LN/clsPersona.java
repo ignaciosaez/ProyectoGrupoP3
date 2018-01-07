@@ -2,6 +2,12 @@ package LN;
 
 import java.io.Serializable;
 
+/**
+ * 
+ * Clase que permite crear objetos clsPersona. Implementa serializable. 
+ *
+ */
+
 public class clsPersona implements Serializable 
 {
 	private String nombre;
@@ -9,11 +15,19 @@ public class clsPersona implements Serializable
 	private String usuario;
 	private String contrasenya;
 	
+	/**
+	 * Constructor sin parámetros
+	 */
 	public clsPersona()
 	{
 		
 	}
 	
+	/**
+	 * Constructor con parámetros
+	 * @param nombre: Nombre de la persona
+	 * @param contrasenya: Contraseña para acceder a la aplicación
+	 */
 	public clsPersona(String nombre, String contrasenya) 
 	{
 		
@@ -43,6 +57,9 @@ public class clsPersona implements Serializable
 	public void setContrasenya(String contrasenya) {
 		this.contrasenya = contrasenya;
 	}
+	/**
+	 * Método que hace posible sacar los datos de personas por pantalla
+	 */
 	@Override
 	public String toString() {
 		

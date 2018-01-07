@@ -2,6 +2,10 @@ package LN;
 
 import java.io.Serializable;
 
+/**
+ * Método que permite crear objetos de tipo clsProducto. Implementa serializable. 
+ *
+ */
 public class clsProducto implements Serializable
 {
 	 private String cod_producto;
@@ -10,6 +14,14 @@ public class clsProducto implements Serializable
 	 private String categoria_producto;
 	 private double precio_producto;
 	 
+	 /**
+	  * Constructor
+	  * @param cod_producto: Código del producto
+	  * @param nom_producto: Nombre del producto
+	  * @param descripcion: Descripción del producto
+	  * @param categoria: Categoría a la que pertenece el producto
+	  * @param precio_producto: Precio del producto
+	  */
 	 public clsProducto(String cod_producto,String nom_producto, String descripcion,String categoria,double precio_producto )
 	 {
 		 
@@ -65,7 +77,9 @@ public class clsProducto implements Serializable
 		this.precio_producto = precio_producto;
 	}
 
-
+ /**
+  * Método que ermite sacar los datos de productos por pantalla
+  */
 	public String toString()
 	{		
 		StringBuffer salida = new StringBuffer();

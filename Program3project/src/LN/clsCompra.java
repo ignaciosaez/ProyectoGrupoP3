@@ -3,6 +3,11 @@ package LN;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+/**
+ * 
+ * Clase que permite crear objetos de tipo clsCompra. Implementa serializable.
+ *
+ */
 public class clsCompra implements Serializable
 {
 	double precio;
@@ -10,6 +15,15 @@ public class clsCompra implements Serializable
 	String nombre_producto;
 	int cantidad;
 	ArrayList carritoCompra;
+	
+	/**
+	 * Costructor
+	 * @param precio: Precio de la compra
+	 * @param codigo: Codigo de compra
+	 * @param nombre: Nombre de compra
+	 * @param cantidad: Cantidad de compra
+	 * @param carritoCompra: Array con los productos comprados
+	 */
 	
 	public clsCompra(double precio,String codigo,String nombre,int cantidad, ArrayList carritoCompra)
 	{

@@ -13,6 +13,12 @@ import com.sun.corba.se.pept.transport.Connection;
 
 import LD.BaseDatos;
 
+/**
+ * 
+ * Clase que relaciona la logica de presentacion (LP) con la logica de datos(LD).
+ * La mayoria de los metodos que precisan informacion de la Base de Datos se encuentran en esta clase
+ *
+ */
 public class gestorTrabajadores {
 
 	static Statement state= BaseDatos.getStatement();
@@ -20,6 +26,14 @@ public class gestorTrabajadores {
 	static ResultSetMetaData rm;
 	static ResultSet rs;
 	
+	/**
+	 * Metodo que se encarga de comprobar si el usuario y la contraseña introducidos para acceder como trabajador coinciden con alguna que este 
+	 * guardada en la Base de Datos
+	 * @param state: Objeto necesario para ejecutar una sentencia de SQL sobre la Base de Datos que debe estar abierta anteriormente mediante connection
+	 * @param usuario: Nombre de usuario
+	 * @param contrasena: Contraseña para acceder como trabajador
+	 * @return false en caso de que el usuario y la contraseña introducidas no coincidan con alguna guardada en la Base de Datos, si no, true
+	 */
 	public boolean validacionUsuarioContrasenaTrabajador(Statement state, String usuario, String contrasena)
 	{
 		String SelectBD = "select * from TRABAJADOR where (usuario = '" + usuario + "' and contrasenya = '" + contrasena + "')";
@@ -42,7 +56,15 @@ public class gestorTrabajadores {
 		}
 	}
 	
-	
+	/**
+	 * Método mediante el cual crea una fila en la tabla de Productos, es decir crea un producto
+	 * @param state:Objeto necesario para ejecutar una sentencia de SQL sobre la Base de Datos que debe estar abierta anteriormente mediante connection
+	 * @param cod_producto: Código del producto
+	 * @param nom_producto: Nombre del producto
+	 * @param descripcion_producto: Descripción del producto
+	 * @param categoria_producto: Categoría a la que pertenece el producto
+	 * @param precio_producto: Precio del producto
+	 */
 	public void CrearProcuto(Statement state, String cod_producto , String nom_producto ,String descripcion_producto,String categoria_producto, double precio_producto)
 	{
 		try 
@@ -58,6 +80,10 @@ public class gestorTrabajadores {
 		}
 	}
 	
+	/**
+	 * Método que elimina la tabla producto
+	 * @param state: Objeto necesario para ejecutar una sentencia de SQL sobre la Base de Datos que debe estar abierta anteriormente mediante connection
+	 */
 	public void eliminarTablaProducto(Statement state)
 	{
 		
@@ -74,7 +100,10 @@ public class gestorTrabajadores {
 	
 	}
 	
-	
+	/**
+	 * Método que llena la tabla producto
+	 * @return datos, un array con todos los productos
+	 */
 	public static ArrayList<Object[]> llenarTabla()
 	{
 		
@@ -117,6 +146,12 @@ public class gestorTrabajadores {
 		return datos;
 	}
 	
+	/**
+	 * Metodo que comprueba si el codigo introducido coincide con alguno introducido anteriormente
+	 * @param state: Objeto necesario para ejecutar una sentencia de SQL sobre la Base de Datos que debe estar abierta anteriormente mediante connection
+	 * @param cod: código de producto, identificativo en cada uno. 
+	 * @return true en caso de que haya un producto con ese codigo, si no, false
+	 */
 	public boolean validacionCodigoPorducto(Statement state, String cod)
 	{
 		String SelectBD = "select * from PRODUCTO where (cod_producto = '" + cod + "')";
@@ -138,7 +173,11 @@ public class gestorTrabajadores {
 			return false;
 		}
 	}
-	
+	/**
+	 * Método que elimina un producto
+	 * @param state: Objeto necesario para ejecutar una sentencia de SQL sobre la Base de Datos que debe estar abierta anteriormente mediante connection
+	 * @param cod_producto: Código del producto
+	 */
 	public void EliminarProducto(Statement state, String cod_producto)
 	{
 		
@@ -154,6 +193,15 @@ public class gestorTrabajadores {
 		
 	
 	}
+	/**
+	 * Método que permite modificar un producto
+	 * @param state: Objeto necesario para ejecutar una sentencia de SQL sobre la Base de Datos que debe estar abierta anteriormente mediante connection
+	 * @param codigo: Código del producto
+	 * @param nombre: Nombre del producto
+	 * @param descripcion: Descripción del producto
+	 * @param categoria: Categoría a la que pertenece el producto
+	 * @param precio: Precio del producto
+	 */
 	public void modificar(Statement state, String codigo,String nombre,String descripcion,String categoria,double precio)
 	{
 		
@@ -177,7 +225,11 @@ public class gestorTrabajadores {
 	
 		
 	}
-	
+	 /**
+	  * Método que devuelve todos los productos
+	  * @param state: Objeto necesario para ejecutar una sentencia de SQL sobre la Base de Datos que debe estar abierta anteriormente mediante connection
+	  * @return arrayP, un array con todos los productos disponibles
+	  */
 	public ArrayList<clsProducto> DevolverProductos (Statement state)
 	{
 		ArrayList<clsProducto> ArrayP = new ArrayList<clsProducto>();

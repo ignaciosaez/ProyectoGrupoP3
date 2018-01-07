@@ -1,11 +1,22 @@
 package LN;
 
+/**
+ * 
+ * Clase que hace posible crear un objeto clsCliente. Extiende de clsPersona.
+ *
+ */
 public class clsCliente extends clsPersona
 {
 	
 	private String ciudad_cliente;
 	private String direc_cliente;
 	
+	/**
+	 * Constructor
+	 * @param usuario_cliente: Nombre de usuario
+	 * @param ciudad_cliente: Ciudad donde reside el cliente
+	 * @param direc_cliente: Dirección del cliente
+	 */
 	
 	public clsCliente(String usuario_cliente,String ciudad_cliente,String direc_cliente) 
 	{

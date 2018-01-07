@@ -1,10 +1,19 @@
 package LN;
 
+/**
+ * 
+ * Método que permite crear objetos de tipo clsTrabajador. Extiende de clsPersona.
+ */
 public class clsTrabajador extends clsPersona  
 {
 	private String DNI;
 	private String cargo_trabajador;
 	
+	/**
+	 * Constructor
+	 * @param usuario_trabajador: Nombre de usuario trabajador
+	 * @param cargo_trabajador: Cargo del trabajador
+	 */
 	
 	public clsTrabajador(String usuario_trabajador, String cargo_trabajador)
 	{
@@ -25,6 +34,9 @@ public class clsTrabajador extends clsPersona
 		this.cargo_trabajador = cargo_trabajador;
 	}
 	
+	/**
+	 * Método que permite sacar los datos de trabajadores por pantalla
+	 */
 	public String toString()
 	{		
 		StringBuffer salida = new StringBuffer();

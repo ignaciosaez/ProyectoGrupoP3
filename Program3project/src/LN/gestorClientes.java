@@ -14,14 +14,30 @@ import javax.swing.table.DefaultTableModel;
 
 import LD.BaseDatos;
 
+/**
+ * 
+ * Clase que relaciona la LP con la LD. La mayoría de los métodos que precisan informacion de la BD se encuentran en esta clase.
+ *
+ */
 public class gestorClientes 
 {
 	static Statement state= BaseDatos.getStatement();
 	java.sql.Connection con=  BaseDatos.getConnection();
 	static ResultSetMetaData rm;
 	static ResultSet rs;
-	 
-
+	
+	/**
+	 * 
+	 * Método que añade un nuevo cliente a la BD
+	 * @param state: Objeto necesario para ejecutar una sentencia de SQL sobre la BD que debe estar abierta anteriormente mediante connection
+	 * @param nombre: Nombre del cliente
+	 * @param apellidos: Apellidos del cliente
+	 * @param ciudad: Ciudad en la que reside el cliente
+	 * @param direccion: Dirección del cliente
+	 * @param usuario: Nombre del usuario para acceder al aplicación
+	 * @param contrasena: Contraseña del usuario para acceder a la aplicación
+	 * @return false en caso de que no se haya podido guardar el cliente en la Base de Datos, si no, true
+	 */
 	
 	public boolean añadirNuevoCliente(Statement state, String nombre, String apellidos, String ciudad, String direccion, String usuario, String contrasena)
 	{
@@ -44,6 +60,13 @@ public class gestorClientes
 			return false;
 		}
 	}
+	
+	/**
+	 * Método que comprueba si existe algun cliente que coincida con el usuario introducido, que es el identificativo de cada cliente
+	 * @param state:  Objeto necesario para ejecutar una sentencia de SQL sobre la BD que debe estar abierta anteriormente mediante connection
+	 * @param usuario: Nombre del usuario para acceder al aplicación
+	 * @return true en caso de que haya algun cliente con el usuario introducido, si no, false
+	 */
 	public boolean ExisteCliente(Statement state, String usuario)
 	{
 		String SelectBD = "select * from CLIENTE where (usuario = '" + usuario + "')";
@@ -65,7 +88,13 @@ public class gestorClientes
 			return false;
 		}
 	}
-	
+	 /**
+	  * Método que comprueba si el usuario y contraseña introducidos por el cliente son correctos
+	  * @param state: Objeto necesario para ejecutar una sentencia de SQL sobre la BD que debe estar abierta anteriormente mediante connection
+	  * @param usuario: Nombre del usuario para acceder al aplicación
+	  * @param contrasena: Contraseña del usuario para acceder a la aplicación
+	  * @return true si existe algun cliente con la contraseña y usuario introducidos, si no, false
+	  */
 	public boolean validacionUsuarioContrasenaCliente(Statement state, String usuario, String contrasena)
 	{
 		String SelectBD = "select * from CLIENTE where (usuario = '" + usuario + "' and contrasena = '" + contrasena + "')";
@@ -87,6 +116,16 @@ public class gestorClientes
 			return false;
 		}
 	}
+	
+	/**
+	 * Método mediante el cual crea una fila en la tabla de carritocompra 
+	 * @param state: Objeto necesario para ejecutar una sentencia de SQL sobre la BD que debe estar abierta anteriormente mediante connection
+	 * @param cod_producto: Código del producto 
+	 * @param nombre_producto: Nombre del producto
+	 * @param precio: Precio del producto
+	 * @param cantidad: Cantidad a comprar del producto
+	 * @param usuario: Nombre del usuario
+	 */
 	public void ComprarProducto(Statement state, String cod_producto,String nombre_producto, double precio,int cantidad, String usuario)
 	{
 		
@@ -104,6 +143,12 @@ public class gestorClientes
 			
 		
 	}
+	
+	/**
+	 * Método mediante el cual llena la tabla carrito de compra
+	 * @param usuario: Nombre del usuario
+	 * @return devuelve un array denominado datos con los productos del carrito de compra
+	 */
 	public static ArrayList<Object[]> llenarTablaCarrito(String usuario)
 	{
 		
@@ -146,6 +191,12 @@ public class gestorClientes
 		return datos;
 	}
 	
+	/**
+	 * Método mediante el cual se elimina un producto del carrito de la compra
+	 * @param state: Objeto necesario para ejecutar una sentencia de SQL sobre la BD que debe estar abierta anteriormente mediante connection
+	 * @param cod: Código del producto
+	 * @param usuario: Nombre del usuario
+	 */
 	public void EliminarProductoCarrito(Statement state, String cod,String usuario)
 	{
 		
@@ -161,6 +212,13 @@ public class gestorClientes
 		
 	
 	}
+	
+	/**
+	 * Método mediante el cual devuelve la tabla carrito de la compra
+	 * @param tabla: Tabla carrito de compra
+	 * @param usuario: Nombre del usuario
+	 * @return tabla de carrito compra
+	 */
 	public JTable devolverTabla( JTable tabla, String usuario) 
 	{
 		ArrayList<Object[]> datos= new ArrayList<Object[]>();
@@ -174,6 +232,12 @@ public class gestorClientes
 		}
 		return tabla;
 	}
+	
+	/**
+	 * Método que calcula el importe total a pagar en una compra
+	 * @param tabla: Tabla de carrito compra
+	 * @return total, que indica el total a pagar en una compra
+	 */
 	public double totalPAGAR(JTable tabla)
 	{
 		
@@ -199,6 +263,10 @@ public class gestorClientes
 		
 		
 	}
+	/**
+	 * Método que elimina la tabla compra
+	 * @param state: Objeto necesario para ejecutar una sentencia de SQL sobre la BD que debe estar abierta anteriormente mediante connection
+	 */
 	public void eliminarTablaCompra(Statement state)
 	{
 		
